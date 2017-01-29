@@ -1,0 +1,501 @@
+<?
+require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
+$APPLICATION->SetTitle("Главная");
+
+
+
+
+   // include __DIR__.'/php/init.php';
+    include __DIR__.'/php/text_content.php';
+    include __DIR__.'/tmp/header.php';
+    ?><?$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"tmp_main_slider",
+	Array(
+		"51" => false,
+		"52" => false,
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => ".default",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(0=>"",1=>"",),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "2",
+		"IBLOCK_TYPE" => "visual",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "20",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(0=>"",1=>"square",2=>"",),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC"
+	)
+);?>
+        <div class="green-bar">
+            <ul>
+                <li class="green-bar-item">
+                    <div class="green-bar-item-img ">
+                        <div class="anim-pattern pattern-2">
+                        </div>
+                    </div>
+                </li>
+                <li class="green-bar-item">
+                    <div class="green-bar-item-txt">
+                        веревочный парк
+                        для детей и взрослых
+                    </div>
+                    <div class="green-bar-item-img ">
+                        <div class="anim-pattern pattern-3">
+
+                        </div>
+
+                    </div>
+                </li>
+                <li class="green-bar-item">
+                    <div class="green-bar-item-txt">
+                        10 минут
+                        пешком до метро
+                    </div>
+                    <div class="green-bar-item-img ">
+                        <div class="anim-pattern pattern-4">
+
+                        </div>
+
+                    </div>
+                </li>
+                <li class="green-bar-item">
+                    <div class="green-bar-item-txt">
+                        летняя оранжерея
+                        для будущего урожая
+                    </div>
+                    <div class="green-bar-item-img">
+
+                        <div class="anim-pattern pattern-5">
+
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="wrapper-outer">
+            <div class="block-about yakor" id="about">
+                <div class="wrapper-inner clearfix">
+                    <div class="block-txt">
+
+                        <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => ("/include/about_text.php")
+	)
+);?>
+
+
+                        <div class="anim-pattern pattern-0">
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="block-about-slider-over">
+
+
+                        <?$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"tmp_list_plan",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => "tmp_list_plan",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(0=>"",1=>"",),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "1",
+		"IBLOCK_TYPE" => "visual",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "20",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(0=>"square",1=>"",),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC"
+	)
+);?>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block-features">
+
+
+            <?$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"tmp_about",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => "tmp_about",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(0=>"DETAIL_TEXT",1=>"",),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "4",
+		"IBLOCK_TYPE" => "visual",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "20",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(0=>"",1=>"square",2=>"",),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ID",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "ASC",
+		"SORT_ORDER2" => "ASC"
+	)
+);?>
+
+
+        </div>
+
+        <div class="wrapper-outer">
+
+            <div class="block-location yakor" id="place">
+                <div class="wrapper-inner clearfix">
+                    <div class="popup-map">
+                        <h2>Расположение жилого квартала</h2>
+
+
+
+                        <a class="popup-map-img" href="/bitrix/templates/grinada/img/jpg/raspolozhenie_zoom.jpg" style="background-image: url(/bitrix/templates/grinada/img/jpg/raspolozhenie.jpg);">
+                            <div class="dt">
+                                <div class="dtc">
+                                    <div class="btn-zoom"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="moscow-map">
+                        <div class="moscow-map-img" style="background-image: url(/bitrix/templates/grinada/img/jpg/moscow_map.jpg);"></div>
+                        <div style="margin-bottom: 10px; font-weight: 500;">Новый жилой квартал<br> расположен по адресу:</div>
+
+                        <h2>
+                            Москва<br>
+                            Феодосийская, 1
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="big-figure circle"></div>
+            </div>
+            <div class="project-plan yakor" id="plan">
+                <div class="wrapper-inner clearfix">
+
+                    <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => ("/include/plan_text.php")
+	)
+);?>
+
+
+                </div>
+            </div>
+            <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => ("/include/genplan.php")
+	)
+);?>
+
+            <div class="block-floor yakor" id="floor">
+                <div class="wrapper-inner clearfix">
+                    <h2>Дом №1.<br> План типового этажа</h2></div>
+                <div class="floor-map-over">
+                    <div class="floor-map"></div>
+
+                </div>
+
+                <!--                <img src="/img/plan_etaga.png">-->
+                <!--        </div>-->
+            </div>
+            <div class="block-infra yakor" id="infra">
+                <div class="wrapper-inner clearfix">
+                    <div class="block-txt">
+                        <div class="block-txt-inner">
+
+                            <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => ("/include/infra_text.php")
+	)
+);?>
+                        </div>
+                    </div>
+                    <div class="infra-img" style="background-image: url(/bitrix/templates/grinada/img/jpg/infrastructura.jpg);"></div>
+                </div>
+                <div class="big-figure wave"></div>
+            </div>
+        </div>
+        <div class="infra-wrapper">
+            <? include __DIR__.'/include/infra_obj.php';?>
+        </div>
+        <div id="panorama" class="yakor">
+            <div class="block-panorama">
+                <h2>Панорама района</h2>
+
+                <div class="pano-tab-content">
+                    <div id="pano" style="width:100%;height:800px;">
+                        
+                    </div>
+                </div>
+                <div class="photo-tab-content">
+                    <?$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"tmp_slider_photo",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => "tmp_slider_photo",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(0=>"",1=>"",),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "3",
+		"IBLOCK_TYPE" => "visual",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "20",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(0=>"",1=>"square",2=>"",),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ID",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "ASC",
+		"SORT_ORDER2" => "ASC"
+	)
+);?>
+                </div>
+                <div class="panorama-switch">
+                    <div class="photo-tab">
+                        <div class="dt">
+                            <div class="dtc">
+                                фото района
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pan-tab">
+                        <div class="pan-tab-txt">
+                            <div class="dt">
+                                <div class="dtc">
+                                    панорама
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="big-figure triangle"></div>
+
+            </div>
+        </div>
+        <div class="wrapper-outer">
+            <div class="block-developer">
+                <div class="wrapper-inner clearfix">
+
+                    <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => ("/include/dev_text.php")
+	),
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'N'
+)
+);?>
+
+
+                    <div class="anim-pattern pattern-1"></div>
+                </div>
+                <div class="big-figure circle"></div>
+            </div>
+        </div>
+        <div class="goto-top "><a href="#" class="scroll_up">вернуться наверх</a></div>
+        <div class="mfp-hide" id="policy-popup">
+            <div class="policy-popup-txt">
+                <h2>Политика конфиденциальности</h2>
+                <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => ("/include/policy.php")
+	)
+);?>
+                <?=$policyTxt?>
+            </div>
+        </div><?
+require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');
+?>

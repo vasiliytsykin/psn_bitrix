@@ -1,0 +1,199 @@
+/*----------INFRASTRUCTURE-----------*/
+.infra-page {
+    padding-top: 45px;
+    position: relative;
+    overflow: hidden; }
+.infra-page .circle {
+    right: 0;
+    top: 50%;
+    margin-right: -150px; }
+.infra-page .wave-green {
+    top: 80%;
+    left: 0;
+    margin-left: -350px; }
+.infra-page .pattern-1 {
+    bottom: 5%;
+    left: 50%; }
+.infra-page h1 {
+    text-align: center; }
+.infra-page .map-wrapper {
+    height: 700px;
+    position: relative;
+    padding-top: 30px;
+    overflow: hidden; }
+.infra-page .map {
+    width: 100%;
+    height: 700px; }
+.infra-page .infra-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 215px;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+.infra-page .infra-nav a {
+    font-size: 18px;
+    color: #b2b2b2; }
+.infra-page .infra-nav.closed {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%); }
+.infra-page .infra-nav.closed .infra-nav__handle .arrow {
+    background-image: url(/bitrix/templates/grinada/img/infra/arrow-gray-up.svg); }
+.infra-page .infra-nav-wrapper {
+    font-size: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: inherit;
+    padding: 25px 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+.infra-page .infra-nav__handle {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+.infra-page .infra-nav__handle .arrow {
+    width: 20px;
+    height: 12px;
+    background: url(/bitrix/templates/grinada/img/infra/arrow-gray-down.svg) no-repeat center; }
+.infra-page .infra-group__title {
+    margin-bottom: 15px;
+    line-height: 1; }
+.infra-page .infra-group__title a {
+    font-size: 25px;
+    font-weight: 600; }
+.infra-page .infra-group.education .infra-group__title a {
+    color: #00acc8; }
+.infra-page .infra-group.health .infra-group__title a {
+    color: #f03c18; }
+.infra-page .infra-group.sport .infra-group__title a {
+    color: #ffd100; }
+.infra-page .infra-group.shop .infra-group__title a {
+    color: #f38b00; }
+.infra-page .infra-group.park .infra-group__title a {
+    color: #95d600; }
+.infra-page .infra-group.active .infra-subsection-title a {
+    color: #000; }
+.infra-page .infra-subsection-title {
+    font-weight: 500;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 15px; }
+.infra-page .infra-subsection-title .icon {
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    left: 0;
+    top: 0;
+    background: no-repeat center; }
+.infra-page .infra-subsection-title:hover a, .infra-page .infra-subsection-title:active a, .infra-page .infra-subsection-title.active a {
+    color: #000; }
+.infra-page .infra-list-over {
+    padding-bottom: 150px; }
+.infra-page .infra-list .infra-group {
+    padding: 70px 0 0;
+    float: left;
+    width: 33%; }
+.infra-page .infra-list .infra-group.shop {
+    float: right; }
+.infra-page .infra-list .infra-group.park {
+    float: none;
+    clear: both; }
+.infra-page .infra-list .infra-group__title a {
+    font-size: 30px;
+    font-weight: 500; }
+.infra-page .infra-list .infra-subsection-title {
+    margin: 15px 0 0; }
+.infra-page .infra-list .infra-subsection-title a {
+    font-size: 20px;
+    text-transform: uppercase; }
+.infra-page .infra-list__item {
+    cursor: pointer;
+    font-weight: 500; }
+.infra-page .info-block__txt {
+    max-width: 520px;
+    padding-bottom: 60px; }
+
+@media screen and (max-width: 1024px) {
+    .infra-page .wave-green {
+        display: none; }
+    .infra-page .circle {
+        width: 310px;
+        height: 310px;
+        margin-right: -200px; }
+    .infra-page .pattern-1 {
+        bottom: 10%; }
+    .infra-page .map-wrapper {
+        height: auto; }
+    .infra-page .infra-nav {
+        position: static;
+        padding: 50px 40px 0;
+        height: auto; }
+    .infra-page .infra-nav .infra-group:last-child .infra-group__title {
+        margin-bottom: 0; }
+    .infra-page .infra-nav .infra-group:nth-child(2n+2) {
+        padding-left: 20px; }
+    .infra-page .infra-nav .infra-subsection-title {
+        display: none; }
+    .infra-page .infra-group {
+        width: 50% !important; }
+    .infra-page .infra-nav-wrapper {
+        max-width: 75%;
+        margin: 0 auto;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: 0; }
+    .infra-page .infra-group__title {
+        margin-bottom: 20px; }
+    .infra-page .infra-list-over {
+        max-width: 75%;
+        margin: 0 auto; }
+    .infra-page .infra-list {
+        margin: 0 -20px; }
+    .infra-page .infra-list .infra-group {
+        padding: 70px 20px 0; }
+    .infra-page .infra-nav__handle {
+        display: none; }
+    .infra-page .info-block {
+        display: none; } }
+
+@media screen and (max-width: 736px) {
+    .infra-page .circle {
+        display: none; }
+    .infra-page .pattern-1 {
+        display: none; }
+    .infra-page .infra-nav-wrapper {
+        max-width: 100%; }
+    .infra-page .infra-nav {
+        padding: 50px 60px 0; }
+    .infra-page .infra-nav .infra-group:nth-child(2n+2) {
+        padding-left: 0; }
+    .infra-page .infra-group {
+        width: 100% !important; }
+    .infra-page .infra-list-over {
+        max-width: 100%; }
+    .infra-page .infra-list {
+        margin: 0; }
+    .infra-page .infra-list .infra-group {
+        padding: 70px 0 0; } }
+
+/*------END INFRASTRUCTURE-----------*/

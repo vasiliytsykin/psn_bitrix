@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Панорама";
+$arDirProperties = Array(
+
+);
+?>

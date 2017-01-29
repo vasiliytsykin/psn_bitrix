@@ -1,0 +1,285 @@
+/*-----------MASTER PLAN COMMON-----------*/
+.master-plan {
+    padding-top: 30px;
+    position: relative;
+    overflow: hidden; }
+.master-plan .circle {
+    right: 0;
+    bottom: 0;
+    margin-right: -250px; }
+.master-plan h1 {
+    text-align: center; }
+.master-plan .legend {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    padding-top: 20px; }
+.master-plan .legend__item {
+    font-size: 18px;
+    color: #595959; }
+.master-plan .legend__item::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px; }
+.master-plan .legend__item.mono::before, .master-plan .legend__item.panel::before {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; }
+.master-plan .legend__item.mono::before {
+    background-color: #00acc8; }
+.master-plan .legend__item.panel::before {
+    background-color: #95d600; }
+.master-plan .legend__item.finish::before {
+    width: 12px;
+    height: 25px;
+    background: url(/bitrix/templates/grinada/img/main-plan/paint-small.svg) no-repeat center;
+    background-size: contain; }
+.master-plan .main-plan {
+    padding-left: 300px;
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto; }
+.master-plan .main-plan__map-over {
+    position: relative;
+    width: 100%;
+    height: 720px;
+    overflow: hidden; }
+.master-plan .main-plan__map-over .compass {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: url(/bitrix/templates/grinada/img/main-plan/compass.svg) no-repeat center;
+    right: 40px;
+    bottom: 25px; }
+.master-plan .main-plan__map-over .camera, .master-plan .main-plan__map-over .panorama {
+    position: absolute;
+    text-align: center; }
+.master-plan .main-plan__map-over .camera .icon, .master-plan .main-plan__map-over .panorama .icon {
+    display: inline-block;
+    background: no-repeat center; }
+.master-plan .main-plan__map-over .camera .h5, .master-plan .main-plan__map-over .panorama .h5 {
+    line-height: 20px;
+    color: #ffd100; }
+.master-plan .main-plan__map-over .camera {
+    max-width: 75px;
+    left: 40px;
+    bottom: 25px; }
+.master-plan .main-plan__map-over .camera .icon {
+    width: 35px;
+    height: 35px;
+    background-image: url(/bitrix/templates/grinada/img/main-plan/cam.svg); }
+.master-plan .main-plan__map-over .panorama {
+    top: 80px;
+    right: 40px; }
+.master-plan .main-plan__map-over .panorama .icon {
+    width: 50px;
+    height: 35px;
+    background-image: url(/bitrix/templates/grinada/img/main-plan/panorama.svg); }
+.master-plan .main-plan__map .house-marker {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-top: 40px;
+    text-align: center;
+    line-height: 1; }
+.master-plan .main-plan__map .house-marker.mono {
+    background-color: rgba(0, 172, 200, 0.8); }
+.master-plan .main-plan__map .house-marker.panel {
+    background-color: rgba(149, 214, 0, 0.8); }
+.master-plan .main-plan__map .house-marker.house-1 {
+    top: 250px;
+    right: 340px; }
+.master-plan .main-plan__map .house-marker.house-2 {
+    top: 440px;
+    right: 420px; }
+.master-plan .main-plan__map .house-marker.house-3 {
+    top: 125px;
+    left: 500px; }
+.master-plan .main-plan__map .house-marker.house-4 {
+    top: 160px;
+    left: 70px; }
+.master-plan .main-plan__map .house-number {
+    padding-top: 5px;
+    font-size: 22px; }
+.master-plan .main-plan__map .extra-marker {
+    position: absolute;
+    line-height: 1;
+    padding: 8px 15px;
+    text-align: center;
+    border-radius: 16px;
+    font-weight: 500; }
+.master-plan .main-plan__map .build-line {
+    text-transform: uppercase;
+    color: #fff; }
+.master-plan .main-plan__map .build-line.first {
+    background-color: #f38b00;
+    bottom: 70px;
+    right: 545px; }
+.master-plan .main-plan__map .build-line.second {
+    background-color: #ffd100;
+    bottom: 255px;
+    left: 155px; }
+.master-plan .main-plan__map .streets .extra-marker {
+    font-size: 17px;
+    color: #595959;
+    background-color: #fff; }
+.master-plan .main-plan__map .streets .extra-marker::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 20%;
+    border-top: 6px solid #fff;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(1) {
+    left: 400px;
+    top: 20px; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(2) {
+    right: 60px;
+    top: 250px; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(3) {
+    right: 10px;
+    bottom: 180px; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(3)::before {
+    left: 85%; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(4) {
+    top: 20px;
+    left: 50px;
+    color: #fff;
+    background-color: #df2400;
+    font-size: 15px;
+    font-weight: 400; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(4)::before {
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #fff;
+    left: auto;
+    right: 100%;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    margin-right: 5px; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(4) span::before {
+    content: '';
+    width: 22px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: top;
+    background: url(/bitrix/templates/grinada/img/main-plan/subway-icon.svg) no-repeat center;
+    margin-right: 5px; }
+.master-plan .main-plan__map .bubble {
+    position: absolute;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    width: 44px;
+    height: 65px;
+    background: url(/bitrix/templates/grinada/img/main-plan/pin-blue.png) no-repeat center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-bottom: 7px; }
+.master-plan .main-plan__map .bubble.finish {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/pin-finish.png);
+    top: 290px;
+    left: 245px; }
+.master-plan .main-plan__map .bubble.finish:hover .tooltip {
+    display: block; }
+.master-plan .main-plan__map .bubble.section-7 {
+    top: 300px;
+    left: 480px; }
+.master-plan .main-plan__map .bubble .tooltip {
+    width: 90px;
+    height: 90px;
+    background-color: #fff;
+    border-radius: 50%;
+    color: #595959;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    padding-top: 12px;
+    position: absolute;
+    top: -50px;
+    right: -75px;
+    display: none; }
+.master-plan .main-plan__sidebar {
+    width: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #95d600;
+    text-align: center;
+    padding: 70px 25px 40px; }
+.master-plan .main-plan__sidebar .h4 {
+    text-transform: uppercase;
+    color: #5c7f0d;
+    max-width: 120px;
+    display: inline-block; }
+.master-plan .main-plan__sidebar .sidebar__section {
+    display: block;
+    padding: 40px 0;
+    position: relative; }
+.master-plan .main-plan__sidebar .sidebar__section:not(:last-child) {
+    border-bottom: 3px solid #abf01b; }
+.master-plan .info-block {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 70px 0 90px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+.master-plan .info-block__txt {
+    max-width: 475px; }
+.master-plan .big-pattern {
+    position: static; }
+
+@media screen and (max-width: 1024px) {
+    .master-plan .big-figure {
+        display: none; }
+    .master-plan .main-plan {
+        padding-left: 0; }
+    .master-plan .main-plan__sidebar {
+        position: static;
+        width: 100%;
+        padding-top: 50px; }
+    .master-plan .info-block {
+        max-width: 75%;
+        display: block; }
+    .master-plan .camera {
+        display: none; }
+    .master-plan .compass {
+        display: none; } }
+
+@media screen and (max-width: 736px) {
+    .master-plan .info-block {
+        max-width: none; }
+    .master-plan .big-pattern {
+        display: none; }
+    .master-plan .panorama {
+        display: none; } }
+
+/*--------END MASTER PLAN COMMON-----------*/

@@ -1,0 +1,169 @@
+/*-----------PARTNERS----------*/
+.partners-page {
+    overflow: hidden;
+    padding-top: 30px;
+    position: relative; }
+.partners-page .circle {
+    left: 0;
+    top: 50%;
+    margin-left: -250px; }
+.partners-page .wave-yellow {
+    right: 0;
+    top: 60%; }
+.partners-page .pattern-5 {
+    position: static; }
+.partners-page h1 {
+    text-align: center; }
+.partners-page .banner-over {
+    padding-top: 40px; }
+.partners-page .banner {
+    height: 450px;
+    background: url(/bitrix/templates/grinada/img/partners/top-banner.jpg) no-repeat center;
+    background-size: cover; }
+.partners-page .info-block--main {
+    padding: 70px 0;
+    max-width: 1080px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+.partners-page .info-block--main .info-block__txt {
+    max-width: 520px; }
+.partners-page .info-block--main p {
+    margin: 10px 0 0; }
+.partners-page .gallery {
+    padding-bottom: 90px; }
+.partners-page .gallery__switch-over {
+    padding: 0 80px; }
+.partners-page .gallery__switch {
+    -ms-flex-pack: distribute;
+    justify-content: space-around; }
+.partners-page .switch__tab {
+    padding: 0 50px; }
+.partners-page .switch__tab:not(:last-child):after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 80px;
+    background: url(/bitrix/templates/grinada/img/tab_separator.svg) no-repeat center;
+    left: 100%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) rotateY(180deg);
+    transform: translate(-50%, -50%) rotateY(180deg); }
+.partners-page .slide-block .trigger {
+    height: 110px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    max-width: 760px;
+    margin: 0 auto;
+    cursor: pointer; }
+.partners-page .slide-block.main .slide-block__header {
+    background-color: #95d600;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff; }
+.partners-page .slide-block.main .trigger .name::after {
+    margin-bottom: 8px;
+    background: url(/bitrix/templates/grinada/img/partners/arrow-white-down.svg) no-repeat center; }
+.partners-page .slide-block.main.open > .slide-block__header .trigger {
+    border-bottom: none; }
+.partners-page .slide-block.main.open > .slide-block__header .trigger .name::after {
+    background-image: url(/bitrix/templates/grinada/img/partners/arrow-white-up.svg); }
+.partners-page .slide-block.main:not(:last-child) .trigger {
+    border-bottom: 2px solid #abf01b; }
+.partners-page .slide-block.sub .slide-block__header {
+    background-color: transparent;
+    color: #000; }
+.partners-page .slide-block.sub:not(:last-child) .trigger {
+    border-bottom: 1px solid #e0e0e0; }
+.partners-page .slide-block.sub:only-child .trigger {
+    border-bottom: none; }
+.partners-page .slide-block.sub .trigger .name::after {
+    background: url(/bitrix/templates/grinada/img/partners/arrow-green-down.svg) no-repeat center; }
+.partners-page .slide-block.sub.open .trigger {
+    border-bottom: none; }
+.partners-page .slide-block.sub.open .trigger .name {
+    color: #95d600; }
+.partners-page .slide-block.sub.open .trigger .name::after {
+    background-image: url(/bitrix/templates/grinada/img/partners/arrow-green-up.svg); }
+.partners-page .slide-block a {
+    font-size: 18px;
+    font-weight: 500; }
+.partners-page .slide-block .slide-block__content {
+    display: none; }
+.partners-page .slide-block__header {
+    padding: 0 40px; }
+.partners-page .slide-block__header .name::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 12px;
+    margin-bottom: 15px;
+    margin-left: 15px; }
+.partners-page .partner-info {
+    box-shadow: inset 0 35px 35px -35px rgba(0, 0, 0, 0.06), inset 0 -35px 35px -35px rgba(0, 0, 0, 0.06);
+    padding: 80px 0; }
+.partners-page .partner-info .info-block {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+.partners-page .partner-info .info-block__txt {
+    max-width: 650px; }
+.partners-page .partner-info .info-block__txt p {
+    margin: 0 0 10px; }
+
+@media screen and (max-width: 1024px) {
+    .partners-page .circle {
+        margin-left: -350px; }
+    .partners-page .wave-yellow {
+        margin-right: -250px; }
+    .partners-page .banner {
+        height: 310px; }
+    .partners-page .info-block--main {
+        max-width: 560px;
+        display: block; }
+    .partners-page .info-block--main .info-block__txt {
+        max-width: 100%;
+        padding-bottom: 50px; }
+    .partners-page .partner-info {
+        padding: 50px 0; }
+    .partners-page .partner-info .info-block {
+        display: block;
+        max-width: 560px;
+        margin: 0 auto; }
+    .partners-page .partner-info .info-block__img {
+        text-align: center; }
+    .partners-page .gallery__tab {
+        display: block; } }
+
+@media screen and (max-width: 736px) {
+    .partners-page .big-figure {
+        display: none; }
+    .partners-page .banner {
+        background-image: url(/bitrix/templates/grinada/img/partners/m-top-banner.jpg); }
+    .partners-page .slide-block__header {
+        padding: 0 30px; } }
+
+/*-------END PARTNERS----------*/

@@ -1,0 +1,92 @@
+/*-----------MASTER PLAN--ABOUT-----------*/
+.master-plan--about .legend {
+    max-width: 480px; }
+
+.master-plan--about .main-plan__sidebar .sidebar__section .h4 {
+    padding-bottom: 20px; }
+
+.master-plan--about .main-plan__sidebar .sidebar__section h5 {
+    text-transform: uppercase; }
+
+.master-plan--about .main-plan__sidebar .sidebar__section__txt {
+    font-size: 18px;
+    color: #dcff8c;
+    cursor: default; }
+.master-plan--about .main-plan__sidebar .sidebar__section__txt:not(:last-of-type) {
+    padding-bottom: 40px; }
+.master-plan--about .main-plan__sidebar .sidebar__section__txt:hover {
+    color: #fff; }
+
+.master-plan--about .infra-marker {
+    position: absolute;
+    width: 42px;
+    height: 60px;
+    background: no-repeat center; }
+.master-plan--about .infra-marker:hover .infra-marker__txt {
+    display: block; }
+.master-plan--about .infra-marker.kindergarten {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/child.svg);
+    top: 110px;
+    left: 60px; }
+.master-plan--about .infra-marker.school {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/school.svg);
+    top: 60px;
+    left: 270px; }
+.master-plan--about .infra-marker.garden {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/garden.svg);
+    top: 185px;
+    left: 375px; }
+.master-plan--about .infra-marker.park {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/park.svg);
+    top: 160px;
+    left: 720px; }
+.master-plan--about .infra-marker.shop {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/shop.svg); }
+.master-plan--about .infra-marker.shop.shop-1 {
+    top: 370px;
+    left: 170px; }
+.master-plan--about .infra-marker.shop.shop-2 {
+    top: 620px;
+    left: 825px; }
+
+.master-plan--about .infra-marker__txt {
+    font-size: 17px;
+    color: #595959;
+    white-space: nowrap;
+    background-color: #fff;
+    display: none;
+    top: 0;
+    left: 100%;
+    margin-left: 5px; }
+
+.master-plan--about .info-block__txt p:first-of-type {
+    margin-top: 15px; }
+
+.master-plan--about .house-marker {
+    display: none; }
+
+@media screen and (max-width: 1024px) {
+    .master-plan--about .main-plan__sidebar {
+        padding-top: 10px;
+        padding-bottom: 30px; }
+    .master-plan--about .main-plan__sidebar .sidebar__section {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-pack: distribute;
+        justify-content: space-around; }
+    .master-plan--about .main-plan__sidebar .sidebar__section .h4 {
+        max-width: none;
+        width: 100%; }
+    .master-plan--about .main-plan__sidebar .sidebar__section__txt:not(:last-of-type) {
+        padding-bottom: 0; } }
+
+@media screen and (max-width: 736px) {
+    .master-plan--about .main-plan__sidebar .sidebar__section {
+        display: block; }
+    .master-plan--about .main-plan__sidebar .sidebar__section__txt:not(:last-of-type) {
+        padding-bottom: 40px; } }
+
+/*--------END MASTER PLAN--ABOUT-----------*/

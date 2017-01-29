@@ -1,0 +1,27 @@
+.irs {
+  min-width: 170px;
+  margin-top: 30px;
+  margin-bottom: 50px; }
+
+.irs-slider {
+  width: 24px;
+  height: 24px;
+  border: 8px solid #ffd100;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  cursor: pointer; }
+  .irs-slider:hover {
+    border-color: #ffae00; }
+
+.irs-line {
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px; }
+
+.irs-bar {
+  top: 0;
+  bottom: 0;
+  background-color: #ffd100; }

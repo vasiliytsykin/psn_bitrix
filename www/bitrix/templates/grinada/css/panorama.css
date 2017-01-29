@@ -1,0 +1,96 @@
+/*----------PANORAMA-----------*/
+.panorama-page {
+    padding-top: 30px;
+    position: relative; }
+.panorama-page .circle {
+    left: 0;
+    top: 30%;
+    margin-left: -250px; }
+.panorama-page .wave-yellow {
+    right: 0;
+    top: 50%;
+    margin-right: -160px; }
+.panorama-page h1, .panorama-page .h1, .panorama-page h5 {
+    text-align: center; }
+.panorama-page h1 {
+    padding-bottom: 10px; }
+.panorama-page h5 {
+    color: #595959; }
+.panorama-page .photos {
+    padding: 100px 0; }
+.panorama-page .photos .h1 {
+    padding-bottom: 50px; }
+.panorama-page .photos__slider .slide {
+    height: 860px;
+    background: no-repeat center;
+    background-size: cover; }
+.panorama-page .photos__slider .slide__txt {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 70px;
+    text-align: center;
+    color: #fff; }
+.panorama-page .photos__slider .slide__txt .h1 {
+    padding-bottom: 10px;
+    font-family: bw_surco, sans-serif; }
+.panorama-page .photos__slider .slide__txt .h5 {
+    color: #fff; }
+.panorama-page .photos__slider .owl-dots {
+    bottom: 40px; }
+.panorama-page .panorama-over {
+    position: relative;
+    margin-top: 50px;
+    height: 670px; }
+.panorama-page .panorama {
+    height: 100%; }
+.panorama-page .developer-logo {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background: url(/bitrix/templates/grinada/img/panorama/logo_white.png) no-repeat center;
+    background-size: contain;
+    top: 30px;
+    right: 40px;
+    z-index: 1; }
+
+@media screen and (max-width: 1024px) {
+    .panorama-page .big-figure {
+        display: none; }
+    .panorama-page h5 {
+        display: none; }
+    .panorama-page .photos__slider {
+        padding-bottom: 50px; }
+    .panorama-page .photos__slider .slide {
+        height: 470px;
+        margin-bottom: 100px; }
+    .panorama-page .photos__slider .slide__txt {
+        color: #000;
+        bottom: 0; }
+    .panorama-page .photos__slider .slide__txt .h5 {
+        font-size: 20px;
+        color: #000; }
+    .panorama-page .photos__slider .owl-dots {
+        bottom: 0; }
+    .panorama-page .photos__slider .owl-dot {
+        width: 14px;
+        height: 14px;
+        background-color: #95d600;
+        opacity: 0.3;
+        margin: 0 15px; }
+    .panorama-page .photos__slider .owl-dot.active {
+        opacity: 1; } }
+
+@media screen and (max-width: 736px) {
+    .panorama-page .photos {
+        padding: 60px 0; }
+    .panorama-page .photos .h1 {
+        font-size: 30px;
+        font-family: geometria, sans-serif;
+        padding-bottom: 25px; }
+    .panorama-page .photos__slider .slide {
+        height: 280px; }
+    .panorama-page .photos__slider .slide .h1 {
+        font-size: 34px; } }
+
+/*------END PANORAMA-----------*/

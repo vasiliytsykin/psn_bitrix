@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+    <style type="text/css">
+        .st0{fill:none;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+    </style>
+    <g>
+        <line class="st0" x1="26.5" y1="26.5" x2="2.5" y2="2.5"/>
+        <line class="st0" x1="26.5" y1="2.5" x2="2.5" y2="26.5"/>
+    </g>
+</svg>
