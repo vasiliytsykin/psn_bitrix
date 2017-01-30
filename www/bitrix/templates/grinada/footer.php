@@ -6,44 +6,57 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 		<footer class="footer">
 			<div class="wrapper-outer">
-				<div class="footer__menu">
-					<ul>
-						<li class="top-level"><a href="about.php">О проекте</a></li>
-						<li class="sub-level"><a href="about.php">О жилом квартале</a></li>
-						<li class="sub-level"><a href="master-plan-about.php">План ЖК</a></li>
-						<li class="sub-level"><a href="infrastructure.php">Инфтраструктура</a></li>
-						<li class="sub-level"><a href="panorama.php">Панорама</a></li>
-						<li class="sub-level"><a href="docs.php">Документация проекта</a></li>
-						<li class="sub-level"><a href="developer.php">О застройщике</a></li>
-						<li class="sub-level"><a href="partners.php">Участники проекта</a></li>
-						<li class="sub-level"><a href="log.php">Дневники стройки</a></li>
-						<li class="sub-level"><a href="history.php">История района</a></li>
-					</ul>
-					<ul>
-						<li class="top-level"><a href="master-plan-filter.php">Выбрать квартиру</a></li>
-						<li class="sub-level"><a href="master-plan-filter.php">Генплан</a></li>
-						<li class="sub-level"><a href="param-filter.php">Выбрать по параметрам</a></li>
-						<li class="sub-level"><a href="plan-filter.php">Выбрать по планировке</a></li>
-						<!--                        <li class="sub-level"><a href="#">Выбрать машиноместо</a></li>-->
-						<!--                        <li class="sub-level"><a href="#">Коммерческие помещения</a></li>-->
-					</ul>
-					<ul>
-						<li class="top-level"><a href="mortgage.php">Условия покупки</a></li>
-						<li class="sub-level"><a href="mortgage.php">Ипотека</a></li>
-						<li class="sub-level"><a href="actions.php">Акции</a></li>
-						<li class="sub-level"><a href="news.php">Новости</a></li>
-						<!--                        <li class="sub-level"><a href="#">Новости компании</a></li>-->
-					</ul>
-					<ul>
-						<li class="top-level"><a href="contacts.php">Офис продаж</a></li>
-						<li class="sub-level">Москва, Феодосийская ул., вл. 1/9</li>
-						<li class="phone">
-							<span class="code">+7 (495) </span>
-							<span class="number">800 41 48</span>
-						</li>
-						<li><a href="#" class="btn-default btn-green feedback-open call">Заказать звонок</a></li>
-					</ul>
-				</div>
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:menu",
+                    "tmp_footer_menu",
+                    Array(
+                        "ALLOW_MULTI_SELECT" => "N",
+                        "CHILD_MENU_TYPE" => "sub",
+                        "DELAY" => "N",
+                        "MAX_LEVEL" => "2",
+                        "MENU_CACHE_GET_VARS" => array(""),
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_TYPE" => "N",
+                        "MENU_CACHE_USE_GROUPS" => "Y",
+                        "ROOT_MENU_TYPE" => "top",
+                        "USE_EXT" => "N"
+                    )
+                );?>
+<!--				<div class="footer__menu">-->
+<!--					<ul>-->
+<!--						<li class="top-level"><a href="about.php">О проекте</a></li>-->
+<!--						<li class="sub-level"><a href="about.php">О жилом квартале</a></li>-->
+<!--						<li class="sub-level"><a href="master-plan-about.php">План ЖК</a></li>-->
+<!--						<li class="sub-level"><a href="infrastructure.php">Инфтраструктура</a></li>-->
+<!--						<li class="sub-level"><a href="panorama.php">Панорама</a></li>-->
+<!--						<li class="sub-level"><a href="docs.php">Документация проекта</a></li>-->
+<!--						<li class="sub-level"><a href="developer.php">О застройщике</a></li>-->
+<!--						<li class="sub-level"><a href="partners.php">Участники проекта</a></li>-->
+<!--						<li class="sub-level"><a href="log.php">Дневники стройки</a></li>-->
+<!--						<li class="sub-level"><a href="history.php">История района</a></li>-->
+<!--					</ul>-->
+<!--					<ul>-->
+<!--						<li class="top-level"><a href="master-plan-filter.php">Выбрать квартиру</a></li>-->
+<!--						<li class="sub-level"><a href="master-plan-filter.php">Генплан</a></li>-->
+<!--						<li class="sub-level"><a href="param-filter.php">Выбрать по параметрам</a></li>-->
+<!--						<li class="sub-level"><a href="plan-filter.php">Выбрать по планировке</a></li>-->
+<!--					</ul>-->
+<!--					<ul>-->
+<!--						<li class="top-level"><a href="mortgage.php">Условия покупки</a></li>-->
+<!--						<li class="sub-level"><a href="mortgage.php">Ипотека</a></li>-->
+<!--						<li class="sub-level"><a href="actions.php">Акции</a></li>-->
+<!--						<li class="sub-level"><a href="news.php">Новости</a></li>-->
+<!--					</ul>-->
+<!--					<ul>-->
+<!--						<li class="top-level"><a href="contacts.php">Офис продаж</a></li>-->
+<!--						<li class="sub-level">Москва, Феодосийская ул., вл. 1/9</li>-->
+<!--						<li class="phone">-->
+<!--							<span class="code">+7 (495) </span>-->
+<!--							<span class="number">800 41 48</span>-->
+<!--						</li>-->
+<!--						<li><a href="#" class="btn-default btn-green feedback-open call">Заказать звонок</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
 				<div class="footer__socials">
 					<div class="footer__social footer__socials--fb"></div>
 					<div class="footer__social footer__socials--vk"></div>

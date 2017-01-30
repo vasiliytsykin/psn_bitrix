@@ -1,0 +1,92 @@
+/*--------DOCS---------*/
+.docs-page {
+    padding-top: 30px;
+    position: relative;
+    overflow: hidden; }
+.docs-page h1 {
+    text-align: center; }
+.docs-page .docs-page__content {
+    padding-top: 30px;
+    padding-bottom: 340px; }
+.docs-page .docs-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+.docs-page .doc {
+    padding: 40px 10px 40px 40px;
+    -ms-flex-preferred-size: 30%;
+    flex-basis: 30%;
+    min-width: 320px; }
+.docs-page .doc:hover, .docs-page .doc:active {
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.06); }
+.docs-page .doc:hover .h4, .docs-page .doc:active .h4 {
+    color: #95d600; }
+.docs-page .h4 {
+    padding-bottom: 10px; }
+.docs-page .doc__size {
+    font-size: 15px;
+    line-height: 25px; }
+.docs-page .big-figure {
+    bottom: 0; }
+.docs-page .circle {
+    right: 0;
+    margin-right: -300px;
+    margin-bottom: -200px; }
+.docs-page .wave-right {
+    left: 0;
+    margin-left: -300px; }
+.docs-page .pattern-2 {
+    bottom: 10%;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%); }
+.docs-page .carrot {
+    top: 25%;
+    left: 32%; }
+
+@media screen and (max-width: 768px) {
+    .docs-page .docs-list {
+        padding: 0 30px 0 80px; }
+    .docs-page .doc {
+        -ms-flex-preferred-size: 47.5%;
+        flex-basis: 47.5%;
+        min-width: 0;
+        padding-right: 120px; }
+    .docs-page .circle {
+        width: 312px;
+        height: 312px;
+        margin-right: -150px;
+        margin-bottom: 0; }
+    .docs-page .wave-right {
+        width: 441px;
+        height: 210px; }
+    .docs-page .carrot {
+        display: none; } }
+
+@media screen and (max-width: 736px) {
+    .docs-page .docs-list {
+        padding: 0;
+        text-align: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center; }
+    .docs-page .doc {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        padding: 20px;
+        max-width: 360px; }
+    .docs-page .doc:hover, .docs-page .doc:active {
+        box-shadow: none; }
+    .docs-page .big-figure {
+        display: none; }
+    .docs-page .pattern-2 {
+        bottom: 4%; }
+    .docs-page .docs-page__content {
+        padding-bottom: 230px; } }
+
+/*-----END DOCS---------*/
