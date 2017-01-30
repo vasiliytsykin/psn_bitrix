@@ -266,7 +266,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                     <h2>Предложение дня</h2>
                     <div class="main-offer__content">
                         <div class="main-offer__item">
-                            <div class="main-offer__graphics main-offer__plan" style="background-image: url(/img/main/flat-plan.png);"></div>
+                            <div class="main-offer__graphics main-offer__plan" style="background-image: url(/bitrix/templates/grinada/img/main/flat-plan.png);"></div>
                             <div class="main-offer__info">
                                 <div class="room-count light-green">1-комнатная</div>
                                 <div class="price">12 460 000 р.</div>
@@ -282,10 +282,10 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                                 </div>
                                 <a href="#" class="btn-default btn-medium btn-green">Карточка квартиры</a>
                             </div>
-                            <div class="main-offer__graphics main-offer__img" style="background-image: url(/img/main/flat-img.jpg);"></div>
+                            <div class="main-offer__graphics main-offer__img" style="background-image: url(/bitrix/templates/grinada/img/main/flat-img.jpg);"></div>
                         </div>
                         <div class="main-offer__item">
-                            <div class="main-offer__graphics main-offer__plan" style="background-image: url(/img/main/flat-plan.png);"></div>
+                            <div class="main-offer__graphics main-offer__plan" style="background-image: url(/bitrix/templates/grinada/img/main/flat-plan.png);"></div>
                             <div class="main-offer__info">
                                 <div class="room-count light-green">2-комнатная</div>
                                 <div class="price">15 460 000 р.</div>
@@ -301,7 +301,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                                 </div>
                                 <a href="#" class="btn-default btn-medium btn-green">Карточка квартиры</a>
                             </div>
-                            <div class="main-offer__graphics main-offer__img" style="background-image: url(/img/main/flat-img.jpg);"></div>
+                            <div class="main-offer__graphics main-offer__img" style="background-image: url(/bitrix/templates/grinada/img/main/flat-img_2.jpg);"></div>
                         </div>
                     </div>
                     <div class="show-all"><a href="#" class="dark-green">Показать все</a></div>

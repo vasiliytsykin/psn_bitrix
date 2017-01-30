@@ -32,7 +32,7 @@
     padding-bottom: 50px; }
 .history-page .top-banner {
     height: 450px;
-    background: url(/img/history/top-banner.jpg) no-repeat center;
+    background: url(/bitrix/templates/grinada/img/history/top-banner.jpg) no-repeat center;
     margin: 0 -40px; }
 .history-page .event-list {
     padding-top: 70px; }
@@ -93,7 +93,7 @@
 .history-page .event__txt p {
     display: none; }
 .history-page .event__txt.open .txt-trigger::after {
-    background-image: url(/img/flat/arrow_up.svg); }
+    background-image: url(/bitrix/templates/grinada/img/flat/arrow_up.svg); }
 .history-page .txt-trigger {
     color: #999999;
     font-size: 18px; }
@@ -103,7 +103,7 @@
     vertical-align: baseline;
     width: 21px;
     height: 12px;
-    background: url(/img/flat/arrow_down.svg) no-repeat center;
+    background: url(/bitrix/templates/grinada/img/flat/arrow_down.svg) no-repeat center;
     background-size: contain;
     margin-left: 5px; }
 .history-page .scroll-top {

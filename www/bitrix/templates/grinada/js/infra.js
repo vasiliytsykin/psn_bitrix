@@ -187,7 +187,7 @@ var gMap = {
 
         var markersToCenter = {};
         $.each(gMap.markers, function(ind, el){
-            if(el.id == itemId){
+            if(el.id == itemId || el.id == 'psn'){
                 el.marker.setVisible(true);
                 markersToCenter[ind] = el;
             }else{

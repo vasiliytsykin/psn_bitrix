@@ -333,7 +333,7 @@ $(function () {
 
         if($('#infra-map').length)
         {
-            Markers['ind1000'] = {'name':'ЖК', 'group':'main', 'coord':{lat:55.560989, lng:37.576975}};
+            Markers['ind1000'] = {'id': 'psn','name':'ЖК', 'group':'main', 'coord':{lat:55.560989, lng:37.576975}};
             gMap.markers = Markers;
             gMap.init('moscow', 'white');
 

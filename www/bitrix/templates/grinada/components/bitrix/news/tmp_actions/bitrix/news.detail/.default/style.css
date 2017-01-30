@@ -1,0 +1,42 @@
+/*--------ACTION DETAIL---------*/
+.action-detail-page {
+    padding-top: 60px;
+    overflow: hidden; }
+.action-detail-page .contacts {
+    padding: 40px 0 90px;
+    position: relative; }
+.action-detail-page .contacts .big-figure {
+    left: 80%;
+    top: -50%; }
+.action-detail-page .contacts .pattern {
+    left: 75%;
+    bottom: 45%; }
+.action-detail-page .hot-action .big-figure {
+    top: 100%;
+    left: 100%;
+    margin-left: -50px;
+    margin-top: -50px; }
+.action-detail-page .hot-action .pattern {
+    bottom: 100%;
+    left: 100%;
+    margin-left: -90px;
+    margin-bottom: -30px; }
+
+@media screen and (max-width: 1024px) {
+    .action-detail-page .hot-action .pattern {
+        margin-left: -57px;
+        margin-bottom: -80px; }
+    .action-detail-page .big-figure {
+        display: none; }
+    .action-detail-page .contacts .pattern {
+        display: none; } }
+
+@media screen and (max-width: 736px) {
+    .action-detail-page .pattern {
+        display: none; }
+    .action-detail-page .hot-action .pattern {
+        display: block;
+        margin-left: -90px;
+        margin-bottom: -70px; } }
+
+/*-----END ACTION DETAIL---------*/

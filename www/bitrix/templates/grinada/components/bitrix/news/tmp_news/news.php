@@ -100,9 +100,9 @@ while($arSection = $rsSection->GetNext()) {
 					</div>
 				<?}?>
 			</div>
-			<div class="show-more">
-				<a href="#" class="btn-default btn-medium btn-green">Показать еще</a>
-			</div>
+<!--			<div class="show-more">-->
+<!--				<a href="#" class="btn-default btn-medium btn-green">Показать еще</a>-->
+<!--			</div>-->
 		</div>
 	</div>
 	<div class="sign-in">
