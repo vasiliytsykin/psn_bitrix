@@ -791,6 +791,8 @@ p {
     text-decoration: none;
     font-weight: 600;
     font-family: bw_surco, sans-serif; }
+.header__nav .top-level a:hover {
+    color: #95d600; }
 .header__nav .top-level a.nested::after {
     width: 6px;
     height: 6px;

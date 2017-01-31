@@ -75,14 +75,14 @@ $events = array(
                         <div class="event">
                             <div class="event__img-over">
                                 <div class="event__date"><?=$date?></div>
-                                <div class="event__img" style="background-image: url(/img/history/<?=$date?>.png);"></div>
+                                <div class="event__img" style="background-image: url(/bitrix/templates/grinada/img/history/<?=$date?>.png);"></div>
                             </div>
                             <div class="event__txt">
                                 <h2><?=$event['header']?><br><span class="h5 dark-green"><?=@$event['address']?></span></h2>
                                 <div class="txt-trigger">Описание</div>
                                 <p class="desc"><?=$event['desc']?></p>
                             </div>
-                            <div class="icon" style="background-image: url(/img/history/<?=$date?>.svg);"></div>
+                            <div class="icon" style="background-image: url(/bitrix/templates/grinada/img/history/<?=$date?>.svg);"></div>
                         </div>
                     <?}?>
                 </div>

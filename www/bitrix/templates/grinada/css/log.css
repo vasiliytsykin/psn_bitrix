@@ -295,12 +295,14 @@
 @media screen and (max-width: 736px) {
     .log-page .big-figure, .log-page .big-pattern {
         display: none; }
+    .log-page h1 {
+        padding-bottom: 0; }
     .log-page .gallery__item h2 {
         padding-bottom: 15px; }
     .log-page .gallery__item .item__info {
         max-width: none; }
     .log-page .gallery__item .item__graphics {
-        padding-top: 20px; }
+        padding-top: 40px; }
     .log-page .gallery__item .item__graphics .progress {
         width: 212px;
         height: 212px; }
@@ -318,6 +320,6 @@
     .log-page .gallery__item .item__txt {
         padding-top: 35px; }
     .log-page .camera {
-        top: 155px; } }
+        top: 200px; } }
 
 /*-------END LOG------------*/

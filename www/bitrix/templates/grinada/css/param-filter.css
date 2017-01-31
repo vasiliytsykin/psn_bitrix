@@ -1,0 +1,90 @@
+/*----------PARAM FILTER-----------*/
+.param-filter-page {
+    padding-top: 30px;
+    position: relative;
+    overflow: hidden; }
+.param-filter-page .bird {
+    left: 0;
+    top: 200px;
+    margin-left: -35px; }
+.param-filter-page .carrot {
+    right: 0;
+    top: 400px;
+    margin-right: -20px; }
+.param-filter-page h1 {
+    text-align: center;
+    font-weight: 600; }
+.param-filter-page .filter {
+    padding-top: 100px;
+    padding-bottom: 170px; }
+.param-filter-page .filter__params {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0 30px 80px; }
+.param-filter-page .filter__params .reset-filter.visible-lg {
+    padding-top: 105px; }
+.param-filter-page .input-group__name span {
+    text-transform: none; }
+.param-filter-page .input-group__name sup {
+    font-size: 12px; }
+
+@media screen and (max-width: 1024px) {
+    .param-filter-page .pattern {
+        display: none; }
+    .param-filter-page .filter {
+        padding-bottom: 80px; }
+    .param-filter-page .filter__params {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0 auto; }
+    .param-filter-page .filter__params .input-group.finish {
+        width: 50%;
+        padding: 0 0 0 10%; }
+    .param-filter-page .filter__params .input-group.finish .input-group__name {
+        width: 100%; }
+    .param-filter-page .filter__params .input-group.finish .inputs {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between; }
+    .param-filter-page .filter__params .reset-filter.visible-sm {
+        width: 50%;
+        padding-right: 7%;
+        padding-top: 42px; } }
+
+@media screen and (max-width: 800px) {
+    .param-filter-page .filter__params {
+        width: 100%;
+        padding: 0 0 80px; } }
+
+@media screen and (max-width: 736px) {
+    .param-filter-page .filter__params .input-group {
+        width: 100%; }
+    .param-filter-page .filter__params .input-group.finish {
+        width: 80%;
+        margin: 0 auto;
+        padding: 0; }
+    .param-filter-page .filter__params .input-group.house .inputs {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between; }
+    .param-filter-page .filter__params .input-group.house .inputs .special {
+        width: 100%; }
+    .param-filter-page .filter__params .input-group.house .inputs--special {
+        display: block; }
+    .param-filter-page .filter__params .reset-filter.visible-xs {
+        padding-top: 30px; } }
+
+/*------END PARAM FILTER-----------*/

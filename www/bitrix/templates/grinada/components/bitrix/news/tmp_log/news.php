@@ -71,7 +71,10 @@ if(CModule::IncludeModule('iblock')){
 								<div class="item__info">
 									<div class="visible-xs">
 										<h2><?=$subSection['NAME']?></h2>
-										<h5>Июнь 2016</h5>
+										<h5>
+											Начало строительных работ - <?=$subSection['UF_START']?><br>
+											Сдача объекта в эксплуатацию – <?=$subSection['UF_END']?>
+										</h5>
 									</div>
 									<div class="item__graphics">
 										<div class="item__graphics-inner" style="background-image: url(<?=$imgUrl?>);">
@@ -86,7 +89,10 @@ if(CModule::IncludeModule('iblock')){
 										<div class="item__txt-inner">
 											<div class="hidden-xs">
 												<h2><?=$subSection['NAME']?></h2>
-												<h5>Июнь 2016</h5>
+												<h5>
+													Начало строительных работ - <?=$subSection['UF_START']?><br>
+													Сдача объекта в эксплуатацию – <?=$subSection['UF_END']?>
+												</h5>
 											</div>
 											<p><?=$desc?></p>
 										</div>
