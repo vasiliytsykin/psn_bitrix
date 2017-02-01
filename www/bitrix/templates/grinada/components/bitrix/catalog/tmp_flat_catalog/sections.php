@@ -29,37 +29,37 @@ $this->setFrameMode(true);
 							<div class="input-group__name">корпус</div>
 							<ul class="inputs">
 								<li class="special">
-									<input type="checkbox" id="house-all">
-									<label for="house-all">все</label>
+									<input type="checkbox" id="building-all">
+									<label for="building-all">все</label>
 								</li>
 								<ul class="inputs inputs--special panel">
 									<li class="house-type">панельные</li>
 									<li>
-										<input type="checkbox" id="house-1">
-										<label for="house-1">1</label>
+										<input type="checkbox" id="building-1">
+										<label for="building-1">1</label>
 									</li>
 									<li>
-										<input type="checkbox" id="house-3" disabled>
-										<label for="house-3">3</label>
+										<input type="checkbox" id="building-3" disabled>
+										<label for="building-3">3</label>
 									</li>
 									<li>
-										<input type="checkbox" id="house-4" disabled>
-										<label for="house-4">4</label>
+										<input type="checkbox" id="building-4" disabled>
+										<label for="building-4">4</label>
 									</li>
 								</ul>
 								<ul class="inputs inputs--special mono">
 									<li class="house-type">монолитные</li>
 									<li>
-										<input type="checkbox" id="house-2">
-										<label for="house-2">2</label>
+										<input type="checkbox" id="building-2">
+										<label for="building-2">2</label>
 									</li>
 									<li>
-										<input type="checkbox" id="house-5" disabled>
-										<label for="house-5">5</label>
+										<input type="checkbox" id="building-5" disabled>
+										<label for="building-5">5</label>
 									</li>
 									<li>
-										<input type="checkbox" id="house-6" disabled>
-										<label for="house-6">6</label>
+										<input type="checkbox" id="building-6" disabled>
+										<label for="building-6">6</label>
 									</li>
 								</ul>
 							</ul>
@@ -79,7 +79,7 @@ $this->setFrameMode(true);
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="room" class="range-slider" data-from="1" data-to="4" data-step="1"/>
+								<input type="text" id="rooms" class="range-slider" data-from="1" data-to="4" data-step="1"/>
 							</div>
 						</div>
 						<div class="input-group">
@@ -89,7 +89,7 @@ $this->setFrameMode(true);
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="square" class="range-slider" data-from="32" data-to="72" data-step="1"/>
+								<input type="text" id="space-design" class="range-slider" data-from="32" data-to="72" data-step="1"/>
 							</div>
 							<div class="input-group">
 								<div class="input-group__name">Цена, <span>млн</span></div>
@@ -104,20 +104,20 @@ $this->setFrameMode(true);
 							<div class="input-group__name">отделка</div>
 							<ul class="inputs">
 								<li>
-									<input type="checkbox" id="no-finish">
-									<label for="no-finish">без отделки</label>
+									<input type="checkbox" id="no-apartment-furnish">
+									<label for="no-apartment-furnish">без отделки</label>
 								</li>
 								<li>
-									<input type="checkbox" id="finish">
-									<label for="finish">с отделкой</label>
+									<input type="checkbox" id="apartment-furnish">
+									<label for="apartment-furnish">с отделкой</label>
 								</li>
 							</ul>
 							<a href="/" class="link--dashed reset-filter visible-xs visible-md visible-lg"><span>Сбросить параметры</span></a>
 						</div>
-						<a href="javascript:window.location.reload(true)" class="link--dashed reset-filter visible-sm"><span>Сбросить параметры</span></a>
+						<a href="#" class="link--dashed reset-filter visible-sm"><span>Сбросить параметры</span></a>
 					</div>
+					<?include $_SERVER['DOCUMENT_ROOT'].'/bitrix/templates/grinada/php/filter-results-table.php';?>
 				</div>
-				<?include $_SERVER['DOCUMENT_ROOT']."/bitrix/templates/grinada/php/filter-results-table.php";?>
 			</div>
 		</div>
 	</div>

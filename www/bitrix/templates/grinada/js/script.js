@@ -766,6 +766,175 @@ $(function () {
 
     /*------END FEEDBACK MODAL-------------*/
 
+
+    /*------------PARAM FILTER----------*/
+    
+    (function () {
+        
+        var $filter = $('.filter'),
+            $filterResult = $filter.find('.results-list__body'),
+            $checkboxes = $filter.find('input[type="checkbox"]'),
+            $sliders = $filter.find('.range-slider'),
+            ajaxUrl = '/param_filter_ajax.php',
+            data = {},
+            dataToSend = {};
+
+        sendData(dataToSend, ajaxUrl);
+
+        $checkboxes.on('change', function () {
+
+            var furnish = {};
+                furnish.count = 0;
+            
+            $checkboxes.each(function (index, input) {
+
+                var $input = $(input),
+                    inputId = $input.attr('id');
+                
+                if($input.prop('checked')){
+                    
+                    if(inputId.indexOf('furnish') != -1)
+                    {
+                        furnish[inputId] = true;
+                        furnish.count++;
+                    }
+                    
+                    else if(inputId != 'building-all')
+                        data[inputId] =  true;
+                }
+                else
+                    delete data[inputId];
+
+            });
+            
+            if(furnish.count == 1 && furnish['apartment-furnish'])
+                data['apartment-furnish'] = 'Y';
+            else if(furnish.count == 1 && furnish['no-apartment-furnish'])
+                data['apartment-furnish'] = 'N';
+            else delete data['apartment-furnish'];
+
+            sendData(data, ajaxUrl, false);
+
+        });
+
+        $sliders.each(function (index, slider) {
+
+            var $slider = $(slider),
+                id = $slider.attr('id'),
+                sliderInstance = $slider.data("ionRangeSlider");
+
+            sliderInstance.update({
+
+                onFinish: function () {
+
+                    data[id] = $slider.val();
+                    sendData(data, ajaxUrl, false);
+
+                }
+
+            });
+
+        });
+
+        $('.reset-filter').on('click', function () {
+
+            data = {};
+            sendData(data, ajaxUrl);
+
+            return false;
+
+        });
+
+        function formatData(data) {
+
+            var formattedData = {},
+                buildings = [];
+
+            for(var id in data){
+
+                if(!data.hasOwnProperty(id)) continue;
+                
+                var newID = '';
+
+                if(id.indexOf('building') === 0)
+                {
+                    var buildingNumber = id.split('-')[1];
+                    buildings.push(buildingNumber);
+                    formattedData['BuildingNumber'] = buildings;
+                }
+                else {
+                    newID = id.split('-').map(function (el) {
+
+                        return el.charAt(0).toUpperCase() + el.slice(1);
+
+                    }).join('');
+                    
+                    formattedData[newID] = data[id];
+                }
+
+            }
+
+
+            return formattedData;
+
+        }
+
+        function sendData(data, url, loadMore) {
+
+            var dataToSend = {};
+                dataToSend['filter'] = formatData(data);
+
+            console.log(dataToSend);
+
+            $.ajax({
+                url: url,
+                data: dataToSend,
+                type: "POST",
+                success: function(data){
+
+                    if(loadMore)
+                        $('.show-more').remove();
+                    else
+                        $filterResult.empty();
+
+                    $filterResult.append(data);
+                }
+            });
+
+        }
+
+        function showMore(pageNumber, pagination) {
+
+            var url = ajaxUrl + '?PAGEN_' + pagination + '=' + pageNumber;
+
+            console.log(url);
+
+            sendData(data, url, true);
+
+        }
+
+
+        $(document).ajaxComplete(function () {
+
+            $('.show-more a').on('click', function () {
+
+                var $this = $(this),
+                    pageNumber = $this.data('current') + 1,
+                    pagination = $this.data('pagination');
+
+                showMore(pageNumber, pagination);
+
+                return false;
+
+            });
+
+        });
+
+        
+    }());
+    
+    /*--------END PARAM FILTER----------*/
+
 });
 
 

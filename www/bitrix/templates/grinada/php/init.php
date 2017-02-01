@@ -34,11 +34,11 @@ $asrScripts = array(
     SITE_TEMPLATE_PATH.'/js/svg.min.js',
     SITE_TEMPLATE_PATH.'/js/patterns.js',
     SITE_TEMPLATE_PATH.'/js/infra.js',
+    SITE_TEMPLATE_PATH.'/js/filter.js',
     SITE_TEMPLATE_PATH.'/js/script.js',
     SITE_TEMPLATE_PATH.'/js/about.js',
     SITE_TEMPLATE_PATH.'/js/contacts.js',
-    SITE_TEMPLATE_PATH.'/js/flat-detail.js',
-    SITE_TEMPLATE_PATH.'/js/filter.js'
+    SITE_TEMPLATE_PATH.'/js/flat-detail.js'
 );
 
 

@@ -10,7 +10,8 @@ function engageRangeSlider(element) {
         max: max,
         step: step,
         hide_min_max: true,
-        hide_from_to: true
+        hide_from_to: true,
+        input_values_separator: '-'
     });
 
     element.on('change', function () {
@@ -40,5 +41,36 @@ $(function () {
         engageRangeSlider($(el));
 
     });
+
+    var $allCheckboxes = $('.filter input[type="checkbox"]'),
+        $houseCheckboxes = $('.input-group.house input'),
+        $houseAll = $('#building-all');
+
+    $houseAll.on('click', function () {
+        $houseCheckboxes.not(':disabled').prop('checked', true);
+
+    });
+
+    $houseCheckboxes.not($houseAll).on('click', function () {
+
+        $houseAll.prop('checked', false);
+
+    });
+
+    $('.reset-filter').on('click', function () {
+
+        $allCheckboxes.prop('checked', false);
+
+        $rangeSliders.each(function (index, slider) {
+
+            var sliderInstance = $(slider).data("ionRangeSlider");
+            sliderInstance.reset();
+
+        });
+
+    });
+
+
+
 
 });

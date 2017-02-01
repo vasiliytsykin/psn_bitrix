@@ -31,6 +31,8 @@
     text-transform: none; }
 .param-filter-page .input-group__name sup {
     font-size: 12px; }
+.param-filter-page .show-more{
+    padding-top: 50px; }
 
 @media screen and (max-width: 1024px) {
     .param-filter-page .pattern {
