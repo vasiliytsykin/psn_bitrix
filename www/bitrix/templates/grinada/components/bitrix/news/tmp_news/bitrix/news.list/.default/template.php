@@ -22,6 +22,8 @@ $this->setFrameMode(true);?>
 	?>
 	<?
 		$date = explode(' ', $arItem['DISPLAY_ACTIVE_FROM']);
+		$img = $arItem['PREVIEW_PICTURE'];
+		$imgUrl = is_array($img) ? $img['SRC'] : '/bitrix/templates/grinada/img/news/news_stab.jpg' ;
 	?>
 	<a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="info-block">
 		<div class="info-block__img-over">
@@ -34,7 +36,7 @@ $this->setFrameMode(true);?>
 					<div class="year">‘<?=substr($date[2], 2)?></div>
 				</div>
 			</div>
-			<div class="info-block__img" style="background-image: url(<?=$arItem['PREVIEW_PICTURE']['SRC']?>);"></div>
+			<div class="info-block__img" style="background-image: url(<?=$imgUrl?>);"></div>
 		</div>
 		<div class="info-block__txt">
 			<h3><?=$arItem['PROPERTIES']['HEADER']['VALUE']['TEXT']?></h3>

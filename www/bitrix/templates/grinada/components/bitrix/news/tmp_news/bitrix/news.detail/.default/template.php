@@ -36,6 +36,8 @@ if(!empty($slide['pre'])){
 }
 
 $itemProps = $arResult['PROPERTIES'];
+$img = $arItem['DETAIL_PICTURE'];
+$imgUrl = is_array($img) ? $img['SRC'] : '/bitrix/templates/grinada/img/news/news_stab.jpg' ;
 
 ?>
 
@@ -63,7 +65,7 @@ $itemProps = $arResult['PROPERTIES'];
 					<?}?>
 				</div>
 				<div class="main-block">
-					<div class="action-detail__img" style="background-image: url(<?=$arResult['DETAIL_PICTURE']['SRC']?>);">
+					<div class="action-detail__img" style="background-image: url(<?=$imgUrl?>);">
 						<div class="pattern carrot orange anim-pattern" data-pattern="carrot"></div>
 						<div class="pattern bird light-green anim-pattern" data-pattern="bird"></div>
 					</div>

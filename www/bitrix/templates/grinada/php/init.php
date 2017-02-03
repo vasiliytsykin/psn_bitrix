@@ -28,6 +28,7 @@ $asrScripts = array(
     "/lib/dragdealer/dragdealer.js",
     "/lib/progressbar.js/dist/progressbar.js",
     "/lib/pickmeup/dist/pickmeup.min.js",
+    "/lib/jquery.inputmask/dist/jquery.inputmask.bundle.js",
     "http://maps.googleapis.com/maps/api/js?key=AIzaSyAjpIIkyyZMHBvf1bpQgabz5QithzXaAfU&amp;sensor=true",
     "/pano/tour.js",
     SITE_TEMPLATE_PATH.'/js/vivus.js',

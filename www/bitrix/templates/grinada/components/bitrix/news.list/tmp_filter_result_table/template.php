@@ -32,7 +32,7 @@ $navNum = $arResult["NAV_RESULT"]->NavNum;
 	$flatNumber = $properties['BeforeBtiNumber']['VALUE'];
 	$floor = $properties['Floor']['VALUE'];
 	$square = $properties['SpaceDesign']['VALUE'];
-	$furnish = $properties['ApartmentFurnish']['VALUE'];
+	$furnish = $properties['ApartmentFurnish']['VALUE'] != false ? 'Да' : 'Нет';
 	?>
 	<a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="item">
 		<div class="h3 dark-green visible-sm visible-xs"><?=$roomCount?>-комнатная евроформат</div>
