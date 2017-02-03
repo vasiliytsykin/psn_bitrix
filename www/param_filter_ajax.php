@@ -14,7 +14,7 @@ foreach ($flatFilter as $key => $value) {
             $newKey = '!'.$newKey;
         $newValue = false;
     }
-    else if ($key != 'BuildingNumber') {
+    else if ($key != 'BuildingNumber' && $key != 'TypeForSite') {
         $newValue = explode('-', $value);
         $newKey = $newKey . '><';
     }

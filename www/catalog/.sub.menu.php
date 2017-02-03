@@ -1,11 +1,18 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Типы планировок", 
-		"/tipy-planirovok/", 
+		"Выбрать по параметрам", 
+		"/catalog/", 
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"Поиск по планировке",
+		"/catalog/plans/",
+		Array(),
+		Array(),
+		""
 	)
 );
 ?>

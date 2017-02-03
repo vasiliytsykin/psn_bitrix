@@ -772,14 +772,30 @@ $(function () {
     (function () {
         
         var $filter = $('.filter'),
-            $filterResult = $filter.find('.results-list__body'),
+            $filterResult = $filter.find('.result-items'),
             $checkboxes = $filter.find('input[type="checkbox"]'),
             $sliders = $filter.find('.range-slider'),
-            ajaxUrl = '/param_filter_ajax.php',
-            data = {},
-            dataToSend = {};
+            ajaxUrl = $filter.data('ajax-url'),
+            data = {};
 
-        sendData(dataToSend, ajaxUrl);
+        String.prototype.toCamelCase = function () {
+
+            return this.split('-').map(function (el) {
+
+                return el.charAt(0).toUpperCase() + el.slice(1);
+
+            }).join('');
+
+        };
+
+        var $typeForSite = $('#type-for-site');
+        
+        if($typeForSite.length){
+            data['type-for-site'] = $typeForSite.val();
+            sendData(data, ajaxUrl, false);
+        }
+        else
+            sendData(data, ajaxUrl);
 
         $checkboxes.on('change', function () {
 
@@ -799,7 +815,7 @@ $(function () {
                         furnish.count++;
                     }
                     
-                    else if(inputId != 'building-all')
+                    else if(!$input.hasClass('check-all'))
                         data[inputId] =  true;
                 }
                 else
@@ -847,34 +863,24 @@ $(function () {
 
         function formatData(data) {
 
-            var formattedData = {},
-                buildings = [];
+            var formattedData = {};
 
             for(var id in data){
 
                 if(!data.hasOwnProperty(id)) continue;
-                
-                var newID = '';
 
-                if(id.indexOf('building') === 0)
-                {
-                    var buildingNumber = id.split('-')[1];
-                    buildings.push(buildingNumber);
-                    formattedData['BuildingNumber'] = buildings;
+                var arId = id.split('-'),
+                    paramNumber = parseInt(arId[arId.length - 1], 10);
+
+                if(!isNaN(paramNumber)){
+                    var key = arId.slice(0, arId.length - 1).join('-').toCamelCase();
+                    if(!formattedData.hasOwnProperty(key))
+                        formattedData[key] = [paramNumber];
+                    else formattedData[key].push(paramNumber);
                 }
-                else {
-                    newID = id.split('-').map(function (el) {
-
-                        return el.charAt(0).toUpperCase() + el.slice(1);
-
-                    }).join('');
-                    
-                    formattedData[newID] = data[id];
-                }
-
+                else
+                    formattedData[id.toCamelCase()] = data[id];
             }
-
-
             return formattedData;
 
         }
@@ -906,13 +912,9 @@ $(function () {
         function showMore(pageNumber, pagination) {
 
             var url = ajaxUrl + '?PAGEN_' + pagination + '=' + pageNumber;
-
-            console.log(url);
-
             sendData(data, url, true);
 
         }
-
 
         $(document).ajaxComplete(function () {
 

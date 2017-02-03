@@ -25,15 +25,18 @@ Class Sync{
         );
 
         //$arMessages = array();
-        $sElement_XML_ID = str_replace('.','_','fl'. $arConf['BeforeBtiNumber']);
+
         $sParentXML_ID = 7;
         $sHouse_XML_ID = str_replace('.','_','h'. $arConf['BuildingNumber']);
+
+        $sElement_XML_ID = str_replace('.','_',$sHouse_XML_ID.'fl'. $arConf['BeforeBtiNumber']);
+
         $sSection_XML_ID = $sHouse_XML_ID.'s'.$arConf['SectionNumber'];
         $sFloor_XML_ID= $sSection_XML_ID.'f'.$arConf['Floor'];
 
 
-        $sElement_URL_CODE = str_replace('-','', str_replace($arConf['BuildingNumber'],'',$arConf['BeforeBtiNumber']));
-        $iStatus = ($arConf['status']==1?'Y':'N');
+        $sElement_URL_CODE = $arConf['BeforeBtiNumber'];
+        $iStatus = (!in_array($arConf['StatusCode'],array(8))?'Y':'N');
         $arConf['SECTION_XML_ID'] = $sSection_XML_ID;
         $arConf['FLAT_XML_ID'] = $sElement_XML_ID;
         $arSections = $this->arDBSection;
@@ -242,56 +245,70 @@ Class Sync{
             "BuildingNumber"=>"BuildingNumber",
             "BeforeBtiNumber"=>"BeforeBtiNumber",
             "Floor"=>"Floor",
+            "ApartmentFurnish"=>"ApartmentFurnish",
             "COORDINATS"=>"",
             "liv_sp_1"=>"living_space_1",
             "type"=>"type",
             "format"=>"format",
             "Rooms"=>"Rooms",
-            "area_full"=>"area_full",
+            "NumberOnFloor"=>"NumberOnFloor",
             "SectionNumber"=>"SectionNumber",
-            "total_cost"=>"total_cost",
+            "Price"=>"Price",
+            "Discount"=>"Discount",
+            "DiscountCost"=>"DiscountCost",
+            "DiscountPrice"=>"DiscountPrice",
+//            "DiscountPrice"=>"DiscountPrice",
+            "Cost"=>"Cost",
+            "SpaceBalcony"=>"SpaceBalcony",
             "StatusCode"=>"StatusCode",
             "TypeForSite"=>"TypeForSite",
             "panorama"=>"panorama",
             "SpaceDesign"=>"SpaceDesign",
-            "balcony"=>"balcony",
+            "LightSide"=>"LightSide",
+            "LightSide2"=>"LightSide2",
+            "LightSide3"=>"LightSide3",
+            "ViewNumber"=>"ViewNumber",
+            "WindowView"=>"WindowView",
+            "WindowView2"=>"WindowView2",
+            "WindowView3"=>"WindowView3",
+            //"balcony"=>"balcony",
             "windows_side"=>"windows_side",
             "finish_date"=>"finish_date",
-            "liv_sp_2"=>"living_space_2",
-            "liv_sp_3"=>"living_space_3",
-            "liv_sp_4"=>"living_space_4",
-            "liv_sp_5"=>"living_space_5",
-            "liv_sp_6"=>"living_space_6",
-            "liv_sp_kitchen_1"=>"living_space_kitchen_1",
-            "liv_sp_kitchen_2"=>"living_space_kitchen_2",
-            "liv_sp_kitchen_3"=>"living_space_kitchen_3",
-            "liv_sp_kitchen_4"=>"living_space_kitchen_4",
-            "liv_sp_kitchen_5"=>"living_space_kitchen_5",
-            "liv_sp_kitchen_6"=>"living_space_kitchen_6",
-            "liv_sp_corridor_1"=>"living_space_corridor_1",
-            "liv_sp_corridor_2"=>"living_space_corridor_2",
-            "liv_sp_corridor_3"=>"living_space_corridor_3",
-            "liv_sp_corridor_4"=>"living_space_corridor_4",
-            "liv_sp_corridor_5"=>"living_space_corridor_5",
-            "liv_sp_corridor_6"=>"living_space_corridor_6",
-            "liv_sp_bathroom_1"=>"living_space_bathroom_1",
-            "liv_sp_bathroom_2"=>"living_space_bathroom_2",
-            "liv_sp_bathroom_3"=>"living_space_bathroom_3",
-            "liv_sp_bathroom_4"=>"living_space_bathroom_4",
-            "liv_sp_bathroom_5"=>"living_space_bathroom_5",
-            "liv_sp_bathroom_6"=>"living_space_bathroom_6",
-            "liv_sp_toilet_1"=>"living_space_toilet_1",
-            "liv_sp_toilet_2"=>"living_space_toilet_2",
-            "liv_sp_toilet_3"=>"living_space_toilet_3",
-            "liv_sp_toilet_4"=>"living_space_toilet_4",
-            "liv_sp_toilet_5"=>"living_space_toilet_5",
-            "liv_sp_toilet_6"=>"living_space_toilet_6",
-            "liv_sp_storeroom_1"=>"living_space_storeroom_1",
-            "liv_sp_storeroom_2"=>"living_space_storeroom_2",
-            "liv_sp_storeroom_3"=>"living_space_storeroom_3",
-            "liv_sp_storeroom_4"=>"living_space_storeroom_4",
-            "liv_sp_storeroom_5"=>"living_space_storeroom_5",
-            "liv_sp_storeroom_6"=>"living_space_storeroom_6"
+//            "liv_sp_2"=>"living_space_2",
+//            "liv_sp_3"=>"living_space_3",
+//            "liv_sp_4"=>"living_space_4",
+//            "liv_sp_5"=>"living_space_5",
+//            "liv_sp_6"=>"living_space_6",
+//            "liv_sp_kitchen_1"=>"living_space_kitchen_1",
+//            "liv_sp_kitchen_2"=>"living_space_kitchen_2",
+//            "liv_sp_kitchen_3"=>"living_space_kitchen_3",
+//            "liv_sp_kitchen_4"=>"living_space_kitchen_4",
+//            "liv_sp_kitchen_5"=>"living_space_kitchen_5",
+//            "liv_sp_kitchen_6"=>"living_space_kitchen_6",
+//            "liv_sp_corridor_1"=>"living_space_corridor_1",
+//            "liv_sp_corridor_2"=>"living_space_corridor_2",
+//            "liv_sp_corridor_3"=>"living_space_corridor_3",
+//            "liv_sp_corridor_4"=>"living_space_corridor_4",
+//            "liv_sp_corridor_5"=>"living_space_corridor_5",
+//            "liv_sp_corridor_6"=>"living_space_corridor_6",
+//            "liv_sp_bathroom_1"=>"living_space_bathroom_1",
+//            "liv_sp_bathroom_2"=>"living_space_bathroom_2",
+//            "liv_sp_bathroom_3"=>"living_space_bathroom_3",
+//            "liv_sp_bathroom_4"=>"living_space_bathroom_4",
+//            "liv_sp_bathroom_5"=>"living_space_bathroom_5",
+//            "liv_sp_bathroom_6"=>"living_space_bathroom_6",
+//            "liv_sp_toilet_1"=>"living_space_toilet_1",
+//            "liv_sp_toilet_2"=>"living_space_toilet_2",
+//            "liv_sp_toilet_3"=>"living_space_toilet_3",
+//            "liv_sp_toilet_4"=>"living_space_toilet_4",
+//            "liv_sp_toilet_5"=>"living_space_toilet_5",
+//            "liv_sp_toilet_6"=>"living_space_toilet_6",
+//            "liv_sp_storeroom_1"=>"living_space_storeroom_1",
+//            "liv_sp_storeroom_2"=>"living_space_storeroom_2",
+//            "liv_sp_storeroom_3"=>"living_space_storeroom_3",
+//            "liv_sp_storeroom_4"=>"living_space_storeroom_4",
+//            "liv_sp_storeroom_5"=>"living_space_storeroom_5",
+//            "liv_sp_storeroom_6"=>"living_space_storeroom_6"
         );
         $prop_conf = $this->GetPropInit();
 
@@ -396,7 +413,7 @@ Class Sync{
                 }
             }
         }
-        $PROP['BeforeBtiNumber'] = str_replace($PROP['BuildingNumber'].'-', '',$PROP['BeforeBtiNumber']);
+        $PROP['BeforeBtiNumber'] = $PROP['BeforeBtiNumber'];
         // $PROP['format'] = $element['format'];
 
         return $PROP;

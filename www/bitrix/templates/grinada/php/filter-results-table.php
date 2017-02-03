@@ -16,6 +16,6 @@
                 <div class="param__name">Выгода, <span class="ruble">a</span></div>
             </div>
         </div>
-        <div class="results-list__body"></div>
+        <div class="results-list__body result-items"></div>
     </div>
 </div>

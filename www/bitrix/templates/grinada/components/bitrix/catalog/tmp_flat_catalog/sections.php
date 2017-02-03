@@ -13,6 +13,30 @@
 
 $this->setFrameMode(true);
 
+
+$rangeProperties = array(
+
+	'Floor' => array('code' => 9),
+	'SpaceDesign' => array('code' => 13),
+	'Rooms' => array('code' => 20),
+	'Price' => array('code' => 17)
+);
+
+foreach ($rangeProperties as $name => $props){
+
+	$queryMin = 'SELECT  MIN(CAST(VALUE as DECIMAL(10,1))) as min FROM b_iblock_element_property WHERE IBLOCK_PROPERTY_ID = '.$props['code'];
+	$queryMax = 'SELECT  MAX(CAST(VALUE as DECIMAL(10,1))) as max FROM b_iblock_element_property WHERE IBLOCK_PROPERTY_ID = '.$props['code'];
+	$resMin = $DB->Query($queryMin, false, $err_mess.__LINE__);
+	$resMax = $DB->Query($queryMax, false, $err_mess.__LINE__);
+	if($min = $resMin->Fetch()){
+		$rangeProperties[$name]['min'] = $min['min'];
+	}
+	if($max = $resMax->Fetch()){
+		$rangeProperties[$name]['max'] = $max['max'];
+	}
+}
+
+
 ?>
 
 
@@ -22,44 +46,44 @@ $this->setFrameMode(true);
 	<div class="wrapper-main">
 		<h1 class="dark-green">Выбор по&nbsp;параметрам</h1>
 		<div class="wrapper-outer">
-			<div class="filter">
+			<div class="filter"  data-ajax-url="/param_filter_ajax.php">
 				<div class="wrapper-inner">
 					<div class="filter__params">
 						<div class="input-group house">
 							<div class="input-group__name">корпус</div>
 							<ul class="inputs">
 								<li class="special">
-									<input type="checkbox" id="building-all">
+									<input type="checkbox" id="building-all" class="check-all">
 									<label for="building-all">все</label>
 								</li>
 								<ul class="inputs inputs--special panel">
 									<li class="house-type">панельные</li>
 									<li>
-										<input type="checkbox" id="building-1">
-										<label for="building-1">1</label>
+										<input type="checkbox" id="building-number-1">
+										<label for="building-number-1">1</label>
 									</li>
 									<li>
-										<input type="checkbox" id="building-3" disabled>
-										<label for="building-3">3</label>
+										<input type="checkbox" id="building-number-3" disabled>
+										<label for="building-number-3">3</label>
 									</li>
 									<li>
-										<input type="checkbox" id="building-4" disabled>
-										<label for="building-4">4</label>
+										<input type="checkbox" id="building-number-4" disabled>
+										<label for="building-number-4">4</label>
 									</li>
 								</ul>
 								<ul class="inputs inputs--special mono">
 									<li class="house-type">монолитные</li>
 									<li>
-										<input type="checkbox" id="building-2">
-										<label for="building-2">2</label>
+										<input type="checkbox" id="building-number-2">
+										<label for="building-number-2">2</label>
 									</li>
 									<li>
-										<input type="checkbox" id="building-5" disabled>
-										<label for="building-5">5</label>
+										<input type="checkbox" id="building-number-5" disabled>
+										<label for="building-number-5">5</label>
 									</li>
 									<li>
-										<input type="checkbox" id="building-6" disabled>
-										<label for="building-6">6</label>
+										<input type="checkbox" id="building-number-6" disabled>
+										<label for="building-number-6">6</label>
 									</li>
 								</ul>
 							</ul>
@@ -71,7 +95,7 @@ $this->setFrameMode(true);
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="floor" class="range-slider" data-from="1" data-to="12" data-step="1"/>
+								<input type="text" id="floor" class="range-slider" data-from="<?=$rangeProperties['Floor']['min']?>" data-to="<?=$rangeProperties['Floor']['max']?>" data-step="1"/>
 							</div>
 							<div class="input-group">
 								<div class="input-group__name">комнат</div>
@@ -79,7 +103,7 @@ $this->setFrameMode(true);
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="rooms" class="range-slider" data-from="1" data-to="4" data-step="1"/>
+								<input type="text" id="rooms" class="range-slider" data-from="<?=$rangeProperties['Rooms']['min']?>" data-to="<?=$rangeProperties['Rooms']['max']?>" data-step="1"/>
 							</div>
 						</div>
 						<div class="input-group">
@@ -89,7 +113,7 @@ $this->setFrameMode(true);
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="space-design" class="range-slider" data-from="32" data-to="72" data-step="1"/>
+								<input type="text" id="space-design" class="range-slider" data-from="<?=$rangeProperties['SpaceDesign']['min']?>" data-to="<?=$rangeProperties['SpaceDesign']['max']?>" data-step="1"/>
 							</div>
 							<div class="input-group">
 								<div class="input-group__name">Цена, <span>млн</span></div>
@@ -97,7 +121,7 @@ $this->setFrameMode(true);
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="price" class="range-slider" data-from="2.4" data-to="12.6" data-step="0.1"/>
+								<input type="text" id="price" class="range-slider" data-from="<?=$rangeProperties['Price']['min']?>" data-to="<?=$rangeProperties['Price']['max']?>" data-step="0.1"/>
 							</div>
 						</div>
 						<div class="input-group finish">

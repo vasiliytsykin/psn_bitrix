@@ -1,0 +1,49 @@
+/*--------PLAN FILTER DETAIL---------*/
+.plan-filter-detail-page {
+	padding-top: 50px;
+	position: relative;
+	overflow: hidden; }
+.plan-filter-detail-page .circle {
+	right: 0;
+	margin-right: -250px;
+	top: 200px; }
+.plan-filter-detail-page h1 {
+	text-align: center;
+	padding-bottom: 60px; }
+.plan-filter-detail-page h1 span {
+	text-transform: none; }
+.plan-filter-detail-page .filter {
+	position: relative;
+	padding-bottom: 100px; }
+.plan-filter-detail-page .planoplan-over {
+	max-width: 740px;
+	margin: 0 auto;
+	padding-bottom: 100px; }
+.plan-filter-detail-page .planoplan-over .h5 {
+	text-align: center;
+	padding-bottom: 40px; }
+.plan-filter-detail-page .planoplan {
+	height: 535px;
+	background: no-repeat center;
+	background-size: contain; }
+.plan-filter-detail-page .btn-back {
+	position: absolute;
+	left: 0;
+	top: 0; }
+.plan-filter-detail-page .show-more {
+	padding-top: 50px; }
+
+@media screen and (max-width: 1024px) {
+	.plan-filter-detail-page .circle {
+		display: none; }
+	.plan-filter-detail-page .btn-back {
+		position: static;
+		text-align: center;
+		display: block;
+		padding-bottom: 50px; } }
+
+@media screen and (max-width: 736px) {
+	.plan-filter-detail-page .planoplan {
+		height: 340px; } }
+
+/*----END PLAN FILTER DETAIL---------*/

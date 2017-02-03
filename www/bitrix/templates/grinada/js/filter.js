@@ -43,17 +43,23 @@ $(function () {
     });
 
     var $allCheckboxes = $('.filter input[type="checkbox"]'),
-        $houseCheckboxes = $('.input-group.house input'),
-        $houseAll = $('#building-all');
+        $checkAll = $('.check-all');
 
-    $houseAll.on('click', function () {
-        $houseCheckboxes.not(':disabled').prop('checked', true);
+    $checkAll.on('click', function () {
+
+        var $this = $(this),
+            $checkboxes = $this.closest('.input-group').find('input[type="checkbox"]');
+
+        $checkboxes.not(':disabled').prop('checked', true);
 
     });
 
-    $houseCheckboxes.not($houseAll).on('click', function () {
+    $allCheckboxes.not($checkAll).on('click', function () {
 
-        $houseAll.prop('checked', false);
+        var $this = $(this),
+            $checkAll = $this.closest('.input-group').find('.check-all');
+
+        $checkAll.prop('checked', false);
 
     });
 

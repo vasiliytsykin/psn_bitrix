@@ -31,11 +31,17 @@ $sync = new Sync();
     $xmlResp = simplexml_load_string($response);
     $jsonResp = json_encode($xmlResp);
     $arResp = json_decode($jsonResp, true);
-//    print_r($arResp);
+   //print_r($arResp);
 
    if(isset($arResp['XMLAddressListDataResult']['BuildingGroup']['Buildings']['Building'])) {
        foreach($arResp['XMLAddressListDataResult']['BuildingGroup']['Buildings']['Building'] as $arBuild) {
+
+           $sOtdelka = 'Без отделки';
+            if(isset($arBuild['ApartmentFurnish']) && !empty($arBuild['ApartmentFurnish'])){
+                $sOtdelka = $arBuild['ApartmentFurnish'];
+            }
            foreach ($arBuild['Apartments']['Apartment'] as $arApatament) {
+               $arApatament['ApartmentFurnish'] = $sOtdelka;
                $arSync = $sync->upFlat($arApatament);
                echo "<br/>";
            }

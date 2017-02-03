@@ -371,7 +371,7 @@ $areas = getAreas($arPlan['prop']);
                     <a href="#" class="btn-default btn-medium btn-green">Оставить заявку</a>
                 </div>
                 <div class="links">
-                    <a href="#" class="btn-pdf">Сохранить<br>планировку</a>
+                    <a href="/pdf/flat-<?=$arResult['ID']?>.pdf" target="_blank" class="btn-pdf">Сохранить<br>планировку</a>
                     <a href="#" class="btn-email">Отправить<br>по e-mail</a>
                 </div>
             </div>
