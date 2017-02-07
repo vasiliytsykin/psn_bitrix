@@ -1,0 +1,75 @@
+/*-----------MASTER PLAN--FILTER-----------*/
+.master-plan--filter .legend {
+    max-width: 740px; }
+
+.master-plan--filter .main-plan__sidebar .sidebar__section .h4 {
+    color: #fff;
+    line-height: 1;
+    position: relative;
+    max-width: none;
+    padding-right: 25px; }
+.master-plan--filter .main-plan__sidebar .sidebar__section .h4 sup {
+    font-size: 18px;
+    position: absolute;
+    right: 0;
+    top: -10px;
+    padding-left: 2px; }
+
+.master-plan--filter .main-plan__sidebar .sidebar__section::before {
+    content: '';
+    width: 0;
+    height: 0;
+    background-color: #9de011;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+
+.master-plan--filter .main-plan__sidebar .sidebar__section:hover::before {
+    width: 90px;
+    height: 90px; }
+
+@media screen and (max-width: 1024px) {
+    .master-plan--filter .main-plan__sidebar {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center; }
+    .master-plan--filter .main-plan__sidebar .h4 {
+        max-width: none;
+        width: 100%;
+        padding-bottom: 15px; }
+    .master-plan--filter .main-plan__sidebar .sidebar__section {
+        width: 33%; }
+    .master-plan--filter .main-plan__sidebar .sidebar__section .h4 {
+        width: auto;
+        padding-bottom: 0; }
+    .master-plan--filter .main-plan__sidebar .sidebar__section:nth-last-child(2) {
+        border-bottom: none; } }
+
+@media screen and (max-width: 800px) {
+    .master-plan--filter .info-block__txt {
+        max-width: none; } }
+
+@media screen and (max-width: 736px) {
+    .master-plan--filter .legend {
+        padding: 30px 0; }
+    .master-plan--filter .legend__item {
+        padding-bottom: 20px; }
+    .master-plan--filter .main-plan__sidebar {
+        display: block;
+        padding-top: 70px; }
+    .master-plan--filter .main-plan__sidebar .sidebar__section {
+        width: 100%; }
+    .master-plan--filter .main-plan__sidebar .sidebar__section:nth-last-child(2) {
+        border-bottom: 3px solid #abf01b; } }
+
+/*-------END MASTER PLAN--FILTER-----------*/

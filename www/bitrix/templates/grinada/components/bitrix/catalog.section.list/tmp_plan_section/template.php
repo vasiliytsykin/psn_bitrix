@@ -13,309 +13,156 @@
 $this->setFrameMode(true);
 
 
-$arSection = array();
+$houses = array();
+$arSVGPolyHouse = array();
+$arSVGPolyHouse[] = $arResult['SECTION']['UF_SVGPOLY'];
 
-$DEPTH_LEVEL_jk = 1;
-$DEPTH_LEVEL_house = 2;
-$DEPTH_LEVEL_section = 3;
+foreach ($arResult['SECTIONS'] as $section){
 
-function sclon($str, $count){
-	$countCeil = Math.floor($count/10);
-	$countL =$count - $countCeil*10;
-	if($count==1){
-		$str.= 'а';
-	}else if($count>20){
-		if($countL==1) {
-			$str.= 'а';
-		}else if($countL > 1 && $countL < 5){
-			$str.= 'ы';
-		}
-	}else if($count>1 && $count<5){
-		$str.= 'ы';
+	$jsonId = 's'.$section['ID'];
+
+	if($section['DEPTH_LEVEL'] - 1 == $arResult['SECTION']['DEPTH_LEVEL']){
+
+
+		$houses[$jsonId] = array(
+			'property' => array(
+				'house_number' => $section['UF_HOUSE_NUMBER'],
+				'house_type' => $section['UF_HOUSE_TYPE'],
+				'url' => $section['SECTION_PAGE_URL'],
+				'class' => 'house'
+			)
+
+		);
+		if($section['UF_SVGPOLY'] != '')
+			$arSVGPolyHouse[] = $section['UF_SVGPOLY'];
+
+
 	}
-	return $str;
+	if($section['DEPTH_LEVEL'] - 2 == $arResult['SECTION']['DEPTH_LEVEL']){
+
+		$arExpSectionNum = explode('', $section['NAME']);
+		$sectionNumber = $arExpSectionNum[1];
+
+		$houses[$jsonId] = array(
+			'property' => array(
+				'section_number' => $sectionNumber,
+				'url' => $section['SECTION_PAGE_URL'],
+				'class' => 'section'
+			)
+
+		);
+	}
+
+	$houses[$jsonId]['ID'] = $section['ID'];
+	$houses[$jsonId]['NAME'] = $section['NAME'];
+	$houses[$jsonId]['coord'] = array();
+	$houses[$jsonId]['type'] = 'polyline';
+	$houses[$jsonId]['typeo'] = 'section';
 }
 
 
 
-$rsParSect = CIBlockSection::GetList(
-	Array(),
-	Array(
-		"IBLOCK_ID" => $arParams['IBLOCK_ID'],
-		"ID" => $arParams['SECTION_ID']
-	), false, Array('UF_SVGPOLY', 'UF_SHOW_ELEMENT'));
-
-$arSection= @$rsParSect->GetNext();
-$arSection['PICTURE']= CFile::GetPath($arSection['PICTURE']);
-$sPicturePath =	$arSection['PICTURE'];
-	$arBlock  = array();
-	$res = CIBlock::GetByID( $arParams['IBLOCK_ID']);
-	if($arBlock = $res->GetNext()){
-		$sTitle = $arBlock['NAME'];
-		$arFilterSection =  Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], 'GLOBAL_ACTIVE'=>'Y');
-		$arFilterElements = Array(
-			"IBLOCK_ID"=>$arParams['IBLOCK_ID'],
-			"ACTIVE"=>"Y"
-		);
-		$id_sect  = 0;
-		$bs = new CIBlockSection;
-		$be = new CIBlockElement;
-			$id_sect = $arParams['SECTION_ID'];
-			$arFilterSection["SECTION_ID"] = $arParams['SECTION_ID'];
-			$arFilterElements["SECTION_ID"] = $arParams['SECTION_ID'];
-			$rsELCurS = $bs->GetList(Array(), Array("IBLOCK_ID" => $arParams['IBLOCK_ID'], "ID" => $id_sect), false, Array('UF_SVGPOLY', 'UF_SHOW_ELEMENT'));
-			if($arSection = $rsELCurS->GetNext()) {
-				$arBlock['SELECTED_SECTION']  = $arSection;
-				$sTitle.= ': '.$arSection['NAME'];
-			}
-		if($arBlock['SELECTED_SECTION']['UF_SHOW_ELEMENT']==1){
-			$arFilterElements["INCLUDE_SUBSECTIONS"] ='Y';
-		}
-		$arFilterTree = array('IBLOCK_ID' => $IBLOCK_ID, 'ACTIVE' => 'Y');
-		$arSelect =array();
-		$arTree =array();
-		$rsSectionTree = CIBlockSection::GetTreeList($arFilter, $arSelect);
-		while($arSectionTree = $rsSectionTree->Fetch()) {
-			$arTree[]=$arSectionTree;
-		}
-		$rsSection = $bs->GetList(Array(), $arFilterSection, true);
-		$rsElement =$be->GetList(array(), $arFilterElements, false);
-		$arBlock['ELEMENT_ITEMS'] = array();
-		while($arSection = $rsSection->GetNext()) $arBlock['SECTION_ITEMS'][$arSection['ID']] =   $arSection;
-		while($arElement = $rsElement->GetNext())   $arBlock['ELEMENT_ITEMS'][$arElement['ID']] = $arElement;
-	}
-	$arSectionsObj = array();
-
-	if($arBlock['SELECTED_SECTION']['DEPTH_LEVEL']==$DEPTH_LEVEL_jk) {
-		foreach ($arBlock['SECTION_ITEMS'] as $ind => $arSect) {
-			$activeElements = CIBlockSection::GetSectionElementsCount($arSect['ID'], Array("ACTIVE"=>"Y"));
-			$insaleElements = CIBlockSection::GetSectionElementsCount($arSect['ID'], Array(
-				"CNT_ACTIVE"=>"Y",
-				'PROPERTY'=>array('status'=>8)
-			));
-
-			$arSectionsObj['s' . $arSect['ID']] = array(
-				'ID' => $arSect['ID'],
-				'NAME' => '<div class="flat-info"><div class="flat-info-content"><div class="title">'.$arSect['NAME'].'</div>'.
-					'<div class="prop">'.
-					'<div class="desc">'.$arSect['DESCRIPTION'].'</div>'.
-					'</div></div>'.
-					'</div>',
-				'coord' => array(),
-				'type' => 'polyline',
-				'typeo' => 'section',
-				'property' => array(
-					'url' => $arSect['SECTION_PAGE_URL'],
-					'count' => $activeElements,
-					'insale'=>$insaleElements,
-					'name'=>$arSect['NAME'],
-					'class'=>($insaleElements>0?'in-sale':'not-for-sale').' '.$arSect['CODE']
-				)
-			);
-//			<div class="count">'.$insaleElements.'</div>'.
-//					'<div class="num-caption">'.sclon('квартир', $insaleElements).'<br>в продаже</div>
-
-		}
-		foreach ($arBlock['ELEMENT_ITEMS'] as $ind => $arElement) {
-			$arSectionsObj['e' . $arElement['ID']] = array(
-				'ID' => $arElement['ID'],
-				'NAME' => $arElement['NAME'],
-				'coord' => array(),
-				'type' => 'polyline',
-				'typeo' => 'element',
-				'property' => array(
-					'url' => $arElement['DETAIL_PAGE_URL'],
-				)
-			);
-		}
-
-
-	}else if($arBlock['SELECTED_SECTION']['DEPTH_LEVEL']==$DEPTH_LEVEL_kvartal){
-
-
-		foreach($arBlock['SECTION_ITEMS'] as $ind =>$arSect){
-			$activeElements = CIBlockSection::GetSectionElementsCount($arSect['ID'], Array("ACTIVE"=>"Y"));
-			$insaleElements = CIBlockSection::GetSectionElementsCount($arSect['ID'], Array(
-				"CNT_ACTIVE"=>"Y",
-				'PROPERTY'=>array('status'=>8)
-			));
-			$arSectionsObj['s'.$arSect['ID']] = array(
-				'ID'=>$arSect['ID'],
-				'NAME'=> '<div class="flat-info"><div class="flat-info-content"><div class="title">'.$arSect['NAME'].'</div>'.
-					'<div class="prop"><div class="count">'.$insaleElements.'</div>'.
-					'<div class="num-caption">'.sclon('квартир', $insaleElements).' <br>в продаже</div></div></div>'.
-					'</div>',
-				'coord'=>array(),
-				'type'=>'polyline',
-				'typeo' =>'section',
-				'property'=>array(
-					'url'=>$arSect['SECTION_PAGE_URL'],
-					'count' => $activeElements,
-					'insale'=>$insaleElements,
-					'class'=>($insaleElements>0?'in-sale':'not-for-sale')
-
-				)
-			);
-		}
-		foreach($arBlock['ELEMENT_ITEMS'] as $ind =>$arElement){
-			$arSectionsObj['e'.$arElement['ID']] = array(
-				'ID'=>$arElement['ID'],
-				'NAME'=>$arElement['NAME'],
-				'coord'=>array(),
-				'type'=>'polyline',
-				'typeo' =>'element',
-				'property'=>array(
-					'url'=>$arElement['DETAIL_PAGE_URL'],
-				)
-			);
-		}
-	}else if($arBlock['SELECTED_SECTION']['DEPTH_LEVEL']==$DEPTH_LEVEL_house){
-		$be = new CIBlockElement;
-		foreach($arResult['SECTIONS'] as $indSection => $arItemSect){
-
-			$arSectionElements = array();
-			$arFilterElements = Array(
-				"IBLOCK_ID"=>$arParams['IBLOCK_ID'],
-				"SECTION_ID" => $arItemSect['ID'],
-				"INCLUDE_SUBSECTIONS"=>'Y',
-				"ACTIVE"=>"Y"
-			);
-			$rsElement =$be->GetList(array(), $arFilterElements, false, false, array(
-				'ID', 'NAME','CODE',
-				'PROPERTY_count_flats',
-				'PROPERTY_flat_num',
-				'PROPERTY_area_full',
-				'PROPERTY_format',
-				'PROPERTY_studio',
-				'DETAIL_PAGE_URL'
-			));
-			while($arElement = $rsElement->GetNext()){
-				//print_r($arElement);
-
-				$sFlatInfo = '
-					<div class="flat-info">
-					<div class="flat-info-content">
-					<div class="flat-info-header"><div class="count-room">'.$arElement['PROPERTY_COUNT_FLATS_VALUE'].'-комнатная</div>';
-				if($arElement['PROPERTY_FORMAT_VALUE']!=''){
-					$sFlatInfo.= '<div class="format">'.$arElement['PROPERTY_FORMAT_VALUE'].'</div>';
-				}
-				if($arElement['PROPERTY_STUDIO_VALUE']!=''){
-					$sFlatInfo.= '<div class="studio">'.$arElement['PROPERTY_STUDIO_VALUE'].'</div>';
-				}
-				$sFlatInfo.='</div>';
-				$sFlatInfo.='<div class="flat-info-footer">';
-				$sFlatInfo.='<div class="flat-info-left">';
-				$sFlatInfo.='<div class="flat-info-title">Площадь</div>';
-				$sFlatInfo.='<div class="flat-info-value">'.$arElement['PROPERTY_AREA_FULL_VALUE'].'м<sup>2</sup></div>';
-				$sFlatInfo.='</div>';
-				$sFlatInfo.='<div class="flat-info-right">';
-				$sFlatInfo.='<div class="flat-info-title">№ Квартиры</div>';
-				$sFlatInfo.='<div class="flat-info-value">'.$arElement['PROPERTY_FLAT_NUM_VALUE'].'</div>';
-				$sFlatInfo.='</div>';
-				$sFlatInfo.='</div>';
-				$sFlatInfo.='<div class="btn-learn-more"><a href="'.$arElement['DETAIL_PAGE_URL'].'" class="btn btn-big btn-default">Посмотреть квартиру</a></div><a class="btn-close"></a></div>';
-				$sFlatInfo.='</div>';
-				$sFlatInfo.='</div>';
-
-				$arSectionElements['e'.$arElement['ID']] = array(
-					'ID'=>$arElement['ID'],
-					'NAME'=>$sFlatInfo,
-					'coord'=>array(),
-					'type'=>'polyline',
-					'typeo' =>'element',
-					'property'=>array(
-						'url'=>$arElement['DETAIL_PAGE_URL'],
-						'format_id'=>$arElement['PROPERTY_FORMAT_ENUM_ID'],
-						'room_count'=>$arElement['PROPERTY_COUNT_FLATS_VALUE'],
-						'studio'=>$arElement['PROPERTY_STUDIO_ENUM_ID'],
-						'class'=>'room-'.$arElement['PROPERTY_COUNT_FLATS_VALUE'].($arElement['PROPERTY_STUDIO_ENUM_ID']!=''?'e':'').' '.
-							'format-'.$arElement['PROPERTY_FORMAT_ENUM_ID'],
-					)
-				);
-			}
-			$arResult['SECTIONS'][$indSection]['flats'] = $arSectionElements;
-
-			$arFilterSection =  Array(
-				'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-				'GLOBAL_ACTIVE'=>'Y',
-				'SECTION_ID'=> $arBlock['SELECTED_SECTION']['IBLOCK_SECTION_ID']
-			);
-			$rsHouses = $bs->GetList(Array(), $arFilterSection, true);
-			$arHouses = array();
-			while($arHouse = $rsHouses->GetNext()) $arHouses[$arHouse['ID']] = array(
-				'ID'=>$arHouse['ID'],
-				'NAME'=>str_replace('Дом №', '', $arHouse['NAME']),
-				'SECTION_PAGE_URL'=>$arHouse['SECTION_PAGE_URL']
-			);
-
-
-		}
-	}
-
-
-
-
-
 ?>
-<? if($arBlock['SELECTED_SECTION']['DEPTH_LEVEL']==$DEPTH_LEVEL_jk){?>
-<div class="wrapper-outer ">
-	<div class="wrapper-inner house-card gen-plan-map">
-		<h1>Схема города</h1>
-	<div id="map-genplan" class="map-object">
-		<div class="map-overlay clearfix">
-			<div  class="map-area fl-left">
-				<img src="<?=$sPicturePath;?>" id="img">
-				<svg id="svg-area" class="svg-area" width="100%" height="100%"></svg>
-			</div>
-		</div>
-		<input type="hidden" value='<?=$arBlock['SELECTED_SECTION']['UF_SVGPOLY']?>' class="config-map">
-		<input  type="hidden" value='<?=json_encode($arSectionsObj);?>' class="config-map-bd">
-	</div>
-		</div>
-</div>
-<?}else if($arBlock['SELECTED_SECTION']['DEPTH_LEVEL']==$DEPTH_LEVEL_section){?>
-
-	<div class="wrapper-outer">
-		<div class="wrapper-inner house-card kvartal-map">
-			<h1>Секция <?=$arResult['NAME'];?></h1>
 
 
-		</div>
-	</div>
-
-<?}else if($arBlock['SELECTED_SECTION']['DEPTH_LEVEL']==$DEPTH_LEVEL_house){
-	?>
-
-
-
-	<div class="wrapper-middle">
-		<div class="wrapper-inner house-card house-card-map">
-			<h1>Дом</h1>
-	<!-- @todo:переадресовать на секцию	-->
-		</div>
-	</div>
-	
-
-<?}else{?>
-	<div id="map-genplan" class="map-object">
-		<div class="map-overlay">
-			<div  class="map-area">
-				<img src="<?=$sPicturePath;?>" id="img">
-				<svg id="svg-area" class="svg-area" width="100%" height="100%"></svg>
-			</div>
-		</div>
-		<input type="hidden" value='<?=$arBlock['SELECTED_SECTION']['UF_SVGPOLY']?>' class="config-map">
-		<input  type="hidden" value='<?=json_encode($arSectionsObj);?>' class="config-map-bd">
-	</div>
-
-<?}?>
 
 <pre>
-<?
-
-
-//print_r($arBlock);
-
-?>
-
+	<?print_r($arSVGPolyMasterPlan)?>
+	<?print_r($arSVGPolyHouse)?>
 </pre>
+
+
+<div class="master-plan master-plan--filter">
+	<h1 class="dark-green">Выберите дом</h1>
+	<ul class="legend">
+		<li class="legend__item mono">Монолитные дома</li>
+		<li class="legend__item panel">Панельные дома</li>
+		<li class="legend__item finish">Секции с отделкой</li>
+	</ul>
+	<div class="main-plan">
+		<div class="map-object" id="map-genplan">
+			<div class="main-plan__map-over map-overlay" id="main-map-over">
+				<div class="main-plan__map map-area">
+					<img data-src="<?=CFile::GetPath($arResult['SECTION']['PICTURE'])?>" id="img" alt="main-plan">
+					<svg id="svg-area" class="svg-area" width="100%" height="100%"></svg>
+					<div class="markers">
+						<div class="extra-marker build-line first">1 очередь</div>
+						<div class="extra-marker build-line second">2 очередь</div>
+						<div class="streets">
+							<div class="extra-marker">Феодосийская улица</div>
+							<div class="extra-marker">Новобутовская улица</div>
+							<div class="extra-marker">Бутовский лесопарк</div>
+							<div class="extra-marker"><span>Бульвар Д. Донского</span></div>
+						</div>
+						<div class="bubbles">
+							<div class="bubble mono section-7">7</div>
+							<div class="bubble finish">
+								<div class="tooltip">
+									<div class="h4">335</div>
+									квартир с&nbsp;отделкой
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?foreach ($arSVGPolyHouse as $svg){?>
+					<input type="hidden" class="single-svg" value="<?=$svg?>">
+				<?}?>
+				<input type="hidden" value='<?=$arResult['SECTION']['UF_SVGPOLY']?>' class="config-map">
+				<input  type="hidden" value='<?=json_encode($houses);?>' class="config-map-bd">
+				<div class="compass"></div>
+				<a href="#" class="camera">
+					<div class="icon"></div>
+					<div class="h5">On-line камера</div>
+				</a>
+				<a href="panorama.php" class="panorama">
+					<div class="icon"></div>
+					<div class="h5">Панорама</div>
+				</a>
+			</div>
+		</div>
+		<div class="main-plan__sidebar">
+			<div class="h4">Форматы квартир</div>
+			<a href="#" class="sidebar__section">
+				<div class="h4">Студии <sup>96</sup></div>
+			</a>
+			<a href="#" class="sidebar__section">
+				<div class="h4">1-комнатные <sup>96</sup></div>
+			</a>
+			<a href="#" class="sidebar__section">
+				<div class="h4">2-комнатные <sup>96</sup></div>
+			</a>
+			<a href="#" class="sidebar__section">
+				<div class="h4">3-комнатные <sup>96</sup></div>
+			</a>
+			<a href="#" class="sidebar__section">
+				<div class="h4">4-комнатные <sup>96</sup></div>
+			</a>
+		</div>
+	</div>
+	<div class="wrapper-main">
+		<div class="info-block">
+			<div class="info-block__txt">
+				<h2>Описание</h2>
+				<h5>Первая очередь</h5>
+				<p>
+					Корпус №1 возводится с помощью универсальной строительной системы панельного типа ДОММОС.
+					Готовность квартир предполагает: наличие перегородок, стяжку полов, разводку инженерных
+					систем до оконечных устройств, а потолки и стены готовы под финишную отделку.
+				</p>
+				<p>
+					Корпус №2 возводится по технологии монолитного строительства.
+					В квартирах будет выполнена трассировка внутренних перегородок в один кирпич,
+					гидроизоляция мокрых зон и разводка инженерных систем до стояка.
+				</p>
+				<p>
+					Каждый из корпусов имеет секцию с готовой отделкой, где&nbsp;квартиры будут полностью готовы к тому,
+					чтобы только завести мебель.
+				</p>
+			</div>
+			<div class="pattern big-pattern pattern-4 dark-green anim-pattern" data-pattern="pattern-4"></div>
+		</div>
+	</div>
+	<div class="big-figure circle"></div>
+	<div class="scroll-top "><a href="#">вернуться наверх</a></div>
+</div>

@@ -130,7 +130,7 @@ $(document).ready(function () {
 			},
 			onInit: function (map_o) {
 				//console.log(map_o.value);
-				put_quarter_labels = function () {
+				put_labels = function () {
 					map_o.elemenst.block.find('polyline').each(function (ind, el) {
 						var id_val = $('.svg-layer[nodeid="' + $(el).attr('id') + '"').attr('id').replace('layer-', '');
 
@@ -148,7 +148,7 @@ $(document).ready(function () {
 				};
 
 				$("#img").on('load', function () {
-					setTimeout(put_quarter_labels, 50);
+					setTimeout(put_labels, 50);
 				});
 
 				$(window).resize(function () {
@@ -159,7 +159,7 @@ $(document).ready(function () {
 
 				$(function () {
 					if (!$("polyline .svg-layyer[nodeid]").length) {
-						put_quarter_labels();
+						put_labels();
 					}
 					adjustPoints(map_o);
 				});

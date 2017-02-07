@@ -92,7 +92,8 @@
     font-weight: 500;
     padding-top: 40px;
     text-align: center;
-    line-height: 1; }
+    line-height: 1;
+    transform: translate(-50%, -50%); }
 .master-plan .main-plan__map .house-marker.mono {
     background-color: rgba(0, 172, 200, 0.8); }
 .master-plan .main-plan__map .house-marker.panel {
@@ -256,6 +257,12 @@
     max-width: 475px; }
 .master-plan .big-pattern {
     position: static; }
+.master-plan .map-area svg {
+    position: absolute;
+    left: 0;
+    top: 0; }
+.master-plan .svg-layer {
+    display: none; }
 
 @media screen and (max-width: 1024px) {
     .master-plan .big-figure {

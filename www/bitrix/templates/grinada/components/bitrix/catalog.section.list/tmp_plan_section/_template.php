@@ -269,7 +269,7 @@ $sPicturePath =	$arSection['PICTURE'];
 			</div>
 		</div>
 		<input type="hidden" value='<?=$arBlock['SELECTED_SECTION']['UF_SVGPOLY']?>' class="config-map">
-		<input  type="hidden" value='<?=json_encode($arSectionsObj);?>' class="config-map-bd">
+			<input  type="hidden" value='<?=json_encode($arSectionsObj);?>' class="config-map-bd">
 	</div>
 		</div>
 </div>
