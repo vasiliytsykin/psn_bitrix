@@ -294,6 +294,24 @@ $(function () {
     /*---------MAIN PLAN-------------*/
 
 
+    var mainMap = $('.main-plan__map');
+
+    if(mainMap.length)
+    {
+        console.log('ok');
+
+        mainMap.addClass('handle');
+        mainMap.parent().addClass('dragdealer');
+
+        var canvas = new Dragdealer('main-map-over', {
+            x: 0.7,
+            y: 1,
+            speed: 0.2,
+            requestAnimationFrame: true
+        });
+    }
+    
+    
     $('.master-plan--about .sidebar__section__txt').on('mouseenter', function () {
 
         var house = $(this).data('house');

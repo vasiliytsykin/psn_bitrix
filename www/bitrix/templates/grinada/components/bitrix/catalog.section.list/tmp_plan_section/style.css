@@ -6,12 +6,11 @@
     color: #fff;
     line-height: 1;
     position: relative;
-    max-width: none;
-    padding-right: 25px; }
+    max-width: none; }
 .master-plan--filter .main-plan__sidebar .sidebar__section .h4 sup {
     font-size: 18px;
     position: absolute;
-    right: 0;
+    left: 100%;
     top: -10px;
     padding-left: 2px; }
 

@@ -131,6 +131,11 @@
     background-color: #ffd100;
     bottom: 255px;
     left: 155px; }
+.master-plan .main-plan__map .build-line.third {
+    background-color: #95d600;
+    bottom: 355px;
+    left: 20px; }
+
 .master-plan .main-plan__map .streets .extra-marker {
     font-size: 17px;
     color: #595959;
@@ -148,7 +153,9 @@
     top: 20px; }
 .master-plan .main-plan__map .streets .extra-marker:nth-child(2) {
     right: 60px;
-    top: 250px; }
+    top: 155px; }
+.master-plan .main-plan__map .streets .extra-marker:nth-child(2)::before {
+    left: 78%; }
 .master-plan .main-plan__map .streets .extra-marker:nth-child(3) {
     right: 10px;
     bottom: 180px; }
@@ -156,11 +163,12 @@
     left: 85%; }
 .master-plan .main-plan__map .streets .extra-marker:nth-child(4) {
     top: 20px;
-    left: 50px;
+    left: 30px;
     color: #fff;
     background-color: #df2400;
     font-size: 15px;
-    font-weight: 400; }
+    font-weight: 400;
+    border-radius: 23px; }
 .master-plan .main-plan__map .streets .extra-marker:nth-child(4)::before {
     border-top: 6px solid transparent;
     border-bottom: 6px solid transparent;
@@ -177,8 +185,8 @@
     height: 15px;
     display: inline-block;
     vertical-align: top;
-    background: url(/bitrix/templates/grinada/img/main-plan/subway-icon.svg) no-repeat center;
-    margin-right: 5px; }
+    margin-right: 5px;
+    background: url(/bitrix/templates/grinada/img/main-plan/subway-icon.svg) no-repeat center; }
 .master-plan .main-plan__map .bubble {
     position: absolute;
     font-size: 22px;
@@ -189,23 +197,28 @@
     background: url(/bitrix/templates/grinada/img/main-plan/pin-blue.png) no-repeat center;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding-bottom: 7px; }
+    padding-bottom: 7px;
+    transform: translate(-50%, -150%);
+    display: none; }
+.master-plan .main-plan__map .bubble.mono {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/pin-blue.png); }
+.master-plan .main-plan__map .bubble.panel {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/pin-green.png); }
+.master-plan .main-plan__map .bubble.hover{
+    display: flex;
+}
 .master-plan .main-plan__map .bubble.finish {
     background-image: url(/bitrix/templates/grinada/img/main-plan/pin-finish.png);
     top: 290px;
     left: 245px; }
 .master-plan .main-plan__map .bubble.finish:hover .tooltip {
     display: block; }
-.master-plan .main-plan__map .bubble.section-7 {
-    top: 300px;
-    left: 480px; }
 .master-plan .main-plan__map .bubble .tooltip {
     width: 90px;
     height: 90px;
@@ -261,8 +274,91 @@
     position: absolute;
     left: 0;
     top: 0; }
-.master-plan .svg-layer {
-    display: none; }
+.master-plan .svg-area .house {
+    opacity: 0; }
+.master-plan .svg-area .section {
+    fill: transparent; }
+.master-plan .svg-area .section.mono.hover {
+    fill: rgba(0, 172, 200, 0.4); }
+.master-plan .svg-area .section.panel.hover {
+    fill: rgba(149, 214, 0, 0.4); }
+
+.master-plan .infra-marker {
+    position: absolute;
+    width: 42px;
+    height: 60px;
+    background: no-repeat center; }
+.master-plan .infra-marker:hover .infra-marker__txt {
+    display: block; }
+.master-plan .infra-marker.kindergarten {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/child.svg);
+    top: 70px;
+    left: 85px; }
+.master-plan .infra-marker.school {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/school.svg);
+    top: 30px;
+    left: 315px; }
+.master-plan .infra-marker.garden {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/garden.svg);
+    top: 170px;
+    left: 375px; }
+.master-plan .infra-marker.park {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/park.svg);
+    top: 150px;
+    left: 705px; }
+.master-plan .infra-marker.shop {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/shop.svg); }
+.master-plan .infra-marker.shop.shop-1 {
+    top: 350px;
+    left: 180px; }
+.master-plan .infra-marker.shop.shop-2 {
+    top: 540px;
+    left: 660px; }
+.master-plan .infra-marker.playground {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/playground.svg); }
+.master-plan .infra-marker.playground.playground-1 {
+    top: 210px;
+    left: 165px; }
+.master-plan .infra-marker.playground.playground-2 {
+    top: 300px;
+    left: 840px; }
+.master-plan .infra-marker.playground.playground-3 {
+    top: 165px;
+    left: 520px; }
+.master-plan .infra-marker.playground.playground-4 {
+    top: 310px;
+    left: 350px; }
+.master-plan .infra-marker.sports-ground {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/sport.svg);
+    left: 330px;
+    top: 110px;
+}
+.master-plan .infra-marker.parking {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/parking.svg);
+    left: 400px;
+    bottom: 100px;
+}
+.master-plan .infra-marker.sales-office {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/green.svg);
+    right: 50px;
+    bottom: 415px;
+}
+
+.master-plan .infra-marker.sales-office .infra-marker__txt{
+    right: 100%;
+    left: auto;
+    margin-right: 5px;
+}
+
+.master-plan .infra-marker__txt {
+    font-size: 17px;
+    color: #595959;
+    white-space: nowrap;
+    background-color: #fff;
+    display: none;
+    top: 0;
+    left: 100%;
+    margin-left: 5px; }
 
 @media screen and (max-width: 1024px) {
     .master-plan .big-figure {

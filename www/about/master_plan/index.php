@@ -16,15 +16,16 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/master-plan-about.css');
         <div class="main-plan">
             <div class="main-plan__map-over" id="main-map-over">
                 <div class="main-plan__map">
-                    <img src="/img/main-plan/genplan.jpg" alt="main-plan">
+                    <img src="/bitrix/templates/grinada/img/main-plan/genplan.jpg" alt="main-plan">
                     <div class="markers">
                         <div class="extra-marker build-line first">1 очередь</div>
                         <div class="extra-marker build-line second">2 очередь</div>
+                        <div class="extra-marker build-line third">3 очередь</div>
                         <div class="streets">
                             <div class="extra-marker">Феодосийская улица</div>
                             <div class="extra-marker">Новобутовская улица</div>
                             <div class="extra-marker">Бутовский лесопарк</div>
-                            <div class="extra-marker"><span>Б-р Д. Донского (10 мин. пешком)</span></div>
+                            <div class="extra-marker">10 мин. пешком<br><span>Бульвар Дмитрия Донского</span></div>
                         </div>
                         <div class="house-marker panel house-1">
                             корпус
@@ -52,6 +53,27 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/master-plan-about.css');
                             </div>
                             <div class="infra-marker shop shop-2">
                                 <div class="extra-marker infra-marker__txt">Магазин</div>
+                            </div>
+                            <div class="infra-marker playground playground-1">
+                                <div class="extra-marker infra-marker__txt">Детская площадка</div>
+                            </div>
+                            <div class="infra-marker playground playground-2">
+                                <div class="extra-marker infra-marker__txt">Детская площадка</div>
+                            </div>
+                            <div class="infra-marker playground playground-3">
+                                <div class="extra-marker infra-marker__txt">Детская площадка</div>
+                            </div>
+                            <div class="infra-marker playground playground-4">
+                                <div class="extra-marker infra-marker__txt">Детская площадка</div>
+                            </div>
+                            <div class="infra-marker sports-ground">
+                                <div class="extra-marker infra-marker__txt">Спортивная площадка</div>
+                            </div>
+                            <div class="infra-marker parking">
+                                <div class="extra-marker infra-marker__txt">Парковка</div>
+                            </div>
+                            <div class="infra-marker sales-office">
+                                <div class="extra-marker infra-marker__txt">Офис продаж</div>
                             </div>
                         </div>
                     </div>

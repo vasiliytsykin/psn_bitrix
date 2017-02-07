@@ -1,0 +1,325 @@
+/*---------HOUSE PLAN----------*/
+.house-plan-page {
+	padding-top: 75px;
+	position: relative;
+	overflow: hidden; }
+.house-plan-page .circle {
+	left: 0;
+	top: 80%;
+	margin-left: -200px; }
+.house-plan-page .wave-right {
+	right: 0;
+	margin-right: -400px;
+	top: 55%; }
+.house-plan-page .big-pattern {
+	right: 40px;
+	bottom: 100px; }
+.house-plan-page .bird {
+	position: absolute;
+	opacity: 0.3;
+	bottom: 100%;
+	left: 235px;
+	margin-bottom: -15px;
+	height: 100px;
+	width: 100px;
+	background: url(/img/svg-library/adv-bird.svg) no-repeat center;
+	background-size: contain; }
+.house-plan-page .content-wrapper {
+	max-width: 1200px;
+	padding-top: 60px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between; }
+.house-plan-page .floor-list-over {
+	width: 170px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex; }
+.house-plan-page .floor-list {
+	color: #00acc8;
+	text-align: center; }
+.house-plan-page .floor-list h2 {
+	text-transform: uppercase;
+	padding-bottom: 14px; }
+.house-plan-page .floor-list__item {
+	font-size: 40px;
+	line-height: 1;
+	height: 70px;
+	width: 70px;
+	border-radius: 50%;
+	margin: 16px auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center; }
+.house-plan-page .floor-list__item.hover {
+	background-color: #00acc8;
+	color: white; }
+.house-plan-page .section-plan-wrapper {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	position: relative; }
+.house-plan-page .section-plan-over {
+	padding: 8px 30px 0;
+	border-bottom: 6px solid #ededed; }
+.house-plan-page .section-plan {
+	border: 5px solid #ededed;
+	border-bottom: none;
+	padding: 50px 40px 15px; }
+.house-plan-page .floor-row {
+	padding: 8px 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 0 -8px;
+	position: relative; }
+.house-plan-page .flat {
+	width: 70px;
+	height: 70px;
+	background-color: #f7f7f7;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	margin: 0 8px;
+	font-size: 30px;
+	color: #00acc8; }
+.house-plan-page .flat:hover {
+	background-color: #00acc8;
+	color: white; }
+.house-plan-page .flat-info {
+	width: 400px;
+	padding: 40px 0;
+	box-shadow: 0 0 35px rgba(0, 0, 0, 0.06);
+	position: absolute;
+	left: 100%;
+	margin-left: 70px;
+	color: #000;
+	font-size: 18px;
+	display: none;
+	background-color: #fff;
+	z-index: 3;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%); }
+.house-plan-page .flat-info sup {
+	font-size: 12px; }
+.house-plan-page .flat-info__params {
+	padding: 0 80px 35px; }
+.house-plan-page .flat-info__params .param {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex; }
+.house-plan-page .flat-info__params .param.type .value {
+	color: #00acc8; }
+.house-plan-page .flat-info__params .param.price .value {
+	color: #f38b00; }
+.house-plan-page .flat-info__params .name, .house-plan-page .flat-info__params .value {
+	width: 50%; }
+.house-plan-page .flat-info__params .value {
+	font-weight: 500; }
+.house-plan-page .flat-info__img {
+	width: 200px;
+	height: 170px;
+	background: url(/img/house-plan/flat-plan.png) no-repeat center;
+	background-size: contain;
+	margin: 0 auto; }
+.house-plan-page .flat-info__compass {
+	width: 57px;
+	height: 61px;
+	background: url(/img/house-plan/compass.png) no-repeat center;
+	margin-left: 65px; }
+.house-plan-page .navigation-block {
+	color: #00acc8;
+	width: 300px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	text-align: center;
+	padding-top: 2px; }
+.house-plan-page .navigation-block .nav {
+	padding-bottom: 70px; }
+.house-plan-page .navigation-block h4 {
+	text-transform: uppercase; }
+.house-plan-page .navigation-block .nav-controls {
+	width: 150px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: 15px 0 35px;
+	margin: 0 auto; }
+.house-plan-page .navigation-block .caption {
+	font-size: 40px;
+	line-height: 1; }
+.house-plan-page .navigation-block .arrow {
+	width: 22px;
+	height: 40px;
+	background: no-repeat center; }
+.house-plan-page .navigation-block .arrow-prev {
+	background-image: url(/img/house-plan/arrow_prev.svg); }
+.house-plan-page .navigation-block .arrow-next {
+	background-image: url(/img/house-plan/arrow_next.svg); }
+.house-plan-page .navigation-block .nav-img-over {
+	overflow: hidden;
+	position: relative; }
+.house-plan-page .navigation-block .nav-img {
+	background: no-repeat center;
+	background-size: contain;
+	margin: 0 auto; }
+.house-plan-page .navigation-block .house-nav .nav-img {
+	width: 258px;
+	height: 147px; }
+.house-plan-page .navigation-block .section-nav .nav-img {
+	width: 180px;
+	height: 70px; }
+.house-plan-page .navigation-block .section-nav .finish {
+	color: #595959;
+	position: relative;
+	padding: 25px 0 25px 25px; }
+.house-plan-page .navigation-block .section-nav .finish::before {
+	content: '';
+	position: absolute;
+	width: 15px;
+	height: 30px;
+	background: url(/img/house-plan/paint-small.svg) no-repeat center;
+	background-size: contain;
+	top: 50%;
+	left: 0;
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%); }
+.house-plan-page .scroll-top {
+	padding-top: 150px; }
+
+@media screen and (max-width: 1280px) {
+	.house-plan-page .content-wrapper {
+		-ms-flex-pack: distribute;
+		justify-content: space-around; }
+	.house-plan-page .floor-list-over {
+		width: auto; } }
+
+@media screen and (max-width: 1280px) {
+	.house-plan-page .flat-info {
+		margin-left: 0; } }
+
+@media screen and (max-width: 1024px) {
+	.house-plan-page .big-figure, .house-plan-page .big-pattern {
+		display: none; }
+	.house-plan-page .bird {
+		left: 180px;
+		width: 90px;
+		height: 90px; }
+	.house-plan-page .content-wrapper {
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap; }
+	.house-plan-page .section-plan-wrapper {
+		-webkit-box-ordinal-group: 2;
+		-ms-flex-order: 1;
+		order: 1;
+		width: 100%; }
+	.house-plan-page .navigation-block {
+		width: 100%;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+		padding-top: 0;
+		padding-bottom: 140px;
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		align-items: flex-start; }
+	.house-plan-page .navigation-block .nav {
+		padding-bottom: 0; }
+	.house-plan-page .floor-list-over {
+		width: 130px;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center; }
+	.house-plan-page .floor-list h2 {
+		font-size: 27px; }
+	.house-plan-page .floor-list__item {
+		font-size: 36px;
+		width: 60px;
+		height: 60px; }
+	.house-plan-page .flat {
+		width: 60px;
+		height: 60px;
+		font-size: 27px; }
+	.house-plan-page .scroll-top {
+		padding-top: 90px; } }
+
+@media screen and (max-width: 736px) {
+	.house-plan-page .bird {
+		left: 100px;
+		width: 70px;
+		height: 70px;
+		margin-bottom: -7px; }
+	.house-plan-page .navigation-block {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between; }
+	.house-plan-page .navigation-block .house-nav .nav-img-over {
+		width: 170px;
+		height: 105px; }
+	.house-plan-page .navigation-block .house-nav .nav-img {
+		position: absolute;
+		top: 34%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%); }
+	.house-plan-page .floor-list-over {
+		width: auto; }
+	.house-plan-page .floor-list h2 {
+		font-size: 16px;
+		line-height: 1;
+		padding-bottom: 5px; }
+	.house-plan-page .section-plan-wrapper {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between; }
+	.house-plan-page .section-plan-over {
+		padding: 2px 15px 0; }
+	.house-plan-page .section-plan {
+		padding: 20px 17px 2px; }
+	.house-plan-page .floor-row {
+		padding: 5px 0; }
+	.house-plan-page .floor-list__item {
+		font-size: 22px;
+		width: 37px;
+		height: 37px;
+		margin: 10px auto; }
+	.house-plan-page .flat {
+		width: 37px;
+		height: 37px;
+		font-size: 16px;
+		margin: 0 5px; } }
+
+/*-----END HOUSE PLAN----------*/

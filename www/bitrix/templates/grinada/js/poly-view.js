@@ -438,3 +438,57 @@ var SVGM = function () {
 
 
 };
+
+
+
+
+function MySVG(params) {
+	if(params) this.settings = $.extend({}, this.defaults, params);
+	else this.settings = this.defaults;
+	var settings = this.settings;
+	for(var name in settings){
+		if(!settings.hasOwnProperty(name)) continue;
+		this['$' + name] = $('.' + settings[name]);
+	}
+	this.draw = new SVG(this.$svg.attr('id'));
+}
+MySVG.prototype = {
+	defaults: {
+		mapContainer: 'main-plan__map-over',
+		map: 'main-plan__map',
+		svg: 'svg-area',
+		markers: 'markers',
+		svgConfig: 'config-map',
+		dbConfig: 'config-map-bd'
+	},
+	init: function () {
+
+		var self = this,
+			svgConfig = JSON.parse(this.$svgConfig.val()),
+			dbConfig = JSON.parse(this.$dbConfig.val());
+		$.each(dbConfig, function (name, el) {
+			if(name in svgConfig)
+				dbConfig[name].coord = svgConfig[name].coord;
+		});
+		
+		self.config = dbConfig;
+		console.log(self.config);
+		$.each(dbConfig, function (name, el) {
+			if(el.type == 'polyline')
+				self.addPolyline(el, name);
+		});
+	},
+	addPolyline: function (polyObj, id) {
+		if(!polyObj.coord.length) return;
+		var polylineClass = polyObj.property.class,
+			polylineType = polyObj.property.house_type,
+			polylineNumber = polyObj.property[polylineClass + '_number'],
+			polylineId = polylineClass == 'section' ? polylineClass + '-' + polyObj.property['house_number'] + '-' + polylineNumber: polylineClass + '-' + polylineNumber,
+			polyline = this.draw.polyline(polyObj.coord).attr({
+				'class': polylineClass + ' ' + polylineType,
+				id: polylineId,
+				'data-json-id': id
+
+			});
+	}
+};
