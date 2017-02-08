@@ -118,7 +118,7 @@
     line-height: 1;
     padding: 8px 15px;
     text-align: center;
-    border-radius: 16px;
+    border-radius: 25px;
     font-weight: 500; }
 .master-plan .main-plan__map .build-line {
     text-transform: uppercase;
@@ -290,6 +290,8 @@
     background: no-repeat center; }
 .master-plan .infra-marker:hover .infra-marker__txt {
     display: block; }
+.master-plan .infra-marker:hover {
+    z-index: 3; }
 .master-plan .infra-marker.kindergarten {
     background-image: url(/bitrix/templates/grinada/img/main-plan/child.svg);
     top: 70px;
@@ -327,7 +329,7 @@
     left: 520px; }
 .master-plan .infra-marker.playground.playground-4 {
     top: 310px;
-    left: 350px; }
+    left: 370px; }
 .master-plan .infra-marker.sports-ground {
     background-image: url(/bitrix/templates/grinada/img/main-plan/sport.svg);
     left: 330px;
@@ -342,6 +344,11 @@
     background-image: url(/bitrix/templates/grinada/img/main-plan/green.svg);
     right: 50px;
     bottom: 415px;
+}
+.master-plan .infra-marker.spruce {
+    background-image: url(/bitrix/templates/grinada/img/main-plan/spruce.svg);
+    left: 320px;
+    bottom: 390px;
 }
 
 .master-plan .infra-marker.sales-office .infra-marker__txt{

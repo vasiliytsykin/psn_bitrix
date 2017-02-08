@@ -36,7 +36,7 @@ if(!empty($slide['pre'])){
 }
 
 $itemProps = $arResult['PROPERTIES'];
-$img = $arItem['DETAIL_PICTURE'];
+$img = $arResult['DETAIL_PICTURE'];
 $imgUrl = is_array($img) ? $img['SRC'] : '/bitrix/templates/grinada/img/news/news_stab.jpg' ;
 
 ?>
@@ -104,7 +104,7 @@ $imgUrl = is_array($img) ? $img['SRC'] : '/bitrix/templates/grinada/img/news/new
 					мы расскажем обо всём, что&nbsp;вас&nbsp;интересует
 				</h3>
 				<div class="phone">+7 495  800 41 48</div>
-				<a href="#" class="btn-default btn-medium btn-green open-feedback call">Заказать звонок</a>
+				<a href="#" class="btn-default btn-medium btn-green feedback-open call">Заказать звонок</a>
 			</div>
 			<div class="scroll-top "><a href="#">вернуться наверх</a></div>
 		</div>

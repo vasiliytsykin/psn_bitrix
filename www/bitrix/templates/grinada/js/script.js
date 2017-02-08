@@ -198,11 +198,16 @@ $(function () {
     }());
 
 
+    $('a.disabled').on('click', function () {
+        return false;
+    });
+
+
     /*------------INDEX---------------*/
 
     engageOwlCarousel($('.main-slider'), {
         items: 1,
-        loop: false,
+        loop: true,
         navText: ['', ''],
         responsive: {
             0: {
@@ -652,12 +657,14 @@ $(function () {
             $feedSwitch = $feedModal.find('.switch'),
             $feedSwitchTab = $feedModal.find('.switch__tab'),
             active = 'active',
+            hidden = 'hidden',
             email = 'email',
-            call = 'call';
+            call = 'call',
+            layout = 'layout';
 
         $feedSwitchTab.on('click', function () {
 
-            $feedTabs.toggleClass(active);
+            $feedTabs.not('.layout').toggleClass(active);
             $feedSwitchTab.toggleClass(active);
 
         });
@@ -667,6 +674,7 @@ $(function () {
             var $self = $(this);
 
             $feedTabs.removeClass(active);
+            $feedSwitch.removeClass(hidden);
             $feedSwitchTab.removeClass(active);
 
             if($self.hasClass(email))
@@ -674,6 +682,11 @@ $(function () {
 
             if($self.hasClass(call))
                 $feedModal.find('.' + call).addClass(active);
+
+            if($self.hasClass(layout)){
+                $feedModal.find('.' + layout).addClass(active);
+                $feedSwitch.addClass(hidden);
+            }
 
             $.magnificPopup.open({
                 items: {

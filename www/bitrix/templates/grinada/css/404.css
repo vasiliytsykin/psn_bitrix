@@ -1,0 +1,64 @@
+/*----------404--------------*/
+.error-page {
+    padding: 120px 0 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; }
+.error-page .error-code {
+    font-size: 192px;
+    line-height: 1;
+    font-weight: 500; }
+.error-page h2 {
+    padding-bottom: 30px; }
+.error-page h4 {
+    padding-bottom: 45px; }
+.error-page .scroll-top {
+    padding-top: 200px; }
+.error-page .circle {
+    right: 40px;
+    top: 70%; }
+.error-page .wave {
+    left: 0;
+    margin-left: -400px;
+    top: 40%; }
+.error-page .pattern-1 {
+    right: 0;
+    top: 15%;
+    -webkit-transform: translate(30%, 0);
+    transform: translate(30%, 0); }
+.error-page .pattern-2 {
+    left: 0;
+    bottom: 30px;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0); }
+
+@media screen and (max-width: 1024px) {
+    .error-page {
+        padding-top: 160px; }
+    .error-page .circle {
+        right: 0;
+        margin-right: -250px; }
+    .error-page .wave {
+        margin-left: -520px; }
+    .error-page .pattern-1 {
+        top: 0;
+        -webkit-transform: translate(77%, -5%);
+        transform: translate(77%, -5%); }
+    .error-page .pattern-2 {
+        -webkit-transform: translate(-72%, 0);
+        transform: translate(-72%, 0); } }
+
+@media screen and (max-width: 736px) {
+    .error-page {
+        padding-top: 100px; }
+    .error-page .error-code {
+        font-size: 140px; }
+    .error-page .wave {
+        display: none; }
+    .error-page .pattern-1 {
+        -webkit-transform: translate(82%, -5%);
+        transform: translate(82%, -5%); }
+    .error-page .pattern-2 {
+        -webkit-transform: translate(-80%, 0);
+        transform: translate(-80%, 0); } }
+/*------END 404--------------*/

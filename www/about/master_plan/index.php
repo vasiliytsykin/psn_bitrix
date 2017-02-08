@@ -72,6 +72,9 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/master-plan-about.css');
                             <div class="infra-marker parking">
                                 <div class="extra-marker infra-marker__txt">Парковка</div>
                             </div>
+                            <div class="infra-marker spruce">
+                                <div class="extra-marker infra-marker__txt">Новогодняя ель<br>в каждом дворе</div>
+                            </div>
                             <div class="infra-marker sales-office">
                                 <div class="extra-marker infra-marker__txt">Офис продаж</div>
                             </div>

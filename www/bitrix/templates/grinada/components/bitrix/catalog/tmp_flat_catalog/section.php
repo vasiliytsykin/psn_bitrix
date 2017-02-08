@@ -23,8 +23,6 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/master-plan-common.css')
 
 <?
 
-
-global $arFilter;
 $rsCurrentSection = CIBlockSection::GetByID($arResult['VARIABLES']['SECTION_ID']);
 $currentSection = array();
 if($result = $rsCurrentSection->GetNext())

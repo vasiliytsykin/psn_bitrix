@@ -14,7 +14,7 @@ $(function () {
     engageOwlCarousel($('.about-page .gallery__slider'), {
 
         items: 1,
-        loop: false,
+        loop: true,
         navText: ['', ''],
         responsive: {
             0: {

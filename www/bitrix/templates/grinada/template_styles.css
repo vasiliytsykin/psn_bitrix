@@ -1436,6 +1436,10 @@ p {
     display: block; }
 .feedback-modal .tab.email .feedback-form {
     padding-bottom: 30px; }
+.feedback-modal .tab.email h5 {
+    padding-top: 5px; }
+.feedback-modal .tab.layout .feedback-form {
+    padding-bottom: 10px; }
 .feedback-modal .switch__tab {
     height: 60px;
     background-color: #00acc8;

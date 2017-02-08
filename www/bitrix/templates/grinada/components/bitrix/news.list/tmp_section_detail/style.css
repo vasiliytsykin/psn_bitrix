@@ -22,7 +22,7 @@
 	margin-bottom: -15px;
 	height: 100px;
 	width: 100px;
-	background: url(/img/svg-library/adv-bird.svg) no-repeat center;
+	background: url(/bitrix/templates/grinada/img/svg-library/adv-bird.svg) no-repeat center;
 	background-size: contain; }
 .house-plan-page .content-wrapper {
 	max-width: 1200px;
@@ -138,13 +138,13 @@
 .house-plan-page .flat-info__img {
 	width: 200px;
 	height: 170px;
-	background: url(/img/house-plan/flat-plan.png) no-repeat center;
+	background: url(/bitrix/templates/grinada/img/house-plan/flat-plan.png) no-repeat center;
 	background-size: contain;
 	margin: 0 auto; }
 .house-plan-page .flat-info__compass {
 	width: 57px;
 	height: 61px;
-	background: url(/img/house-plan/compass.png) no-repeat center;
+	background: url(/bitrix/templates/grinada/img/house-plan/compass.png) no-repeat center;
 	margin-left: 65px; }
 .house-plan-page .navigation-block {
 	color: #00acc8;
@@ -183,9 +183,13 @@
 	height: 40px;
 	background: no-repeat center; }
 .house-plan-page .navigation-block .arrow-prev {
-	background-image: url(/img/house-plan/arrow_prev.svg); }
+	background-image: url(/bitrix/templates/grinada/img/house-plan/arrow_prev.svg); }
+.house-plan-page .navigation-block .arrow-prev.disabled {
+	background-image: url(/bitrix/templates/grinada/img/house-plan/arrow_prev_gray.svg); }
 .house-plan-page .navigation-block .arrow-next {
-	background-image: url(/img/house-plan/arrow_next.svg); }
+	background-image: url(/bitrix/templates/grinada/img/house-plan/arrow_next.svg); }
+.house-plan-page .navigation-block .arrow-next.disabled {
+	background-image: url(/bitrix/templates/grinada/img/house-plan/arrow_next_gray.svg); }
 .house-plan-page .navigation-block .nav-img-over {
 	overflow: hidden;
 	position: relative; }
@@ -208,7 +212,7 @@
 	position: absolute;
 	width: 15px;
 	height: 30px;
-	background: url(/img/house-plan/paint-small.svg) no-repeat center;
+	background: url(/bitrix/templates/grinada/img/house-plan/paint-small.svg) no-repeat center;
 	background-size: contain;
 	top: 50%;
 	left: 0;

@@ -11,9 +11,11 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+require_once($_SERVER['DOCUMENT_ROOT'].'/include/section_nav.php');
 ?>
 
 <?
+
 
 $arFloors = array();
 $flats = array();
@@ -42,12 +44,35 @@ while($plan = $rsPlans->GetNext()){
 
 }
 
+$currentSectionId = $arParams['PARENT_SECTION'];
+$rsCurrentSection = CIBlockSection::GetByID($currentSectionId);
+$currentSection = array();
+if($result = $rsCurrentSection->GetNext())
+	$currentSection = $result;
+
+
+$currentHouse = array();
+$rsCurrentHouse = CIBlockSection::GetByID($currentSection['IBLOCK_SECTION_ID']);
+if($result = $rsCurrentHouse->GetNext())
+	$currentHouse = $result;
+
+$sectionNav = new SectionLister();
+
+$sectionSiblings = @$sectionNav->getSiblings($currentSectionId, $currentSection['IBLOCK_SECTION_ID'], $currentSection['IBLOCK_ID']);
+$sectionPrevUrl = @$sectionSiblings['prev']['SECTION_PAGE_URL'];
+$sectionNextUrl = @$sectionSiblings['next']['SECTION_PAGE_URL'];
+$currentSectionNum = $sectionSiblings['prev']['num'] + 1;
+
+$houseSiblings = @$sectionNav->getSiblings($currentHouse['ID'], $currentHouse['IBLOCK_SECTION_ID'] , $currentHouse['IBLOCK_ID']);
+$housePrevUrl = @$houseSiblings['prev']['SECTION_PAGE_URL'];
+$houseNextUrl = @$houseSiblings['next']['SECTION_PAGE_URL'];
+$currentHouseNum = $houseSiblings['prev']['num'] + 1;
 
 ?>
 
 
 <!--<pre>-->
-<!--	--><?//print_r($flats)?>
+<!--	--><?//print_r($houseSiblings)?>
 <!--</pre>-->
 
 
@@ -133,9 +158,9 @@ while($plan = $rsPlans->GetNext()){
 						<div class="nav-controls-over">
 							<h4>корпус</h4>
 							<div class="nav-controls">
-								<a href="#" class="arrow arrow-prev"></a>
-								<div class="caption">1</div>
-								<a href="#" class="arrow arrow-next"></a>
+								<a href="<?=$housePrevUrl?>" class="arrow arrow-prev <?= $housePrevUrl == '' ? 'disabled': '';?>"></a>
+								<div class="caption"><?=$currentHouseNum?></div>
+								<a href="<?=$houseNextUrl?>" class="arrow arrow-next <?= $houseNextUrl == '' ? 'disabled': '';?>"></a>
 							</div>
 						</div>
 						<div class="nav-img-over">
@@ -146,9 +171,9 @@ while($plan = $rsPlans->GetNext()){
 						<div class="nav-controls-over">
 							<h4>секция</h4>
 							<div class="nav-controls">
-								<a href="#" class="arrow arrow-prev"></a>
-								<div class="caption">6</div>
-								<a href="#" class="arrow arrow-next"></a>
+								<a href="<?=$sectionPrevUrl?>" class="arrow arrow-prev <?= $sectionPrevUrl == '' ? 'disabled': '';?>"></a>
+								<div class="caption"><?=$currentSectionNum?></div>
+								<a href="<?=$sectionNextUrl?>" class="arrow arrow-next <?= $sectionNextUrl == '' ? 'disabled': '';?>"></a>
 							</div>
 						</div>
 						<div class="nav-img" style="background-image: url(/img/house-plan/floor_plan.svg);"></div>
