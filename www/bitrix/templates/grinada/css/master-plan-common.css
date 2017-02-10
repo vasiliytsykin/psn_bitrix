@@ -217,8 +217,6 @@
     background-image: url(/bitrix/templates/grinada/img/main-plan/pin-finish.png);
     top: 290px;
     left: 245px; }
-.master-plan .main-plan__map .bubble.finish:hover .tooltip {
-    display: block; }
 .master-plan .main-plan__map .bubble .tooltip {
     width: 90px;
     height: 90px;
@@ -231,8 +229,7 @@
     padding-top: 12px;
     position: absolute;
     top: -50px;
-    right: -75px;
-    display: none; }
+    right: -75px; }
 .master-plan .main-plan__sidebar {
     width: 300px;
     position: absolute;

@@ -20,6 +20,7 @@ while($arSection = $rsSection->GetNext()) {
 }?>
 
 <div class="news-page">
+	<input type="hidden" class="ajax-url" value="/news_ajax.php">
 	<div class="big-figure circle"></div>
 	<div class="big-figure wave-right"></div>
 	<h1 class="dark-green">Новости</h1>
@@ -100,9 +101,6 @@ while($arSection = $rsSection->GetNext()) {
 					</div>
 				<?}?>
 			</div>
-<!--			<div class="show-more">-->
-<!--				<a href="#" class="btn-default btn-medium btn-green">Показать еще</a>-->
-<!--			</div>-->
 		</div>
 	</div>
 	<div class="sign-in">

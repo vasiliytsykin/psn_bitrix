@@ -108,7 +108,7 @@ $(function () {
                 value = textValue.replace('%', '').replace(',', '.');
             caption.html(textValue);
             input.val(value);
-
+            input.change();
             selectBox.removeClass('open');
 
         });

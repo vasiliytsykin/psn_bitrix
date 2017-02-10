@@ -790,7 +790,7 @@ $(function () {
             $filterResult = $filter.find('.result-items'),
             $checkboxes = $filter.find('input[type="checkbox"]'),
             $sliders = $filter.find('.range-slider'),
-            ajaxUrl = $filter.data('ajax-url'),
+            ajaxUrl = $('.ajax-url').val(),
             data = {};
 
         String.prototype.toCamelCase = function () {
@@ -924,10 +924,36 @@ $(function () {
 
         }
 
-        function showMore(pageNumber, pagination) {
+        function showMore(pageNumber, pagination, showItems) {
 
             var url = ajaxUrl + '?PAGEN_' + pagination + '=' + pageNumber;
+
+            if(showItems == 'actions')
+            {
+                showMoreItems(url, 'action-list');
+                return;
+            }
+            if(showItems == 'news')
+            {
+                showMoreItems(url, 'news-list');
+                return;
+            }
+
             sendData(data, url, true);
+
+        }
+
+        function showMoreItems(url, itemsContiner) {
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                success: function(data){
+
+                    $('.show-more').remove();
+                    $('.' + itemsContiner).append(data);
+                }
+            });
 
         }
 
@@ -937,15 +963,18 @@ $(function () {
 
                 var $this = $(this),
                     pageNumber = $this.data('current') + 1,
-                    pagination = $this.data('pagination');
+                    pagination = $this.data('pagination'),
+                    showItems = $this.data('items');
 
-                showMore(pageNumber, pagination);
+                showMore(pageNumber, pagination, showItems);
 
                 return false;
 
             });
 
         });
+
+
 
         
     }());

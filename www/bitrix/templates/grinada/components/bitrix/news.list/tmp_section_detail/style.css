@@ -27,12 +27,13 @@
 .house-plan-page .content-wrapper {
 	max-width: 1200px;
 	padding-top: 60px;
+	margin: 0 auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between; }
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center; }
 .house-plan-page .floor-list-over {
 	width: 170px;
 	display: -webkit-box;
@@ -222,9 +223,6 @@
 	padding-top: 150px; }
 
 @media screen and (max-width: 1280px) {
-	.house-plan-page .content-wrapper {
-		-ms-flex-pack: distribute;
-		justify-content: space-around; }
 	.house-plan-page .floor-list-over {
 		width: auto; } }
 

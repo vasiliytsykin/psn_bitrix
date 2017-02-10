@@ -54,10 +54,22 @@ $(document).ready(function () {
 				}
 				if(elData.property.class == 'section'){
 
-					map_ob.$markers.append([
-						'<div for="#' + $el.attr('id') + '" class="bubble ' + elData.property.house_type + '">',
-						elData.property.section_number,
-						'</div>'].join(''));
+					var labelHtml = '';
+
+					if(elData.property.furnish)
+						labelHtml = ['<div for="#' + $el.attr('id') + '" class="bubble finish">',
+							'<div class="tooltip">',
+							'<div class="h4">'+ elData.property.flatCount +'</div>',
+							'квартир с&nbsp;отделкой',
+							'</div></div>'].join('');
+					else
+						labelHtml = ['<div for="#' + $el.attr('id') + '" class="bubble ' + elData.property.house_type + '">',
+							elData.property.section_number,
+							'</div>'].join('');
+
+
+
+					map_ob.$markers.append(labelHtml);
 					
 				}
 				

@@ -17,6 +17,7 @@ $houses = array();
 $arSVGPolyHouse = array();
 $arSVGPolyHouse[] = $arResult['SECTION']['UF_SVGPOLY'];
 $sections = array();
+$sectionFlats = array();
 
 foreach ($arResult['SECTIONS'] as $section){
 	$sections[$section['ID']] = $section;
@@ -48,13 +49,27 @@ foreach ($sections as $id => $section){
 		$sectionNumber = $arExpSectionNum[1];
 		$parentSection = $sections[$section['IBLOCK_SECTION_ID']];
 
+		$furnish = false;
+		$flatCount = 0;
+		$flat = array();
+		$rsFlat = CIBlockElement::GetList(array (), array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ACTIVE' => 'Y', 'SECTION_ID' => $id, 'INCLUDE_SUBSECTIONS' => 'Y'), false, false, array('ID', 'IBLOCK_ID', 'PROPERTY_ApartmentFurnish'));
+		if($result = $rsFlat->GetNextElement())
+			$flat = $result->GetProperties();
+		
+		$furnish = $flat['ApartmentFurnish']['VALUE'] == 'С отделкой' ? true : false;
+
+		if($furnish == true)
+			$flatCount = CIBlockSection::GetSectionElementsCount($id, array('CNT_ACTIVE' => 'Y'));
+
 		$houses[$jsonId] = array(
 			'property' => array(
 				'house_number' => $parentSection['UF_HOUSE_NUMBER'],
 				'house_type' => $parentSection['UF_HOUSE_TYPE'],
 				'section_number' => $sectionNumber,
 				'url' => $section['SECTION_PAGE_URL'],
-				'class' => 'section'
+				'class' => 'section',
+				'furnish' => $furnish,
+				'flatCount' => $flatCount
 			)
 
 		);
@@ -77,13 +92,6 @@ while ($flat = $rsFlats->GetNext()){
 }
 
 ?>
-
-
-
-<!--<pre>-->
-<!--	--><?//print_r($flats)?>
-<!--</pre>-->
-
 
 <div class="master-plan master-plan--filter">
 	<h1 class="dark-green">Выберите дом</h1>

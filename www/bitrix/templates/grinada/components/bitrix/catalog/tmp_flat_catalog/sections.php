@@ -41,12 +41,13 @@ foreach ($rangeProperties as $name => $props){
 
 
 <div class="param-filter-page">
+	<input type="hidden" class="ajax-url" value="/param_filter_ajax.php">
 	<div class="pattern carrot dark-green anim-pattern" data-pattern="carrot"></div>
 	<div class="pattern bird light-green anim-pattern" data-pattern="bird"></div>
 	<div class="wrapper-main">
 		<h1 class="dark-green">Выбор по&nbsp;параметрам</h1>
 		<div class="wrapper-outer">
-			<div class="filter"  data-ajax-url="/param_filter_ajax.php">
+			<div class="filter">
 				<div class="wrapper-inner">
 					<div class="filter__params">
 						<div class="input-group house">

@@ -128,7 +128,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                     </div>
                     <div class="info-block info-block--main">
                         <h2 class="dark-green">Гринада – новый жилой квартал комфорткласса</h2>
-                        <div class="info-block__img" style="background-image: url(img/main/family-circle.png);"></div>
+                        <div class="info-block__img" style="background-image: url(/bitrix/templates/grinada/img/main/family-circle.png);"></div>
                         <div class="info-block__txt">
                             <p>Жилой квартал «Гринада» расположен в&nbsp;10 минутах пешком от станции метро "Бульвар Дмитрия Донского" и&nbsp;непосредственно на границе Бутовского лесопарка.</p>
                             <p>На участке площадью 6,65 га, в одном из&nbsp;самых зеленых районов Москвы, строится жилой квартал комфорткласса площадью 170 тыс. м2, состоящий из 5 домов переменной этажности, а также детским садом и школой на 780 мест.</p>
@@ -157,7 +157,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="info-block__img" style="background-image: url(img/main/sreda.jpg);"></div>
+                                    <div class="info-block__img" style="background-image: url(/bitrix/templates/grinada/img/main/sreda.jpg);"></div>
                                 </div>
                             </div>
                             <div class="info-block">
@@ -173,7 +173,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="info-block__img" style="background-image: url(img/main/infrastructura.jpg);"></div>
+                                    <div class="info-block__img" style="background-image: url(/bitrix/templates/grinada/img/main/infrastructura.jpg);"></div>
                                 </div>
                             </div>
                             <div class="info-block">
@@ -189,7 +189,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="info-block__img" style="background-image: url(img/main/home.jpg);"></div>
+                                    <div class="info-block__img" style="background-image: url(/bitrix/templates/grinada/img/main/home.jpg);"></div>
                                 </div>
                             </div>
                             <div class="info-block">
@@ -205,7 +205,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="info-block__img" style="background-image: url(img/main/family.jpg);"></div>
+                                    <div class="info-block__img" style="background-image: url(/bitrix/templates/grinada/img/main/family.jpg);"></div>
                                 </div>
                             </div>
                         </div>
@@ -217,46 +217,68 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                 <div class="main-offer">
                     <h2>Предложение дня</h2>
                     <div class="main-offer__content">
-                        <div class="main-offer__item">
-                            <div class="main-offer__graphics main-offer__plan" style="background-image: url(/bitrix/templates/grinada/img/main/flat-plan.png);"></div>
-                            <div class="main-offer__info">
-                                <div class="room-count light-green">1-комнатная</div>
-                                <div class="price">12 460 000 р.</div>
-                                <div class="params">
-                                    <div class="param">
-                                        <div class="param__name">Этаж</div>
-                                        <div class="param__value">8</div>
-                                    </div>
-                                    <div class="param">
-                                        <div class="param__name">Площадь</div>
-                                        <div class="param__value">40 м<sup>2</sup></div>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-default btn-medium btn-green">Карточка квартиры</a>
-                            </div>
-                            <div class="main-offer__graphics main-offer__img" style="background-image: url(/bitrix/templates/grinada/img/main/flat-img.jpg);"></div>
-                        </div>
-                        <div class="main-offer__item">
-                            <div class="main-offer__graphics main-offer__plan" style="background-image: url(/bitrix/templates/grinada/img/main/flat-plan.png);"></div>
-                            <div class="main-offer__info">
-                                <div class="room-count light-green">2-комнатная</div>
-                                <div class="price">15 460 000 р.</div>
-                                <div class="params">
-                                    <div class="param">
-                                        <div class="param__name">Этаж</div>
-                                        <div class="param__value">9</div>
-                                    </div>
-                                    <div class="param">
-                                        <div class="param__name">Площадь</div>
-                                        <div class="param__value">45 м<sup>2</sup></div>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-default btn-medium btn-green">Карточка квартиры</a>
-                            </div>
-                            <div class="main-offer__graphics main-offer__img" style="background-image: url(/bitrix/templates/grinada/img/main/flat-img_2.jpg);"></div>
-                        </div>
+                        <?
+
+                        $arFilter = array('!PROPERTY_main_offer' => false);
+
+                        $APPLICATION->IncludeComponent(
+                            "bitrix:news.list",
+                            "tmp_main_offer",
+                            Array(
+                                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                "ADD_SECTIONS_CHAIN" => "Y",
+                                "AJAX_MODE" => "N",
+                                "AJAX_OPTION_ADDITIONAL" => "",
+                                "AJAX_OPTION_HISTORY" => "N",
+                                "AJAX_OPTION_JUMP" => "N",
+                                "AJAX_OPTION_STYLE" => "Y",
+                                "CACHE_FILTER" => "N",
+                                "CACHE_GROUPS" => "Y",
+                                "CACHE_TIME" => "36000000",
+                                "CACHE_TYPE" => "A",
+                                "CHECK_DATES" => "Y",
+                                "DETAIL_URL" => "",
+                                "DISPLAY_BOTTOM_PAGER" => "Y",
+                                "DISPLAY_DATE" => "Y",
+                                "DISPLAY_NAME" => "Y",
+                                "DISPLAY_PICTURE" => "Y",
+                                "DISPLAY_PREVIEW_TEXT" => "Y",
+                                "DISPLAY_TOP_PAGER" => "N",
+                                "FIELD_CODE" => array("",""),
+                                "FILTER_NAME" => "arFilter",
+                                "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                                "IBLOCK_ID" => "7",
+                                "IBLOCK_TYPE" => "catalog",
+                                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                                "INCLUDE_SUBSECTIONS" => "Y",
+                                "MESSAGE_404" => "",
+                                "NEWS_COUNT" => "100",
+                                "PAGER_BASE_LINK_ENABLE" => "N",
+                                "PAGER_DESC_NUMBERING" => "N",
+                                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                                "PAGER_SHOW_ALL" => "N",
+                                "PAGER_SHOW_ALWAYS" => "N",
+                                "PAGER_TEMPLATE" => ".default",
+                                "PAGER_TITLE" => "Новости",
+                                "PARENT_SECTION" => "",
+                                "PARENT_SECTION_CODE" => "",
+                                "PREVIEW_TRUNCATE_LEN" => "",
+                                "PROPERTY_CODE" => array("Floor","Price","Rooms","SpaceDesign","TypeForSite","main_offer",""),
+                                "SET_BROWSER_TITLE" => "Y",
+                                "SET_LAST_MODIFIED" => "N",
+                                "SET_META_DESCRIPTION" => "Y",
+                                "SET_META_KEYWORDS" => "Y",
+                                "SET_STATUS_404" => "N",
+                                "SET_TITLE" => "Y",
+                                "SHOW_404" => "N",
+                                "SORT_BY1" => "ACTIVE_FROM",
+                                "SORT_BY2" => "SORT",
+                                "SORT_ORDER1" => "DESC",
+                                "SORT_ORDER2" => "ASC"
+                            )
+                        );?>
                     </div>
-                    <div class="show-all"><a href="#" class="dark-green">Показать все</a></div>
+                    <div class="show-all"><a href="/catalog/" class="dark-green">Показать все</a></div>
                 </div>
                 <div class="scroll-top "><a href="#">вернуться наверх</a></div>
             </div>

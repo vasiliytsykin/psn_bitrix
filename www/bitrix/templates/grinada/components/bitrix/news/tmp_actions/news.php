@@ -11,9 +11,13 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+
+
 ?>
 
 <div class="actions-page">
+	<input type="hidden" class="ajax-url" value="/actions_ajax.php">
 	<div class="big-figure circle"></div>
 	<div class="pattern big-pattern pattern-1 dark-green anim-pattern" data-pattern="pattern-1"></div>
 	<div class="pattern big-pattern pattern-2 light-green anim-pattern" data-pattern="pattern-2"></div>
@@ -73,9 +77,6 @@ $this->setFrameMode(true);
 				),
 				$component
 			);?>
-		</div>
-		<div class="show-more">
-			<a href="#" class="btn-default btn-medium btn-green">Показать еще</a>
 		</div>
 	</div>
 	<div class="sign-in">

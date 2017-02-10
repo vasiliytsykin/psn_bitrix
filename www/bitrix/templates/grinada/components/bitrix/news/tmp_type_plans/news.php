@@ -17,6 +17,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/plan-filter.css');
 
 
 <div class="plan-filter-page">
+	<input type="hidden" class="ajax-url" value="/plan_filter_ajax.php">
 	<div class="big-figure circle"></div>
 	<div class="pattern carrot dark-green anim-pattern" data-pattern="carrot"></div>
 	<div class="pattern bird light-green anim-pattern" data-pattern="bird"></div>
@@ -26,7 +27,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/plan-filter.css');
 		<h1 class="dark-green">Выбор по типам планировок</h1>
 		<h5>Представлено более 100 вариантов различных планировок</h5>
 		<div class="filter-over">
-			<div class="filter"  data-ajax-url="/plan_filter_ajax.php">
+			<div class="filter">
 				<div class="filter__params">
 					<div class="input-group house">
 						<div class="input-group__name">корпус</div>
