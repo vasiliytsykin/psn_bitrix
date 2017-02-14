@@ -36,7 +36,25 @@ if(!empty($slide['pre'])){
 
 $itemProps = $arResult['PROPERTIES'];
 
+$hotAction = array();
+$rsHotAction = CIBlockElement::GetList(
+	array(),
+	array('IBLOCK_ID' => $arParams["IBLOCK_ID"], '!PROPERTY_IS_HOT' => false),
+	false,
+	array('nPageSize' => 1),
+	array('ID', 'IBLOCK_ID', 'DATE_ACTIVE_TO', 'PROPERTY_TOP_LINE', 'PROPERTY_BOTTOM_LINE')
+);
+
+if($result = $rsHotAction->GetNext())
+{
+	$hotAction['date'] = $result['DATE_ACTIVE_TO'];
+	$hotAction['top_line'] = $result['PROPERTY_TOP_LINE_VALUE']['TEXT'];
+	$hotAction['bottom_line'] = $result['PROPERTY_BOTTOM_LINE_VALUE']['TEXT'];
+}
+
+
 ?>
+
 <div class="action-detail-page">
 	<div class="wrapper-inner">
 		<div class="action-detail">
@@ -66,11 +84,12 @@ $itemProps = $arResult['PROPERTIES'];
 			</div>
 			<div class="side-block">
 				<div class="hot-action box-shadow">
+					<input type="hidden" id="action-end-time" value="<?=$hotAction['date']?>">
 					<div class="big-figure circle"></div>
 					<div class="pattern buggy dark-green anim-pattern" data-pattern="buggy"></div>
 					<div class="hot-action__txt dark-green">
-						<div class="top-line">-20%</div>
-						<div class="bottom-line">Скидка на 2 этаж</div>
+						<div class="top-line"><?=$hotAction['bottom_line']?></div>
+						<div class="bottom-line"><?=$hotAction['top_line']?></div>
 					</div>
 					<div class="hot-action__timer">
 						<div class="timer__txt">до конца акции</div>

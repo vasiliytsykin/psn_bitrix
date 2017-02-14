@@ -14,14 +14,15 @@ $this->setFrameMode(true);
 ?>
 
 <div class="plan-filter-detail-page">
+	<input type="hidden" class="ajax-url" value="/param_filter_ajax.php">
 	<div class="big-figure circle"></div>
 	<div class="wrapper-main">
-		<a href="#" class="link--dashed btn-back visible-sm visible-xs"><span>Вернуться назад</span></a>
+		<a href="../" class="link--dashed btn-back visible-sm visible-xs"><span>Вернуться назад</span></a>
 		<h1 class="dark-green">ТИП <?=$arResult['NAME']?></span></h1>
 		<div class="wrapper-outer">
-			<div class="filter"  data-ajax-url="/param_filter_ajax.php">
+			<div class="filter">
 				<input type="hidden" id="type-for-site" value="<?=$arResult['DISPLAY_PROPERTIES']['name_type']['VALUE']?>">
-				<a href="#" class="link--dashed btn-back hidden-sm hidden-xs"><span>Вернуться назад</span></a>
+				<a href="../" class="link--dashed btn-back hidden-sm hidden-xs"><span>Вернуться назад</span></a>
 				<div class="planoplan-over">
 					<div class="h5 dark-green">Предложение по возможной отделке&nbsp;квартиры:</div>
 					<div class="planoplan" style="background-image: url(<?=$arResult['DISPLAY_PROPERTIES']['svg']['FILE_VALUE']['SRC']?>);"></div>

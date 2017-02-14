@@ -23,7 +23,7 @@ $this->setFrameMode(true);
 	<div class="pattern big-pattern pattern-2 light-green anim-pattern" data-pattern="pattern-2"></div>
 	<h1 class="dark-green">Акции</h1>
 	<div class="wrapper-inner">
-		<div class="info-list action-list">
+		<div class="info-list action-list result-items">
 			<?$APPLICATION->IncludeComponent(
 				"bitrix:news.list",
 				"",

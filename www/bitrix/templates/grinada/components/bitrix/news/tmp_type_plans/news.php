@@ -46,10 +46,6 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/plan-filter.css');
 									<input type="checkbox" id="building-number-3" disabled>
 									<label for="building-number-3">3</label>
 								</li>
-								<li>
-									<input type="checkbox" id="building-number-4" disabled>
-									<label for="building-number-4">4</label>
-								</li>
 							</ul>
 							<ul class="inputs inputs--special mono">
 								<li class="house-type">монолитные</li>
@@ -58,12 +54,12 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/plan-filter.css');
 									<label for="building-number-2">2</label>
 								</li>
 								<li>
-									<input type="checkbox" id="building-number-5" disabled>
-									<label for="building-number-5">5</label>
+									<input type="checkbox" id="building-number-4" disabled>
+									<label for="building-number-4">4</label>
 								</li>
 								<li>
-									<input type="checkbox" id="building-number-6" disabled>
-									<label for="building-number-6">6</label>
+									<input type="checkbox" id="building-number-5" disabled>
+									<label for="building-number-5">5</label>
 								</li>
 							</ul>
 						</ul>

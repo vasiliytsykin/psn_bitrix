@@ -16,6 +16,23 @@ use Bitrix\Main\ModuleManager;
 $this->setFrameMode(true);
 
 
+function getPeopleOnline($DB, $flatId){
+
+	$wine = 300;
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$table_online = "online";
+	$sql_update = 'DELETE FROM '.$table_online.' WHERE `unix` + '.$wine.' < '.time().' OR `ip` LIKE "'.$ip.'"';
+	$DB->Query($sql_update);
+	$sql_insert = 'INSERT INTO '.$table_online.' VALUES ("", "'.$ip.'", '.$flatId.',"'.time().'")';
+	$DB->Query($sql_insert);
+	$sql_select = 'SELECT `id` FROM '.$table_online.' WHERE `flat_id` = '.$flatId;
+	$result = $DB->Query($sql_select);
+	
+	$realCount = $result->SelectedRowsCount();
+	if ($result < 5)
+		return rand(5,10);
+}
+
 
 function get_real_section_id($code,$parent=0){
 	$iblock=7;
@@ -49,6 +66,10 @@ foreach($arCodes as $code_dir){
 $real_element =  get_real_element_id($arResult['VARIABLES']['ELEMENT_CODE'],$real_section);
 $arResult["VARIABLES"]["SECTION_ID"] = $real_section;
 $arResult["VARIABLES"]["ELEMENT_ID"] = $real_element;
+
+
+$peopleOnline = getPeopleOnline($DB, $real_element);
+
 ?>
 
 
@@ -169,6 +190,7 @@ $arResult["VARIABLES"]["ELEMENT_ID"] = $real_element;
 
 		"GIFTS_MAIN_PRODUCT_DETAIL_PAGE_ELEMENT_COUNT" => $arParams['GIFTS_MAIN_PRODUCT_DETAIL_PAGE_ELEMENT_COUNT'],
 		"GIFTS_MAIN_PRODUCT_DETAIL_BLOCK_TITLE" => $arParams['GIFTS_MAIN_PRODUCT_DETAIL_BLOCK_TITLE'],
+		"PEOPLE_ONLINE" => $peopleOnline
 	),
 	$component
 );?>

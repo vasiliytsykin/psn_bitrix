@@ -21,6 +21,8 @@
     left: 100%;
     margin-left: -90px;
     margin-bottom: -30px; }
+.action-detail-page .hot-action .dots.tick {
+    opacity: 0; }
 
 @media screen and (max-width: 1024px) {
     .action-detail-page .hot-action .pattern {

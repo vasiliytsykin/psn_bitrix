@@ -42,8 +42,8 @@ while($arSection = $rsSection->GetNext()) {
 				<?foreach($arSections as $arSection){
 					$active = $arSection['ID'] == 2 ? 'active': '';
 					$arFilter = array('SECTION_ID' => $arSection['ID']);?>
-					<div class="gallery__tab tab-<?=$arSection['ID']?> <?=$active?>">
-						<div class="news-list">
+					<div class="gallery__tab tab-<?=$arSection['ID']?> <?=$active?>" data-tab="<?=$arSection['ID']?>">
+						<div class="news-list result-items">
 							<?$APPLICATION->IncludeComponent(
 								"bitrix:news.list",
 								"",

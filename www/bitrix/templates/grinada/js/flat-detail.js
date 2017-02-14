@@ -15,28 +15,55 @@ $(function () {
         return this.substr(0, index) + string + this.substr(index);
     };
 
+    function getChar(event) {
+        if (event.which == null) { // IE
+            if (event.keyCode < 32) return null; // спец. символ
+            return String.fromCharCode(event.keyCode)
+        }
 
-    (function formatInput() {
+        if (event.which != 0 && event.charCode != 0) { // все кроме IE
+            if (event.which < 32) return null; // спец. символ
+            return String.fromCharCode(event.which); // остальные
+        }
 
-        $textInputs.on('blur', function () {
+        return null; // спец. символ
+    }
 
-            var $input = $(this),
-                inputVal = $input.val(),
-                inputValStr = inputVal.toString().replace(/ /g, ''),
-                inputLen = inputValStr.length,
-                chunks = Math.floor(inputLen / 3),
-                chunksCorrected = inputLen % 3 == 0 ? chunks -1 : chunks;
+    function formatMoneyAmount(inputVal) {
 
-            console.log(inputVal);
-            console.log(inputValStr);
+        var inputValStr = inputVal.toString().replace(/ /g, ''),
+            inputLen = inputValStr.length,
+            chunks = Math.floor(inputLen / 3),
+            chunksCorrected = inputLen % 3 == 0 ? chunks -1 : chunks;
+        for(var i = 1; i <= chunksCorrected; i++){
+            inputValStr = inputValStr.insertAt(inputLen - i*3, ' ');
+        }
 
-            for(var i = 1; i <= chunksCorrected; i++){
-                inputValStr = inputValStr.insertAt(inputLen - i*3, ' ');
-            }
-            $input.val(inputValStr);
-            console.log(inputValStr);
+        return inputValStr;
+
+    }
+
+    $textInputs.on('blur', function () {
+
+        var $input = $(this),
+            inputVal = $input.val(),
+            inputValStr = formatMoneyAmount(inputVal);
+        $input.val(inputValStr);
+        })
+        .on('keypress', function (event) {
+
+            var keyChar = getChar(event);
+            if(keyChar == null || isNaN(parseInt(keyChar)))
+                return false;
+
+        }).on('change keyup', function () {
+
+        var $input = $(this),
+            inputVal = $input.val();
+
+        if(!inputVal.match(/[0-9 ]+/))
+            $input.val('');
         });
-    }());
 
 
     function gatherData($form) {
@@ -82,7 +109,7 @@ $(function () {
     $inputs.on('change keyup blur', function () {
 
         var $form = $(this).closest('.mortgage-calc');
-        $result.html(calculate($form));
+        $result.html(formatMoneyAmount(calculate($form)));
 
     });
 

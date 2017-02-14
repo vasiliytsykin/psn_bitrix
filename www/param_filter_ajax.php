@@ -10,9 +10,7 @@ foreach ($flatFilter as $key => $value) {
     $newKey = '';
     $newValue = $value;
     if(strpos($key, 'Furnish') !== false ){
-        if($value == 'Y')
-            $newKey = '!'.$newKey;
-        $newValue = false;
+        $newValue = $value == 'Y' ? 'С отделкой' : 'Без отделки';
     }
     else if ($key != 'BuildingNumber' && $key != 'TypeForSite') {
         $newValue = explode('-', $value);

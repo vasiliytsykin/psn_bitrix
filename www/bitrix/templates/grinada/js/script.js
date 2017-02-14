@@ -116,9 +116,7 @@ $(function () {
         return false;
 
     });
-
-
-
+    
     $('.actions-modal__content').slick({
 
         slidesToShow: 4,
@@ -136,6 +134,7 @@ $(function () {
         $(this).closest('.actions-modal').addClass('open');
 
     });
+    
     $('.actions-modal__controls .btn-close').on('click', function () {
 
         $(this).closest('.actions-modal').removeClass('open');
@@ -151,8 +150,7 @@ $(function () {
     }).resize();
 
     scrollTop($('.scroll-top a'), 0);
-
-
+    
     $('.gallery__switch .switch__tab').on('click', function () {
 
         var tabActive = $(this).data('tab'),
@@ -172,8 +170,7 @@ $(function () {
         mainClass: 'policy-popup'
 
     });
-
-
+    
     (function () {
 
         var lastScrollTop = 0,
@@ -782,16 +779,18 @@ $(function () {
     /*------END FEEDBACK MODAL-------------*/
 
 
-    /*------------PARAM FILTER----------*/
-    
+
+    /*-------------AJAX-----------------*/
+
+
     (function () {
-        
+
         var $filter = $('.filter'),
-            $filterResult = $filter.find('.result-items'),
+            $resultContainer = $('.result-items'),
             $checkboxes = $filter.find('input[type="checkbox"]'),
             $sliders = $filter.find('.range-slider'),
             ajaxUrl = $('.ajax-url').val(),
-            data = {};
+            data = gatherData();
 
         String.prototype.toCamelCase = function () {
 
@@ -803,78 +802,58 @@ $(function () {
 
         };
 
-        var $typeForSite = $('#type-for-site');
-        
-        if($typeForSite.length){
-            data['type-for-site'] = $typeForSite.val();
-            sendData(data, ajaxUrl, false);
+        function gatherData() {
+
+            return $.extend({}, gatherCheckboxData(), gatherSliderData());
         }
-        else
-            sendData(data, ajaxUrl);
 
-        $checkboxes.on('change', function () {
+        function gatherCheckboxData() {
 
-            var furnish = {};
-                furnish.count = 0;
-            
+            var data = {},
+                furnish = {};
+            furnish.count = 0;
+
             $checkboxes.each(function (index, input) {
 
                 var $input = $(input),
                     inputId = $input.attr('id');
-                
+
                 if($input.prop('checked')){
-                    
+
                     if(inputId.indexOf('furnish') != -1)
                     {
                         furnish[inputId] = true;
                         furnish.count++;
                     }
-                    
+
                     else if(!$input.hasClass('check-all'))
                         data[inputId] =  true;
                 }
-                else
-                    delete data[inputId];
 
             });
-            
+
             if(furnish.count == 1 && furnish['apartment-furnish'])
                 data['apartment-furnish'] = 'Y';
             else if(furnish.count == 1 && furnish['no-apartment-furnish'])
                 data['apartment-furnish'] = 'N';
-            else delete data['apartment-furnish'];
 
-            sendData(data, ajaxUrl, false);
+            return data;
+        }
 
-        });
+        function gatherSliderData() {
 
-        $sliders.each(function (index, slider) {
+            var data = {};
 
-            var $slider = $(slider),
-                id = $slider.attr('id'),
-                sliderInstance = $slider.data("ionRangeSlider");
+            $sliders.each(function (index, slider) {
 
-            sliderInstance.update({
-
-                onFinish: function () {
-
-                    data[id] = $slider.val();
-                    sendData(data, ajaxUrl, false);
-
-                }
+                var $slider = $(slider),
+                    id = $slider.attr('id');
+                data[id] = $slider.val();
 
             });
 
-        });
-
-        $('.reset-filter').on('click', function () {
-
-            data = {};
-            sendData(data, ajaxUrl);
-
-            return false;
-
-        });
+            return data;
+        }
 
         function formatData(data) {
 
@@ -900,87 +879,203 @@ $(function () {
 
         }
 
-        function sendData(data, url, loadMore) {
+        function sendRequest(url, data, callback, container) {
+
+            console.log(data);
 
             var dataToSend = {};
-                dataToSend['filter'] = formatData(data);
-
-            console.log(dataToSend);
-
+            dataToSend['filter'] = data;
+            
             $.ajax({
                 url: url,
                 data: dataToSend,
                 type: "POST",
-                success: function(data){
+                success: function(response){
 
-                    if(loadMore)
-                        $('.show-more').remove();
-                    else
-                        $filterResult.empty();
-
-                    $filterResult.append(data);
+                    callback(response, container);
                 }
             });
-
         }
 
-        function showMore(pageNumber, pagination, showItems) {
+        function loadMore(pageNumber, pagination, container) {
 
             var url = ajaxUrl + '?PAGEN_' + pagination + '=' + pageNumber;
+            sendRequest(url, formatData(data), appendResult, container);
+        }
 
-            if(showItems == 'actions')
+        function refresh(data, container) {
+            container.empty();
+            container.append(data);
+        }
+
+        function appendResult(data, container) {
+            container.find('.show-more').remove();
+            container.append(data);
+        }
+
+        function sendRequestOnChange() {
+            data = formatData(gatherData());
+            sendRequest(ajaxUrl, data, refresh, $resultContainer);
+        }
+
+        function handleShowMoreBtn() {
+
+            var $this = $(this),
+                $tab = $this.closest('.gallery__tab'),
+                $container = $this.closest('.result-items'),
+                pageNumber = $this.data('current') + 1,
+                pagination = $this.data('pagination');
+
+            if($tab.length)
             {
-                showMoreItems(url, 'action-list');
-                return;
-            }
-            if(showItems == 'news')
-            {
-                showMoreItems(url, 'news-list');
-                return;
+                data.section = $tab.data('tab');
+                data.page = pageNumber;
             }
 
-            sendData(data, url, true);
+            loadMore(pageNumber, pagination, $container);
+
+            return false;
 
         }
 
-        function showMoreItems(url, itemsContiner) {
+        $checkboxes.on('change', function () {
 
-            $.ajax({
-                url: url,
-                type: "POST",
-                success: function(data){
+            sendRequestOnChange();
 
-                    $('.show-more').remove();
-                    $('.' + itemsContiner).append(data);
+        });
+
+        $sliders.each(function (index, slider) {
+
+            var $slider = $(slider),
+                sliderInstance = $slider.data("ionRangeSlider");
+
+            sliderInstance.update({
+
+                onFinish: function () {
+                    sendRequestOnChange();
                 }
-            });
-
-        }
-
-        $(document).ajaxComplete(function () {
-
-            $('.show-more a').on('click', function () {
-
-                var $this = $(this),
-                    pageNumber = $this.data('current') + 1,
-                    pagination = $this.data('pagination'),
-                    showItems = $this.data('items');
-
-                showMore(pageNumber, pagination, showItems);
-
-                return false;
 
             });
 
         });
 
+        $('.reset-filter').on('click', function () {
+            sendRequest(ajaxUrl, {}, refresh, $resultContainer);
+            return false;
+        });
 
+        $('.show-more a').on('click', handleShowMoreBtn);
 
-        
+        $(document).ajaxComplete(function () {
+            var $showMoreBtn = $('.show-more a');
+            $showMoreBtn.off('click', handleShowMoreBtn);
+            $showMoreBtn.on('click', handleShowMoreBtn);
+
+        });
+
+        if($filter.length)
+        {
+            var $typeForSite = $('#type-for-site');
+            if($typeForSite.length)
+                data['type-for-site'] = $typeForSite.val();
+
+            sendRequest(ajaxUrl, formatData(data), refresh, $resultContainer);
+        }
+
     }());
-    
-    /*--------END PARAM FILTER----------*/
 
+    /*-------------END AJAX--------------*/
+    
+    /*---------HOT ACTION TIMER----------*/
+
+    function getTimeLeft(deadLine) {
+
+        var deadLineInMilliseconds = deadLine.getTime();
+
+        var dayInMilliseconds = 24 * 3600 * 1000;
+        var currentTime = new Date().getTime();
+
+        var timeInterval = deadLineInMilliseconds - currentTime;
+        var daysCount = Math.floor(timeInterval / dayInMilliseconds);
+        var hoursCount = Math.floor(timeInterval / (3600 * 1000));
+        var minsCount = Math.floor(timeInterval / (60 * 1000));
+        var hoursLeft = hoursCount - daysCount * 24;
+        var minsLeft = minsCount - hoursCount * 60;
+
+        var result = {
+            days: daysCount,
+            hours: hoursLeft,
+            minutes: minsLeft
+        };
+        
+        return result;
+    }
+
+    function parseDate(dateInput) {
+
+        var arDateHour = dateInput.split(' '),
+            arDat = arDateHour[0].split('.'),
+            arHourMin = arDateHour[1].split(':');
+
+        return new Date(arDat[2], arDat[1] - 1, arDat[0], arHourMin[0], arHourMin[1]);
+    }
+
+    function printTimer(timeLeft) {
+
+        function printTimerSection(container, childName, value) {
+
+            var $digits = container.find('.' + childName),
+                oldValue = $digits.html();
+
+            if(oldValue == '' || oldValue != value)
+            {
+                value = value < 10 ? '0' + value : value;
+                $digits.trigger('digitChanged', [value]);
+            }
+        }
+
+
+        for(var prop in timeLeft){
+            if(!timeLeft.hasOwnProperty(prop)) continue;
+            var containerName = $('#' + prop);
+            printTimerSection(containerName, 'timer-section__digits', timeLeft[prop]);
+        }
+
+
+
+    }
+
+    function engageTimer(deadline) {
+        var timeLeft = getTimeLeft(deadline);
+        printTimer(timeLeft);
+    }
+    
+    var $deadline = $('#action-end-time');
+    
+    if($deadline.length)
+    {
+        var deadlineStr = $deadline.val();
+        var deadline = parseDate(deadlineStr);
+        var timerDigit = $('.timer-section__digits');
+        timerDigit.on('digitChanged', function (event, val) {
+            var el = $(this);
+            el.html(val);
+        });
+        setInterval(function () {
+            var colon = $('.dots');
+            colon.addClass('tick');
+            setTimeout(function () {
+                colon.removeClass('tick');
+            }, 500);
+        }, 1000);
+        engageTimer(deadline);
+        setInterval(function () {
+            engageTimer(deadline);
+        }, 500 * 60);
+    }
+    
+    /*-----END HOT ACTION TIMER----------*/
+    
 });
 
 

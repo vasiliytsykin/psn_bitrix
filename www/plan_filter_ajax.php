@@ -45,19 +45,13 @@ FROM (
 	foreach($params as $code => $val){
 		$sVal = '';
 		$arVal=array();
-		if($code=='Rooms_'){
-			$arFromTo = explode('-',$val);
-			$sVal.='('.$code.' BETWEEN '.$arFromTo[0].' AND '.$arFromTo[1].')';
-
-		}elseif($code=='BuildingNumber' || $code=='Rooms'){
+		if($code == 'BuildingNumber' || $code == 'Rooms'){
 			foreach($val as $build){
 				$arVal[]=$code.' = '.$build;
 			}
 			$sVal.='('.implode(' OR ', $arVal).')';
 		}elseif($code=='ApartmentFurnish'){
-			if(count($val)==1){
-				$sVal.='ApartmentFurnish LIKE "'.($val[0]=='Y'?'С отделкой':'Без отделки').'"';
-			}
+			$sVal.='ApartmentFurnish LIKE "'.($val == 'Y' ? 'С отделкой' : 'Без отделки').'"';
 		}
 		if($sVal!=''){
 			$arWhere[] = '('.$sVal.')';

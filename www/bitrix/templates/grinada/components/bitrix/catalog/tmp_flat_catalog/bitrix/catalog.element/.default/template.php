@@ -12,6 +12,41 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+function getDeclension($value){
+
+    $peopleEndings = array('', 'а');
+    $watchEndings = array('ит', 'ят');
+
+    if($value%100>4 && $value%100<20 || $value%10 > 4 || $value%10 == 0 || $value%10 == 1)
+        return array($peopleEndings[0], $watchEndings[0]);
+    else return array($peopleEndings[1], $watchEndings[1]);
+
+
+}
+
+function getIcons($arResult){
+
+    $arSelect = array('ID', 'IBLOCK_ID', 'IBLOCK_SECTION_ID', 'DETAIL_PICTURE', 'UF_ICON');
+    $arFilter = array('IBLOCK_ID' => $arResult['IBLOCK_ID'],'ID' => $arResult['SECTION']['IBLOCK_SECTION_ID']);
+    $icons = array();
+    $section = array();
+    $rsSection = CIBlockSection::GetList(array(), $arFilter, false, $arSelect);
+    if($result = $rsSection->GetNext())
+        $section = $result;
+
+
+    $house = array();
+    $arFilter['ID'] = $section['IBLOCK_SECTION_ID'];
+    $rsHouse = CIBlockSection::GetList(array(), $arFilter, false, $arSelect);
+    if($result = $rsHouse->GetNext())
+        $house = $result;
+
+    $icons['section_icon'] = CFile::GetPath($section['UF_ICON']);
+    $icons['house_icon'] = CFile::GetPath($house['UF_ICON']);
+
+    return $icons;
+
+}
 
 $properties = $arResult['DISPLAY_PROPERTIES'];
 $roomCount = $properties['Rooms']['VALUE'];
@@ -24,7 +59,8 @@ $square = $properties['SpaceDesign']['VALUE'];
 $furnish = $properties['ApartmentFurnish']['VALUE'];
 $statusCode = $properties['StatusCode']['VALUE'];
 $typeForSite = $properties['TypeForSite']['VALUE'];
-
+$peopleOnline = $arParams["PEOPLE_ONLINE"];
+$ending = getDeclension($peopleOnline);
 
 $arPlan = array();
 
@@ -67,8 +103,9 @@ function getAreas($arProp){
 
 }
 
-
 $areas = getAreas($arPlan['prop']);
+
+$icons = getIcons($arResult);
 
 ?>
 
@@ -79,12 +116,12 @@ $areas = getAreas($arPlan['prop']);
             <a href="#" class="btn-back hidden-sm hidden-xs">Вернуться назад</a>
             <div class="general-plans">
                 <div class="plan" id="general-plan">
-                    <a href="/master-plan-filter.php">Генплан</a>
-                    <div class="plan__img" style="background-image: url(/img/flat/genplan-map.svg);"></div>
+                    <a href="/catalog/flats/zhk-grinada/">Генплан</a>
+                    <div class="plan__img" style="background-image: url(<?=$icons['house_icon']?>);"></div>
                 </div>
                 <div class="plan" id="floor-plan">
-                    <a href="/house-plan.php">План этажа</a>
-                    <div class="plan__img" style="background-image: url(/img/flat/floor-plan.svg);"></div>
+                    <a href="/catalog/flats/zhk-grinada/building-<?=$building?>/section-<?=$section?>/">План этажа</a>
+                    <div class="plan__img" style="background-image: url(<?=$icons['section_icon']?>);"></div>
                 </div>
                 <div class="plan" id="section-plan">
                     <a href="#section-popup" class="open-popup">План секции</a>
@@ -96,7 +133,7 @@ $areas = getAreas($arPlan['prop']);
                 </div>
             </div>
             <div class="flat-plan">
-                <div class="h5 dark-green">Предложение по возможной отделке&nbsp;квартиры:</div>
+<!--                <div class="h5 dark-green">Предложение по возможной отделке&nbsp;квартиры:</div>-->
                 <div class="plan__img" style="background-image: url(<?=CFile::GetPath($arPlan['prop']['svg']['VALUE'])?>);"></div>
             </div>
             <div class="extra-info">
@@ -108,8 +145,8 @@ $areas = getAreas($arPlan['prop']);
                 <div class="compass"></div>
                 <div class="notice box-shadow">
                     В данный момент
-                    эту&nbsp;квартиру смотрят
-                    <span>еще 4 человека</span>
+                    эту&nbsp;квартиру смотр<?=$ending[1]?>
+                    <span>еще <?=$peopleOnline?> человек<?=$ending[0]?></span>
                     <div class="btn-close"></div>
                 </div>
             </div>

@@ -1,59 +1,54 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+CModule::IncludeModule("iblock");
 
-$APPLICATION->IncludeComponent(
-    "bitrix:news.list",
-    "tmp_news_ajax",
-    Array(
-        "ACTIVE_DATE_FORMAT" => "j F Y",
-        "ADD_SECTIONS_CHAIN" => "Y",
-        "AJAX_MODE" => "N",
-        "AJAX_OPTION_ADDITIONAL" => "",
-        "AJAX_OPTION_HISTORY" => "N",
-        "AJAX_OPTION_JUMP" => "N",
-        "AJAX_OPTION_STYLE" => "Y",
-        "CACHE_FILTER" => "N",
-        "CACHE_GROUPS" => "Y",
-        "CACHE_TIME" => "36000000",
-        "CACHE_TYPE" => "A",
-        "CHECK_DATES" => "Y",
-        "DETAIL_URL" => "",
-        "DISPLAY_BOTTOM_PAGER" => "Y",
-        "DISPLAY_DATE" => "Y",
-        "DISPLAY_NAME" => "Y",
-        "DISPLAY_PICTURE" => "Y",
-        "DISPLAY_PREVIEW_TEXT" => "Y",
-        "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => array("", ""),
-        "FILTER_NAME" => "",
-        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "5",
-        "IBLOCK_TYPE" => "content",
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
-        "INCLUDE_SUBSECTIONS" => "Y",
-        "MESSAGE_404" => "",
-        "NEWS_COUNT" => "4",
-        "PAGER_BASE_LINK_ENABLE" => "N",
-        "PAGER_DESC_NUMBERING" => "N",
-        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-        "PAGER_SHOW_ALL" => "N",
-        "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => ".default",
-        "PAGER_TITLE" => "Новости",
-        "PARENT_SECTION" => "",
-        "PARENT_SECTION_CODE" => "",
-        "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => array("HEADER", ""),
-        "SET_BROWSER_TITLE" => "Y",
-        "SET_LAST_MODIFIED" => "N",
-        "SET_META_DESCRIPTION" => "Y",
-        "SET_META_KEYWORDS" => "Y",
-        "SET_STATUS_404" => "N",
-        "SET_TITLE" => "Y",
-        "SHOW_404" => "N",
-        "SORT_BY1" => "ACTIVE_FROM",
-        "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "DESC",
-        "SORT_ORDER2" => "ASC"
-    )
-);?>
+$filter = $_REQUEST['filter'];
+$parentSection = $filter['section'];
+$newsPerPage = 4;
+$totalNews = CIBlockSection::GetSectionElementsCount($parentSection, array('CNT_ACTIVE' => 'Y'));
+$totalPages = ceil($totalNews / $newsPerPage);
+$curPage = $filter['page'];
+$news = array();
+$arSelect = array(
+
+    'ID', 'IBLOCK_ID', 'ACTIVE_FROM', 'PREVIEW_PICTURE', 'DETAIL_PAGE_URL', 'PREVIEW_TEXT', 'PROPERTY_HEADER'
+
+);
+$rsNews = CIBlockElement::GetList(array('active_from' => 'DESC'), array('SECTION_ID' => $parentSection, 'ACTIVE' => 'Y'), false, array('nPageSize' => 4, 'iNumPage' => $curPage), $arSelect);
+while ($result = $rsNews->GetNext())
+    $news[] = $result;
+
+
+foreach($news as $arItem){?>
+    <?
+    $date = explode(' ', FormatDate('j F y', MakeTimeStamp($arItem["ACTIVE_FROM"])));
+    $img = $arItem['PREVIEW_PICTURE'];
+    $imgUrl = !empty($img) ? CFile::GetPath($img) : '/bitrix/templates/grinada/img/news/news_stab.jpg' ;
+    ?>
+    <a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="info-block">
+        <div class="info-block__img-over">
+            <div class="info-block__date-over">
+                <div class="info-block__date">
+                    <div class="top-line">
+                        <div class="day"><?=$date[0]?></div>
+                        <div class="month"><?=$date[1]?></div>
+                    </div>
+                    <div class="year">‘<?=$date[2]?></div>
+                </div>
+            </div>
+            <div class="info-block__img" style="background-image: url(<?=$imgUrl?>);"></div>
+        </div>
+        <div class="info-block__txt">
+            <h3><?=$arItem['PROPERTY_HEADER_VALUE']['TEXT']?></h3>
+            <p><?=$arItem['PREVIEW_TEXT']?></p>
+        </div>
+    </a>
+<?}?>
+
+<?if($curPage < $totalPages){?>
+
+    <div class="show-more">
+        <a href="#" class="btn-default btn-medium btn-green" data-current="<?=$curPage;?>" data-total="<?=$totalPages;?>">Показать еще</a>
+    </div>
+
+<?}?>
