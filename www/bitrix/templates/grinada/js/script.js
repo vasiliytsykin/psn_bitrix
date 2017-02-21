@@ -287,6 +287,7 @@ $(function () {
             xml:"/pano/tour.xml",
             target:"pano",
             html5:"prefer",
+            basepath: "/pano/",
             passQueryParameters:true
         });
     }

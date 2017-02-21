@@ -44,35 +44,45 @@ while($plan = $rsPlans->GetNext()){
 
 }
 
+$sections = array();
+$rsSections  = CIBlockSection::GetTreeList(array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ACTIVE' => 'Y', 'GLOBAL_ACTIVE' => 'Y'), array('ID', 'IBLOCK_ID', 'DEPTH_LEVEL', 'IBLOCK_SECTION_ID', 'UF_ICON', 'UF_HOUSE_TYPE'));
+while($result = $rsSections->GetNext()){
+	if($result['DEPTH_LEVEL'] > 1 && $result['DEPTH_LEVEL'] < 4)
+		$sections[$result['ID']] = array(
+
+			'id' => $result['ID'],
+			'parent' => $result['IBLOCK_SECTION_ID'],
+			'img' => CFile::GetPath($result['UF_ICON']),
+			'houseType' => $result['UF_HOUSE_TYPE']
+
+		);
+}
+
+
 $currentSectionId = $arParams['PARENT_SECTION'];
-$rsCurrentSection = CIBlockSection::GetByID($currentSectionId);
-$currentSection = array();
-if($result = $rsCurrentSection->GetNext())
-	$currentSection = $result;
-
-
-$currentHouse = array();
-$rsCurrentHouse = CIBlockSection::GetByID($currentSection['IBLOCK_SECTION_ID']);
-if($result = $rsCurrentHouse->GetNext())
-	$currentHouse = $result;
+$currentSection = $sections[$currentSectionId];
+$currentHouse = $sections[$currentSection['parent']];
 
 $sectionNav = new SectionLister();
 
-$sectionSiblings = @$sectionNav->getSiblings($currentSectionId, $currentSection['IBLOCK_SECTION_ID'], $currentSection['IBLOCK_ID']);
+$sectionSiblings = @$sectionNav->getSiblings($currentSection['id'], $currentSection['parent'], $arParams['IBLOCK_ID']);
 $sectionPrevUrl = @$sectionSiblings['prev']['SECTION_PAGE_URL'];
 $sectionNextUrl = @$sectionSiblings['next']['SECTION_PAGE_URL'];
 $currentSectionNum = $sectionSiblings['prev']['num'] + 1;
 
-$houseSiblings = @$sectionNav->getSiblings($currentHouse['ID'], $currentHouse['IBLOCK_SECTION_ID'] , $currentHouse['IBLOCK_ID']);
+$houseSiblings = @$sectionNav->getSiblings($currentHouse['id'], $currentHouse['parent'] , $arParams['IBLOCK_ID']);
 $housePrevUrl = @$houseSiblings['prev']['SECTION_PAGE_URL'];
 $houseNextUrl = @$houseSiblings['next']['SECTION_PAGE_URL'];
 $currentHouseNum = $houseSiblings['prev']['num'] + 1;
+
+
+$furnish = $arResult['ITEMS'][0]['DISPLAY_PROPERTIES']['ApartmentFurnish']['VALUE'];
 
 ?>
 
 
 <!--<pre>-->
-<!--	--><?//print_r($houseSiblings)?>
+<!--	--><?//print_r($currentSection)?>
 <!--</pre>-->
 
 
@@ -164,7 +174,7 @@ $currentHouseNum = $houseSiblings['prev']['num'] + 1;
 							</div>
 						</div>
 						<div class="nav-img-over">
-							<div class="nav-img" style="background-image: url(/img/house-plan/general_plan.svg);"></div>
+							<div class="nav-img" style="background-image: url(<?=$currentHouse['img']?>);"></div>
 						</div>
 					</div>
 					<div class="nav section-nav">
@@ -176,8 +186,10 @@ $currentHouseNum = $houseSiblings['prev']['num'] + 1;
 								<a href="<?=$sectionNextUrl?>" class="arrow arrow-next <?= $sectionNextUrl == '' ? 'disabled': '';?>"></a>
 							</div>
 						</div>
-						<div class="nav-img" style="background-image: url(/img/house-plan/floor_plan.svg);"></div>
-						<div class="h5 finish">Секция с отделкой</div>
+						<div class="nav-img" style="background-image: url(<?=$currentSection['img']?>);"></div>
+						<?if($furnish == 'С отделкой'){?>
+							<div class="h5 finish">Секция с отделкой</div>
+						<?}?>
 					</div>
 				</div>
 			</div>

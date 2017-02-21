@@ -16,8 +16,21 @@ $curPage = $arResult["NAV_RESULT"]->NavPageNomer;
 $totalPages = $arResult["NAV_RESULT"]->NavPageCount;
 $navNum = $arResult["NAV_RESULT"]->NavNum;
 
-?>
+$sections = array();
+$rsSections  = CIBlockSection::GetTreeList(array('IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ACTIVE' => 'Y', 'GLOBAL_ACTIVE' => 'Y'), array('ID', 'IBLOCK_ID', 'DEPTH_LEVEL', 'IBLOCK_SECTION_ID', 'UF_ICON', 'UF_HOUSE_TYPE'));
+while($result = $rsSections->GetNext()){
+	if($result['DEPTH_LEVEL'] > 1)
+		$sections[$result['ID']] = array(
 
+			'id' => $result['ID'],
+			'parent' => $result['IBLOCK_SECTION_ID'],
+			'img' => CFile::GetPath($result['UF_ICON']),
+			'houseType' => $result['UF_HOUSE_TYPE']
+
+		);
+}
+
+?>
 
 <?foreach($arResult["ITEMS"] as $arItem){?>
 	<?
@@ -33,6 +46,12 @@ $navNum = $arResult["NAV_RESULT"]->NavNum;
 	$floor = $properties['Floor']['VALUE'];
 	$square = $properties['SpaceDesign']['VALUE'];
 	$furnish = $properties['ApartmentFurnish']['VALUE'] != false ? 'Да' : 'Нет';
+	$arFloor = $sections[$arItem['IBLOCK_SECTION_ID']];
+	$arSection = $sections[$arFloor['parent']];
+	$sectionIcon = $arSection['img'];
+	$arHouse = $sections[$arSection['parent']];
+	$houseIcon = $arHouse['img'];
+	$houseType = $arHouse['houseType'] == 'panel' ? 'Панельный' : 'Монолитный';
 	?>
 	<a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="item">
 		<div class="h3 dark-green visible-sm visible-xs"><?=$roomCount?>-комнатная евроформат</div>
@@ -82,9 +101,9 @@ $navNum = $arResult["NAV_RESULT"]->NavNum;
 		</div>
 		<div class="tooltip box-shadow">
 			<h4>корпус <?=$building?></h4>
-			<h6>Панельный дом</h6>
-			<img src="/img/flat/floor-plan-green.svg" alt="floor-plan">
-			<img src="/img/flat/genplan-map-green.svg" alt="genplan">
+			<h6><?=$houseType?> дом</h6>
+			<img src="<?=$sectionIcon?>" alt="floor-plan">
+			<img src="<?=$houseIcon?>" alt="genplan">
 		</div>
 	</a>
 <?}?>

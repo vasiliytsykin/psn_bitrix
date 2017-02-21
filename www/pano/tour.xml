@@ -1,0 +1,181 @@
+<krpano version="1.18" title="PSN Феодосийская" onstart="startup();">
+
+	<!-- <include url="skin/vtourskin.xml" /> -->
+
+	<!-- set skin settings: bingmaps? gyro? thumbnails? tooltips? -->
+	<skin_settings maps="false"
+	               maps_type="bing"
+	               maps_bing_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               title="true"
+	               thumbs="false"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="true"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="BLEND(0.5)"
+	               controlbar_offset=""
+	               />
+
+<plugin name="gyro" devices="html5" keep="true"
+        url="plugins/gyro.js" 
+        enabled="true"
+        camroll="true"
+        friction="0.0"
+        touch_mode="full"
+        sensor_mode="1"
+        autocalibration="true"
+        onavailable=""
+        onunavailable=""
+        onenable=""
+        ondisable=""
+        />
+
+	<!-- set optional skin logo url
+	<plugin name="company" keep="true" url="img/logo.png" scale="1" align="righttop" x="50" y="50" onclick="openurl('',_blank);" />
+ 	-->
+	<plugin name="location" keep="true" url="img/location.png" scale="1" align="lefttop" x="50" y="50" onclick="openurl('./');" />
+
+	
+
+	 <plugin name="titletext" url="plugins/textfield.swf" keep="true" align="topleft" x="100" y="130" background="false" children="true" css="font-family:Arial; color:#fff; font-size: 16px;" html="" autosize="center" handcursor="false" />
+
+		<!-- maps plugin - use Google for HTML5 and Bing for Flash (the key is for Bing only) -->
+<plugin name="map" devices="html5"
+        url="plugins/googlemaps.js"
+        align="centerbottom" width="100%" height="200" x="0" y="-9"
+        keep="true"
+        maptype="normal"
+        language="ru"
+        lat="55.55984272"
+        lng="37.57780194"
+        zoom="15"
+        tilt="0"
+        heading="0"
+        controls="zoom"
+        poi="false"
+        activespotenabled="true"
+        bgcolor="0x000000" bgalpha="1"
+        mapsapi="https://maps.google.com"
+        onmapready=""
+        onmaptypechanged=""
+        onmapmoved=""
+        onmapzoomed=""
+>
+  <spotstyle name="bldg"
+  		   url=""
+           overurl=""
+           activeurl=""
+           edge="center"
+           x="0"
+           y="0"
+           scale="0.065"
+           />
+
+<spot name="M100"
+      style="bldg" url=""
+      lat="55.55984272" lng="37.57780194" heading="180"
+      active="" onover="" onhover="" onout=""
+      onclick="loadscene(scene_100m,null,MERGE,BLEND(1)); activatespot();"
+      />  
+<spot name="M60"
+      style="bldg" url=""
+      lat="55.55984272" lng="37.57780194" heading="180"
+      active="" onover="" onhover="" onout=""
+      onclick="loadscene(scene_60m,null,MERGE,BLEND(1)); activatespot();"
+      />
+
+  
+  <radar visible="true"
+       dragable="true"
+       size="150"
+       zoomwithmap="false"
+       headingoffset="0"
+       alpha="0.25"
+       fillcolor="0xff0202"
+       fillalpha="1.0"
+       linewidth="0.0"
+       linecolor="0xFFFFFF"
+       linealpha="0.0"
+       glow="true"
+       glowcolor="0xff0202"
+       glowwidth="4"
+       glowstrength="4"
+       />
+</plugin>
+
+<plugin name="control-move" keep="true" url="img/control_move.png" scale=".25" align="rightbottom" x="200" y="125" onclick="togglefix();" />
+<plugin name="control-help" keep="true" url="img/control_zoom.png" scale=".25" align="rightbottom" x="100" y="125" handcursor="false" />
+
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+		fix();
+	</action>
+
+
+	<action name="togglefix">
+		if (view.vlookatmax !== 35, fix(), nofix());
+	</action>
+
+	<action name="fix">
+			set(view.vlookatmin, -35);
+			set(view.vlookatmax, 35);
+			set(view.limitview, range);
+			set(plugin[control-move].url, /pano/img/control_move_fix.png);
+	</action>
+	<action name="nofix">
+			set(view.limitview, auto);
+			set(plugin[control-move].url, /pano/img/control_move.png);
+	</action>
+
+
+	<scene name="scene_100m" title="" onstart="set(plugin[titletext].html, get(scene[get(xml.scene)].title)); fix();" thumburl="panos/PSN_feo_pano_100m.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="160" vlookat="15" fovtype="MFOV" fov="110" maxpixelzoom="1.4" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PSN_feo_pano_100m.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/PSN_feo_pano_100m.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/PSN_feo_pano_100m.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<plugin name="M60" keep="false" url="img/60m.png" crop="85|0|85|40" onovercrop="170|0|85|40" align="centertop" y="75" x="-50" onclick="loadscene(scene_60m,null,MERGE,BLEND(1));"/>
+		<plugin name="M100" keep="false" url="img/100m.png" crop="170|0|85|40" align="centertop" y="75" x="50" onclick="loadscene(scene_100m,null,MERGE,BLEND(1));"/>
+
+	</scene>
+
+
+	<scene name="scene_60m" title="" onstart="set(plugin[titletext].html, get(scene[get(xml.scene)].title)); fix();" thumburl="panos/PSN_feo_pano_60m.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="160" vlookat="15" fovtype="MFOV" fov="110" maxpixelzoom="1.4" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PSN_feo_pano_60m.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/PSN_feo_pano_60m.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/PSN_feo_pano_60m.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<plugin name="M60" keep="false" url="img/60m.png" crop="170|0|85|40" align="centertop" y="75" x="-50" onclick="loadscene(scene_60m,null,MERGE,BLEND(1));"/>
+		<plugin name="M100" keep="false" url="img/100m.png" crop="85|0|85|40" onovercrop="170|0|85|40" align="centertop" y="75" x="50" onclick="loadscene(scene_100m,null,MERGE,BLEND(1));"/>
+
+	</scene>
+
+
+</krpano>

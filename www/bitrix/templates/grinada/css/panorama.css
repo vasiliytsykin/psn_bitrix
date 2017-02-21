@@ -1,7 +1,8 @@
 /*----------PANORAMA-----------*/
 .panorama-page {
     padding-top: 30px;
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
 .panorama-page .circle {
     left: 0;
     top: 30%;
