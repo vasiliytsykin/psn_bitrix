@@ -92,7 +92,7 @@ foreach ($rangeProperties as $name => $props){
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="floor" class="range-slider" data-from="<?=$rangeProperties['Floor']['min']?>" data-to="<?=$rangeProperties['Floor']['max']?>" data-step="1"/>
+								<input type="text" id="floor" class="range-slider" <?if($_GET['Floor']){?>value="<?=$_GET['Floor']?>"<?}?> data-min="<?=$rangeProperties['Floor']['min']?>" data-max="<?=$rangeProperties['Floor']['max']?>" data-step="1"/>
 							</div>
 							<div class="input-group">
 								<div class="input-group__name">комнат</div>
@@ -100,7 +100,7 @@ foreach ($rangeProperties as $name => $props){
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="rooms" class="range-slider" data-from="<?=$rangeProperties['Rooms']['min']?>" data-to="<?=$rangeProperties['Rooms']['max']?>" data-step="1"/>
+								<input type="text" id="rooms" class="range-slider" <?if($_GET['Rooms']){?>value="<?=$_GET['Rooms']?>"<?}?> data-min="<?=$rangeProperties['Rooms']['min']?>" data-max="<?=$rangeProperties['Rooms']['max']?>" data-step="1"/>
 							</div>
 						</div>
 						<div class="input-group">
@@ -110,7 +110,7 @@ foreach ($rangeProperties as $name => $props){
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="space-design" class="range-slider" data-from="<?=$rangeProperties['SpaceDesign']['min']?>" data-to="<?=$rangeProperties['SpaceDesign']['max']?>" data-step="1"/>
+								<input type="text" id="space-design" class="range-slider" <?if($_GET['SpaceDesign']){?>value="<?=$_GET['SpaceDesign']?>"<?}?> data-min="<?=$rangeProperties['SpaceDesign']['min']?>" data-max="<?=$rangeProperties['SpaceDesign']['max']?>" data-step="1"/>
 							</div>
 							<div class="input-group">
 								<div class="input-group__name">Цена, <span>млн</span></div>
@@ -118,7 +118,7 @@ foreach ($rangeProperties as $name => $props){
 									<div class="caption min"></div>
 									<div class="caption max"></div>
 								</div>
-								<input type="text" id="price" class="range-slider" data-from="<?=$rangeProperties['Price']['min']?>" data-to="<?=$rangeProperties['Price']['max']?>" data-step="0.1"/>
+								<input type="text" id="price" class="range-slider" <?if($_GET['Price']){?>value="<?=$_GET['Price']?>"<?}?> data-min="<?=$rangeProperties['Price']['min']?>" data-max="<?=$rangeProperties['Price']['max']?>" data-step="0.1"/>
 							</div>
 						</div>
 						<div class="input-group finish">

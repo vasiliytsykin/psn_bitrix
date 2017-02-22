@@ -75,7 +75,16 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/docs.css');
                 );?>
             </div>
         </div>
-        <div class="scroll-top "><a href="#">вернуться наверх</a></div>
+        <div class="wrapper-inner">
+            <div class="contacts">
+                <h3>По любым вопросам звоните нам,<br class="hidden-xs">
+                    мы расскажем обо всём, что&nbsp;вас&nbsp;интересует
+                </h3>
+                <div class="phone">+7 495  800 41 48</div>
+                <a href="#" class="btn-default btn-medium btn-green feedback-open call">Заказать звонок</a>
+            </div>
+            <div class="scroll-top "><a href="#">вернуться наверх</a></div>
+        </div>
     </div>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

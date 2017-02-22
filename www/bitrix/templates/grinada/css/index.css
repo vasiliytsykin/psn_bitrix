@@ -18,7 +18,7 @@
 .main-page .main-slider .video.play .btn-stop, .main-page .main-slider .video.play .btn-mute {
     display: block; }
 .main-page .main-slider .video.muted .btn-mute {
-    background-image: url(/bitrix/templates/grinada/img/video_unmute.svg); }
+    background-image: url(/bitrix/templates/grinada/img/video_mute.svg); }
 .main-page .main-slider .video-wrapper {
     display: none;
     position: absolute;
@@ -60,7 +60,7 @@
     top: 10px;
     right: 35px; }
 .main-page .main-slider .video .btn-mute {
-    background-image: url(/bitrix/templates/grinada/img/video_mute.svg);
+    background-image: url(/bitrix/templates/grinada/img/video_unmute.svg);
     width: 50px;
     height: 50px;
     background-size: contain;
@@ -131,7 +131,8 @@
     text-align: center;
     background: none;
     height: auto;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    visibility: hidden; }
 .main-page .sign-in a {
     border-bottom: 1px dashed #00acc8;
     padding-bottom: 3px; }

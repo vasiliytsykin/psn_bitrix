@@ -103,15 +103,15 @@ while($arSection = $rsSection->GetNext()) {
 			</div>
 		</div>
 	</div>
-	<div class="sign-in">
-		<h3>Подпишитесь на нашу рассылку, чтобы&nbsp;быть&nbsp;в&nbsp;курсе последних новостей и акций</h3>
-		<form action="#" class="sign-in__form">
-			<input type="email" name="e-mail" placeholder="E-mail">
-			<input type="checkbox" id="agreement">
-			<label for="agreement">Я согласен на <span class="terms">условия по получению email-рассылки</span></label>
-			<input type="submit" value="Подписаться на рассылку" class="btn-default btn-medium btn-green">
-		</form>
-	</div>
+<!--	<div class="sign-in">-->
+<!--		<h3>Подпишитесь на нашу рассылку, чтобы&nbsp;быть&nbsp;в&nbsp;курсе последних новостей и акций</h3>-->
+<!--		<form action="#" class="sign-in__form">-->
+<!--			<input type="email" name="e-mail" placeholder="E-mail">-->
+<!--			<input type="checkbox" id="agreement">-->
+<!--			<label for="agreement">Я согласен на <span class="terms">условия по получению email-рассылки</span></label>-->
+<!--			<input type="submit" value="Подписаться на рассылку" class="btn-default btn-medium btn-green">-->
+<!--		</form>-->
+<!--	</div>-->
 	<div class="scroll-top "><a href="#">вернуться наверх</a></div>
 </div>
 

@@ -1,13 +1,24 @@
 function engageRangeSlider(element) {
 
-    var min = element.data('from'),
-        max = element.data('to'),
-        step = element.data('step');
+    var min = element.data('min'),
+        max = element.data('max'),
+        from = min,
+        to = max,
+        step = element.data('step'),
+        arValue = element.val() ? element.val().split('-') : [];
+
+    if(arValue.length > 1){
+        from = arValue[0];
+        to = arValue[1];
+    }
+
 
     element.ionRangeSlider({
         type: 'double',
         min: min,
         max: max,
+        from: from,
+        to: to,
         step: step,
         hide_min_max: true,
         hide_from_to: true,

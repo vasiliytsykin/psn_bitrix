@@ -941,9 +941,8 @@ p {
 .header__logo {
     width: 139px;
     min-width: 139px;
-    height: 40px;
-    background: url(/bitrix/templates/grinada/img/logo.svg) no-repeat center;
-    margin-top: -10px; }
+    height: 50px;
+    background: url(/bitrix/templates/grinada/img/logo.svg) no-repeat center; }
 
 .burger-btn span, .burger-btn::before, .burger-btn::after {
     height: 3px;

@@ -31,8 +31,8 @@ foreach($arResult["ITEMS"] as $arItem){?>
 
 			$firstIMG = $arItem["PREVIEW_PICTURE"]["SRC"];
 			?>
-			<div class="video">
-				<div class="video-wrapper"><video src="/video/video-main.mp4" id="video-main"></video></div>
+			<div class="video muted">
+				<div class="video-wrapper"><video src="/video/video-main.mp4" id="video-main" muted></video></div>
 				<div class="btn-video"><div class="btn-video-icon"></div><div class="btn-video-title">Посмотреть видео</div></div>
 				<div class="btn-stop"></div>
 				<div class="btn-mute"></div>

@@ -41,13 +41,15 @@
     left: 0;
     margin-left: -300px; }
 .docs-page .pattern-2 {
-    bottom: 10%;
+    bottom: 345px;
     left: 50%;
     -webkit-transform: translate(-50%);
     transform: translate(-50%); }
 .docs-page .carrot {
     top: 25%;
     left: 32%; }
+.docs-page .contacts{
+    padding-bottom: 90px; }
 
 @media screen and (max-width: 768px) {
     .docs-page .docs-list {
@@ -84,8 +86,6 @@
         box-shadow: none; }
     .docs-page .big-figure {
         display: none; }
-    .docs-page .pattern-2 {
-        bottom: 4%; }
     .docs-page .docs-page__content {
         padding-bottom: 230px; } }
 

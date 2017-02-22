@@ -19,7 +19,7 @@ $this->setFrameMode(true);
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 	?>
-
+    
     <? if(isset($arItem["DISPLAY_PROPERTIES"]['DOC'])){
 
         $docProps = $arItem["DISPLAY_PROPERTIES"]['DOC'];
@@ -33,8 +33,7 @@ $this->setFrameMode(true);
             <?if($arParams["DISPLAY_NAME"]!="N" && $arItem["NAME"]){?>
                 <div class="h4"><?echo $arItem["NAME"]?></div><?}?>
             <div class="doc__size light-green">
-                <?=strtoupper($docExt)?>,
-                <?=$docSizeMB?>мб
+                <?=strtoupper($docExt)?>, <?=$docSizeMB?>мб, <?=FormatDate('d.m.y',MakeTimeStamp($arItem['ACTIVE_FROM']))?>
             </div>
         </a>
 

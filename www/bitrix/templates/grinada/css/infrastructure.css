@@ -80,15 +80,15 @@
 .infra-page .infra-group__title a {
     font-size: 25px;
     font-weight: 600; }
-.infra-page .infra-group.education .infra-group__title a {
+.infra-page .infra-group.education .infra-group__title a, .infra-page .infra-group.education .infra-list__item:hover {
     color: #00acc8; }
-.infra-page .infra-group.health .infra-group__title a {
+.infra-page .infra-group.health .infra-group__title a, .infra-page .infra-group.health .infra-list__item:hover {
     color: #f03c18; }
-.infra-page .infra-group.sport .infra-group__title a {
+.infra-page .infra-group.sport .infra-group__title a, .infra-page .infra-group.sport .infra-list__item:hover {
     color: #ffd100; }
-.infra-page .infra-group.shop .infra-group__title a {
+.infra-page .infra-group.shop .infra-group__title a, .infra-page .infra-group.shop .infra-list__item:hover {
     color: #f38b00; }
-.infra-page .infra-group.park .infra-group__title a {
+.infra-page .infra-group.park .infra-group__title a, .infra-page .infra-group.park .infra-list__item:hover {
     color: #95d600; }
 .infra-page .infra-group.active .infra-subsection-title a {
     color: #000; }

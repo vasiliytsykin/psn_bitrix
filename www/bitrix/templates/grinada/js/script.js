@@ -27,8 +27,11 @@ function scrollTop(element, pos){
 
 function playMainVideo() {
 
-    var video =  document.getElementById("video-main");
-    var $videoContainer = $(video).closest('.video');
+    var video =  document.getElementById("video-main"),
+        $videoContainer = $(video).closest('.video'),
+        $slider = $(video).closest('.big-slider'),
+        $dots = $slider.find('.owl-dots'),
+        hidden = 'hidden';
 
     $('.btn-video').click(function(){
         video.play();
@@ -42,9 +45,11 @@ function playMainVideo() {
         .on('pause', function (){
             $videoContainer.removeClass('play');
             video.currentTime = 0;
+            $dots.removeClass(hidden);
     })
         .on('play',function(){
             $videoContainer.addClass('play');
+            $dots.addClass(hidden);
     });
 
     $('.btn-mute').click(function(){
@@ -654,11 +659,14 @@ $(function () {
             $feedTabs = $feedModal.find('.tab'),
             $feedSwitch = $feedModal.find('.switch'),
             $feedSwitchTab = $feedModal.find('.switch__tab'),
+            $phoneInput = $feedModal.find('input[name="phone"]'),
             active = 'active',
             hidden = 'hidden',
             email = 'email',
             call = 'call',
             layout = 'layout';
+
+        $phoneInput.inputmask("+7(999)-999-99-99");
 
         $feedSwitchTab.on('click', function () {
 
@@ -703,7 +711,7 @@ $(function () {
 
         (function setupCalendar() {
 
-            var calLalel = document.getElementById("feedback-call__label"),
+            var calLabel = document.getElementById("feedback-call__label"),
                 open = 'open',
                 $calendar = $('.calendar'),
                 $calLabel = $calendar.find('label'),
@@ -728,7 +736,7 @@ $(function () {
                 monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
             };
 
-            pickmeup(calLalel, {
+            pickmeup(calLabel, {
 
                 hide_on_select: true,
                 class_name: 'popup-datepicker',
@@ -736,7 +744,7 @@ $(function () {
 
             });
 
-            calLalel.addEventListener('pickmeup-change', function (e) {
+            calLabel.addEventListener('pickmeup-change', function (e) {
 
                 var formatedDate = e.detail.formatted_date;
 
@@ -755,7 +763,7 @@ $(function () {
 
             });
 
-            calLalel.addEventListener('pickmeup-hide', function (e) {
+            calLabel.addEventListener('pickmeup-hide', function (e) {
 
                 $calendar.removeClass(open);
 
@@ -766,7 +774,7 @@ $(function () {
                 $calendar.toggleClass(open);
 
                 if(!$calendar.hasClass(open))
-                    pickmeup(calLalel).hide();
+                    pickmeup(calLabel).hide();
 
             });
 
@@ -848,8 +856,9 @@ $(function () {
             $sliders.each(function (index, slider) {
 
                 var $slider = $(slider),
-                    id = $slider.attr('id');
-                data[id] = $slider.val();
+                    id = $slider.attr('id'),
+                    val = $slider.val();
+                data[id] = val;
 
             });
 
@@ -916,6 +925,10 @@ $(function () {
 
         function sendRequestOnChange() {
             data = formatData(gatherData());
+            var urlArray = createUrl(data),
+                url = '/catalog/flats/?' + urlArray.join('&');
+            history.pushState(urlArray, null, url);
+            console.log(url);
             sendRequest(ajaxUrl, data, refresh, $resultContainer);
         }
 
@@ -939,6 +952,26 @@ $(function () {
 
         }
 
+        function createUrl(data) {
+            
+            var urlArray = [];
+            
+            $.each(data, function (name, value) {
+
+                var newValue = value;
+
+                if(Array.isArray(value)){
+                    newValue = value.join(',');
+                }
+
+                urlArray.push(name + '=' + newValue);
+
+            });
+
+            return urlArray;
+            
+        }
+        
         $checkboxes.on('change', function () {
 
             sendRequestOnChange();
