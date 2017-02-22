@@ -71,7 +71,7 @@ foreach ($rangeProperties as $name => $props){
 								<ul class="inputs inputs--special mono">
 									<li class="house-type">монолитные</li>
 									<li>
-										<input type="checkbox" id="building-number-2">
+										<input type="checkbox" id="building-number-2" disabled>
 										<label for="building-number-2">2</label>
 									</li>
 									<li>

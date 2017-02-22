@@ -19,7 +19,8 @@
     margin-right: 10px;
     background-image: url(/img/plan-filter/select_yellow.svg); }
 .filter__params input[type="checkbox"]:disabled + label {
-    cursor: not-allowed; }
+    cursor: not-allowed;
+    opacity: 0.3; }
 .filter__params .input-group {
     padding-bottom: 20px; }
 .filter__params .input-group.finish label {
