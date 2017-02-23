@@ -667,6 +667,7 @@ $(function () {
             layout = 'layout';
 
         $phoneInput.inputmask("+7(999)-999-99-99");
+        engageRangeSlider($('#time'));
 
         $feedSwitchTab.on('click', function () {
 
@@ -701,7 +702,6 @@ $(function () {
                 },
                 mainClass: 'feedback-mfp'
             });
-
 
             return false;
 
@@ -799,6 +799,7 @@ $(function () {
             $checkboxes = $filter.find('input[type="checkbox"]'),
             $sliders = $filter.find('.range-slider'),
             ajaxUrl = $('.ajax-url').val(),
+            filterUrl = '/catalog/flats/',
             data = gatherData();
 
         String.prototype.toCamelCase = function () {
@@ -926,7 +927,7 @@ $(function () {
         function sendRequestOnChange() {
             data = formatData(gatherData());
             var urlArray = createUrl(data),
-                url = '/catalog/flats/?' + urlArray.join('&');
+                url = filterUrl + '?' + urlArray.join('&');
             history.pushState(urlArray, null, url);
             console.log(url);
             sendRequest(ajaxUrl, data, refresh, $resultContainer);
@@ -994,6 +995,7 @@ $(function () {
         });
 
         $('.reset-filter').on('click', function () {
+            history.pushState([], null, filterUrl);
             sendRequest(ajaxUrl, {}, refresh, $resultContainer);
             return false;
         });

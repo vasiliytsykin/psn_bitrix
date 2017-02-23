@@ -36,6 +36,9 @@ foreach ($rangeProperties as $name => $props){
 	}
 }
 
+$buildings = isset($_GET['BuildingNumber']) ? explode(',', $_GET['BuildingNumber']) : null;
+$furnish = isset($_GET['ApartmentFurnish']) ? $_GET['ApartmentFurnish'] : null;
+
 
 ?>
 
@@ -60,26 +63,26 @@ foreach ($rangeProperties as $name => $props){
 								<ul class="inputs inputs--special panel">
 									<li class="house-type">панельные</li>
 									<li>
-										<input type="checkbox" id="building-number-1">
+										<input type="checkbox" id="building-number-1" <?=(in_array(1, $buildings) ? 'checked' : '')?>>
 										<label for="building-number-1">1</label>
 									</li>
 									<li>
-										<input type="checkbox" id="building-number-3" disabled>
+										<input type="checkbox" id="building-number-3" <?=(in_array(3, $buildings) ? 'checked' : '')?> disabled>
 										<label for="building-number-3">3</label>
 									</li>
 								</ul>
 								<ul class="inputs inputs--special mono">
 									<li class="house-type">монолитные</li>
 									<li>
-										<input type="checkbox" id="building-number-2" disabled>
+										<input type="checkbox" id="building-number-2" <?=(in_array(2, $buildings) ? 'checked' : '')?> disabled>
 										<label for="building-number-2">2</label>
 									</li>
 									<li>
-										<input type="checkbox" id="building-number-4" disabled>
+										<input type="checkbox" id="building-number-4" <?=(in_array(4, $buildings) ? 'checked' : '')?> disabled>
 										<label for="building-number-4">4</label>
 									</li>
 									<li>
-										<input type="checkbox" id="building-number-5" disabled>
+										<input type="checkbox" id="building-number-5" <?=(in_array(5, $buildings) ? 'checked' : '')?> disabled>
 										<label for="building-number-5">5</label>
 									</li>
 								</ul>
@@ -125,11 +128,11 @@ foreach ($rangeProperties as $name => $props){
 							<div class="input-group__name">отделка</div>
 							<ul class="inputs">
 								<li>
-									<input type="checkbox" id="no-apartment-furnish">
+									<input type="checkbox" id="no-apartment-furnish" <?=($furnish == 'N' ? 'checked' : '')?>>
 									<label for="no-apartment-furnish">без отделки</label>
 								</li>
 								<li>
-									<input type="checkbox" id="apartment-furnish">
+									<input type="checkbox" id="apartment-furnish" <?=($furnish == 'Y' ? 'checked' : '')?>>
 									<label for="apartment-furnish">с отделкой</label>
 								</li>
 							</ul>

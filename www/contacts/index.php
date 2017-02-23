@@ -29,7 +29,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
 
             array(
                 'img' => '/img/contacts/car-1.jpg',
-                'txt' => 'Съезд на Варшавское шоссе и 33 км МКАДа в сторону области.'
+                'txt' => 'Съезд на Варшавское шоссе и 33 км МКАДа в&nbsp;сторону области.'
             ),
             array(
                 'img' => '/img/contacts/car-2.jpg',
@@ -95,21 +95,21 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
                     <div class="route-guide__controls">
                         <h2>Подробное описание<br>схемы проезда</h2>
                         <div class="switch">
-                            <div class="switch-tab btn-default btn-medium btn-dark-green active">Транспорт</div>
-                            <div class="switch-tab btn-default btn-medium btn-dark-green">Машина</div>
+<!--                            <div class="switch-tab btn-default btn-medium btn-dark-green active">Транспорт</div>-->
+                            <div class="switch-tab btn-default btn-medium btn-dark-green active">Машина</div>
                         </div>
                     </div>
-                    <div class="big-slider gallery__tab active" id="transport">
-                        <?foreach ($routeGuide['transport'] as $item){?>
+                    <!--<div class="big-slider gallery__tab active" id="transport">
+                        <?/*foreach ($routeGuide['transport'] as $item){*/?>
                             <div class="slider__item">
                                 <div class="slider__item__txt">
-                                    <?=$item['txt']?>
+                                    <?/*=$item['txt']*/?>
                                 </div>
-                                <div class="slider__item__img" style="background-image: url(/bitrix/templates/grinada<?=$item['img']?>);"></div>
+                                <div class="slider__item__img" style="background-image: url(/bitrix/templates/grinada<?/*=$item['img']*/?>);"></div>
                             </div>
-                        <?}?>
-                    </div>
-                    <div class="big-slider gallery__tab" id="car">
+                        <?/*}*/?>
+                    </div>-->
+                    <div class="big-slider gallery__tab active" id="car">
                         <?foreach ($routeGuide['car'] as $item){?>
                             <div class="slider__item">
                                 <div class="slider__item__txt">
@@ -132,7 +132,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
                         <p>
                             Чернавская Ольга, менеджер проекта
                         </p>
-                        <div class="email dark-green">chernavskaya@psn-group.ru</div>
+                        <div class="email dark-green">sales@jk-grinada.ru</div>
                     </div>
                 </div>
             </div>

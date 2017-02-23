@@ -45,7 +45,7 @@ function engageRangeSlider(element) {
 
 $(function () {
 
-    var $rangeSliders = $('.range-slider');
+    var $rangeSliders = $('.filter .range-slider');
 
     $rangeSliders.each(function (ind, el) {
 
@@ -80,8 +80,12 @@ $(function () {
 
         $rangeSliders.each(function (index, slider) {
 
-            var sliderInstance = $(slider).data("ionRangeSlider");
-            sliderInstance.reset();
+            var $slider = $(slider),
+                sliderInstance = $slider.data("ionRangeSlider");
+            sliderInstance.update({
+                from: $slider.data('min'),
+                to: $slider.data('max')
+            });
 
         });
 

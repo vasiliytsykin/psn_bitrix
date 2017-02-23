@@ -236,13 +236,13 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 				<div class="time">
 					<div class="caption-over">
 						<div class="caption">
-							 с <span class="caption__time"><span class="min"></span>.00</span>
+							 с <span class="caption__time"><span class="min">9</span>.00</span>
 						</div>
 						<div class="caption">
-							 до <span class="caption__time"><span class="max"></span>.00</span>
+							 до <span class="caption__time"><span class="max">21</span>.00</span>
 						</div>
 					</div>
- <input type="text" id="time" class="range-slider" data-from="9" data-to="21" data-step="1">
+ <input type="text" id="time" class="range-slider" data-min="9" data-max="21" data-step="1">
 				</div>
 			</div>
 		</form>
