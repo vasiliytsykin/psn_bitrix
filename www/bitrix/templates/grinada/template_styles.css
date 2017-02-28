@@ -1500,6 +1500,9 @@ p {
     background-color: transparent; }
 .feedback-modal .feedback-form input[type="text"]:focus {
     border-bottom-color: #95d600; }
+.feedback-modal .feedback-form input.invalid {
+    border-bottom-color: #f03c18!important;
+    color: #f03c18; }
 .feedback-modal .feedback-form textarea {
     resize: none;
     font-size: 18px;

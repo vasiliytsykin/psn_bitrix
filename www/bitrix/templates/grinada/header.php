@@ -39,7 +39,7 @@ foreach($asrScripts as $JS){
 		<header class="header">
 			<div class="header__top-line">
 				<div class="header__extra-links">
-					<a href="#" class="psn">PSN GROUP</a>
+					<a href="http://www.psngroup.ru" target="_blank" class="psn">PSN GROUP</a>
 					<a href="#" class="online-camera">on-line камера</a>
 				</div>
 			</div>
@@ -65,8 +65,8 @@ foreach($asrScripts as $JS){
 				</div>
 				<div class="header__contact">
 					<div class="phone dark-green">
-						<span class="code">+7 (495) </span>
-						<span class="number">800 41 48</span>
+<!--						<span class="code"> </span>-->
+						<span class="number">+7 (495) 800 41 48</span>
 					</div>
 					<a href="#" class="btn-default btn-green feedback-open call">Заказать звонок</a>
 					<a href="#" class="feedback-open email"></a>

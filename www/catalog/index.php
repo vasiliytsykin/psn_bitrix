@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("Каталог");
 
 $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/filter.css');
 $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/param-filter.css');
-LocalRedirect("/catalog/flats/");
+LocalRedirect("/catalog/flats/zhk-grinada/");
 
 ?>
 

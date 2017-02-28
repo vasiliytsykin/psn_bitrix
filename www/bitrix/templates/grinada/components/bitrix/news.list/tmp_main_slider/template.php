@@ -165,7 +165,8 @@ foreach($arResult["ITEMS"] as $arItem){?>
 					</foreignObject><foreignObject width="100%" height="100%">
 						<div class="intro-title-ov">
 							<div class="intro-title">
-								Новый<br>жилой проект в&nbsp;Северном Бутово
+								<div class="intro-logo"></div>
+<!--								Новый<br>жилой проект в&nbsp;Северном Бутово-->
 							</div>
 						</div>
 					</foreignObject><defs><clipPath id="myclipPath"><ellipse id="ellipse-img" rx="350" ry="350" cx="960" cy="483"></ellipse></clipPath></defs></svg>

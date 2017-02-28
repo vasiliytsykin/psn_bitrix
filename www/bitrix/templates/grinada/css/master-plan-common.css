@@ -84,13 +84,13 @@
     background-image: url(/bitrix/templates/grinada/img/main-plan/panorama.svg); }
 .master-plan .main-plan__map .house-marker {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     color: #fff;
     text-transform: uppercase;
     font-weight: 500;
-    padding-top: 40px;
+    padding-top: 47px;
     text-align: center;
     line-height: 1;
     transform: translate(-50%, -50%); }
@@ -98,20 +98,11 @@
     background-color: rgba(0, 172, 200, 0.8); }
 .master-plan .main-plan__map .house-marker.panel {
     background-color: rgba(149, 214, 0, 0.8); }
-.master-plan .main-plan__map .house-marker.house-1 {
-    top: 250px;
-    right: 340px; }
-.master-plan .main-plan__map .house-marker.house-2 {
-    top: 440px;
-    right: 420px; }
-.master-plan .main-plan__map .house-marker.house-3 {
-    top: 125px;
-    left: 500px; }
-.master-plan .main-plan__map .house-marker.house-4 {
-    top: 160px;
-    left: 70px; }
+.master-plan .house-marker .house-type{
+    font-weight: 400;
+    text-transform: none;
+    margin-top: 4px; }
 .master-plan .main-plan__map .house-number {
-    padding-top: 5px;
     font-size: 22px; }
 .master-plan .main-plan__map .extra-marker {
     position: absolute;
@@ -132,14 +123,14 @@
     bottom: 255px;
     left: 155px; }
 .master-plan .main-plan__map .build-line.third {
-    background-color: #95d600;
+    background-color: #00acc8;
     bottom: 355px;
     left: 20px; }
 
 .master-plan .main-plan__map .streets .extra-marker {
     font-size: 17px;
     color: #595959;
-    background-color: #fff; }
+    background-color: rgba(255,255,255, 0.75); }
 .master-plan .main-plan__map .streets .extra-marker::before {
     content: '';
     position: absolute;
@@ -271,15 +262,12 @@
     position: absolute;
     left: 0;
     top: 0; }
-.master-plan .svg-area .house {
-    opacity: 0; }
 .master-plan .svg-area .section {
     fill: transparent; }
 .master-plan .svg-area .section.mono.hover {
     fill: rgba(0, 172, 200, 0.4); }
 .master-plan .svg-area .section.panel.hover {
     fill: rgba(149, 214, 0, 0.4); }
-
 .master-plan .infra-marker {
     position: absolute;
     width: 42px;

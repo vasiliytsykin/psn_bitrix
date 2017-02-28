@@ -16,8 +16,8 @@ use Bitrix\Main\ModuleManager;
 $this->setFrameMode(true);
 
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/poly-view.js');
+$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/master_plan_common.js');
 $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/master-plan-common.css');
-//$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/poly-view.css');
 ?>
 
 
@@ -121,9 +121,9 @@ else if($curSectDepth == $depthDetail)
 			"SET_STATUS_404" => "N",
 			"SET_TITLE" => "Y",
 			"SHOW_404" => "N",
-			"SORT_BY1" => "ACTIVE_FROM",
+			"SORT_BY1" => "PROPERTY_NumberOnFloor",
 			"SORT_BY2" => "SORT",
-			"SORT_ORDER1" => "DESC",
+			"SORT_ORDER1" => "ASC",
 			"SORT_ORDER2" => "ASC"
 		)
 	);

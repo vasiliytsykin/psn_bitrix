@@ -99,6 +99,19 @@ function handleBenefits(width) {
     }
 }
 
+function getChar(event) {
+    if (event.which == null) { // IE
+        if (event.keyCode < 32) return null; // спец. символ
+        return String.fromCharCode(event.keyCode)
+    }
+
+    if (event.which != 0 && event.charCode != 0) { // все кроме IE
+        if (event.which < 32) return null; // спец. символ
+        return String.fromCharCode(event.which); // остальные
+    }
+
+    return null; // спец. символ
+}
 
 $(function () {
 
@@ -470,36 +483,77 @@ $(function () {
     
     (function () {
 
-        var $flats = $('.house-plan-page .flat'),
-            $floors = $('.floor-list__item'),
-            $flatInfo = $('.flat-info');
+        var $housePlanPage = $('.house-plan-page');
 
-        $(window).on('resize', function () {
+        if($housePlanPage.length){
 
-            var width = $(window).width();
+            var $flats = $housePlanPage.find('.flat'),
+                $floors = $housePlanPage.find('.floor-list__item'),
+                $flatInfo = $housePlanPage.find('.flat-info'),
+                $navBlock = $housePlanPage.find('.navigation-block'),
+                headerHeight = $('.header').outerHeight(),
+                menuHeight = $('.sub-menu--main').outerHeight(),
+                lastScroll = 0;
 
-            if(width > 1024)
-            {
-                $flats.on('mouseenter', function () {
+            $(window).on('resize', function () {
 
-                    var $self = $(this),
-                        floorNum = $self.closest('.floor-row').data('floor');
+                var width = $(window).width();
 
-                    $flatInfo.removeClass('show');
-                    $self.find('.flat-info').addClass('show');
+                if(width > 1024)
+                {
+                    $flats.on('mouseenter', function () {
 
-                    $floors.removeClass('hover');
-                    $('.floor-' + floorNum).addClass('hover');
+                        var $self = $(this),
+                            floorNum = $self.closest('.floor-row').data('floor');
 
-                }).on('mouseleave', function () {
-                    $floors.removeClass('hover');
-                    $flatInfo.removeClass('show');
+                        $flatInfo.removeClass('show');
+                        $self.find('.flat-info').addClass('show');
+
+                        $floors.removeClass('hover');
+                        $('.floor-' + floorNum).addClass('hover');
+
+                    }).on('mouseleave', function () {
+                        $floors.removeClass('hover');
+                        $flatInfo.removeClass('show');
+                    });
+                }
+
+            }).resize();
+
+            $(window).on('scroll resize', function () {
+
+                var scrollTop = $(window).scrollTop(),
+                    topOffset = $navBlock.offset().top,
+                    top = 0;
+
+                if(scrollTop > lastScroll)
+                    top = headerHeight;
+                else
+                    top = headerHeight + menuHeight;
+
+                var breakPoint = topOffset - top;
+                lastScroll = scrollTop;
+
+                if(scrollTop >= breakPoint){
+                    var left = $navBlock.offset().left;
+                    $flatInfo.css({
+                        position: 'fixed',
+                        top: top,
+                        left: left
+                    });
+
+                }
+                else $flatInfo.css({
+                    position: 'absolute',
+                    top: 0,
+                    left: '100%'
                 });
-            }
 
-            
+            })
 
-        }).resize();
+        }
+
+        
     }());
     
     /*--------END HOUSE PLAN------------*/
@@ -660,11 +714,58 @@ $(function () {
             $feedSwitch = $feedModal.find('.switch'),
             $feedSwitchTab = $feedModal.find('.switch__tab'),
             $phoneInput = $feedModal.find('input[name="phone"]'),
+            $nameInput = $feedModal.find('input[name="name"]'),
+            $emailInput = $feedModal.find('input[name="email"]'),
             active = 'active',
             hidden = 'hidden',
             email = 'email',
             call = 'call',
-            layout = 'layout';
+            layout = 'layout',
+            invalid = 'invalid';
+
+        function isValidName(name) {
+
+            var nameRegEx = new RegExp("^(?:[A-Za-zА-Яа-я]{2,20}\\s?){1,3}$");
+            return nameRegEx.test(name);
+
+        }
+
+        function isValidEmail(email) {
+
+            var emailRegEx = new RegExp("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$");
+            return emailRegEx.test(email);
+
+        }
+
+        function validate($input, isValid) {
+
+            var value = $input.val();
+            if(value.length > 0 && !isValid(value))
+                $input.addClass(invalid);
+            else $input.removeClass(invalid);
+
+        }
+
+        $nameInput.on('blur keyup change', function () {
+
+            var $this = $(this);
+            validate($this, isValidName);
+
+        }).on('keypress', function (event) {
+
+            var keyChar = getChar(event);
+            if(keyChar == null || !keyChar.match(/[a-zа-я ]/i))
+                return false;
+
+        });
+
+        $emailInput.on('blur keyup change', function () {
+
+            var $this = $(this);
+            validate($this, isValidEmail);
+
+        });
+
 
         $phoneInput.inputmask("+7(999)-999-99-99");
         engageRangeSlider($('#time'));
@@ -707,7 +808,14 @@ $(function () {
 
         });
 
+        $('a.submit').on('click', function () {
 
+            var $this = $(this),
+                $form = $this.closest('.form-container').find('form');
+            $form.submit();
+
+
+        });
 
         (function setupCalendar() {
 

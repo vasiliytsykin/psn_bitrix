@@ -36,11 +36,11 @@ $maxFloor = max(array_keys($arFloors));
 $minFloor = min(array_keys($arFloors));
 
 
-$rsPlans = CIBlockElement::GetList(array(), array('IBLOCK_CODE' => 'flat_plan', 'ACTIVE' => 'Y'), false, false, array('ID', 'NAME', 'CODE', 'PROPERTY_svg'));
+$rsPlans = CIBlockElement::GetList(array(), array('IBLOCK_CODE' => 'flat_plan', 'ACTIVE' => 'Y'), false, false, array('ID', 'NAME', 'CODE', 'PROPERTY_svg', 'PROPERTY_name_type'));
 $plans = array();
 while($plan = $rsPlans->GetNext()){
 
-	$plans[$plan['NAME']] = array('CODE' => $plan['CODE'], 'NAME' => $plan['NAME'], 'IMG' => CFile::GetPath($plan['PROPERTY_SVG_VALUE']));
+	$plans[$plan['PROPERTY_NAME_TYPE_VALUE']] = array('CODE' => $plan['CODE'], 'NAME' => $plan['NAME'], 'IMG' => CFile::GetPath($plan['PROPERTY_SVG_VALUE']));
 
 }
 

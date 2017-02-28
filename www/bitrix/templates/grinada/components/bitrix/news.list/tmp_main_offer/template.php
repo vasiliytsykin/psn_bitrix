@@ -23,6 +23,23 @@ while($plan = $rsPlans->GetNext()){
 
 }
 
+$arMainOffers = array();
+
+foreach ($arResult["ITEMS"] as $arItem){
+
+	$roomCount = $arItem['DISPLAY_PROPERTIES']['Rooms']['VALUE'];
+	if(isset($arMainOffers[$roomCount])){
+		$price = $arItem['DISPLAY_PROPERTIES']['Price']['VALUE'];
+		$minPrice = $arMainOffers[$roomCount]['DISPLAY_PROPERTIES']['Price']['VALUE'];
+		if($price < $minPrice)
+			$arMainOffers[$roomCount] = $arItem;
+
+	}
+	else $arMainOffers[$roomCount] = $arItem;
+
+}
+
+ksort($arMainOffers);
 
 $pictures = array(
 	'/bitrix/templates/grinada/img/main/flat-img.jpg',
@@ -33,7 +50,7 @@ $counter = 0;
 
 ?>
 
-<?foreach($arResult["ITEMS"] as $arItem){?>
+<?foreach($arMainOffers as $arItem){?>
 	<?
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
@@ -51,7 +68,7 @@ $counter = 0;
 		<div class="main-offer__graphics main-offer__plan" style="background-image: url(<?=$planUrl?>);"></div>
 		<div class="main-offer__info">
 			<div class="room-count light-green"><?=$roomCount?>-комнатная</div>
-			<div class="price">12 460 000 р.</div>
+			<div class="price"><?=$price?> <span class="ruble">a</span></div>
 			<div class="params">
 				<div class="param">
 					<div class="param__name">Этаж</div>

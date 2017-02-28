@@ -41,8 +41,7 @@
     bottom: 40px; }
 .panorama-page .panorama-over {
     position: relative;
-    margin-top: 50px;
-    height: 670px; }
+    height: 860px; }
 .panorama-page .panorama {
     height: 100%; }
 .panorama-page .developer-logo {
@@ -54,30 +53,126 @@
     top: 30px;
     right: 40px;
     z-index: 1; }
+.panorama-page .gallery{
+    margin: 50px 0 90px;
+}
+.panorama-page .gallery__switch{
+    max-width: 1110px;
+    margin: 0 auto;
+}
+.panorama-page .switch__tab{
+    width: 33.3333%;
+}
+.panorama-page .switch__tab:not(:last-child):after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 80px;
+    background: url(/bitrix/templates/grinada/img/tab_separator.svg) no-repeat center;
+    left: 100%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) rotateY(180deg);
+    transform: translate(-50%, -50%) rotateY(180deg); }
+
+.panorama-page .video {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    position: relative;}
+.panorama-page .video .btn-video, .panorama-page .video .btn-stop, .panorama-page .video .btn-mute {
+    cursor: pointer; }
+/*.panorama-page .video.play .video-wrapper {*/
+    /*display: block; }*/
+.panorama-page .video.play .btn-video {
+    display: none; }
+.panorama-page .video.play .btn-stop, .panorama-page .video.play .btn-mute {
+    display: block; }
+.panorama-page .video.muted .btn-mute {
+    background-image: url(/bitrix/templates/grinada/img/video_mute.svg); }
+.panorama-page .video-wrapper {
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*-webkit-transform: translate(-50%, -50%);*/
+    /*transform: translate(-50%, -50%);*/
+    /*width: 100%;*/
+}
+.panorama-page .video video{
+    width: 100%;
+    display: block;
+}
+.panorama-page .btn-video {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    color: #FFF;
+    width: 150px;
+    text-align: center; }
+.panorama-page .btn-video-icon {
+    width: 100px;
+    height: 100px;
+    background-image: url(/bitrix/templates/grinada/img/play.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 0 auto; }
+.panorama-page .btn-video-title {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px; }
+.panorama-page .video .btn-stop {
+    display: none;
+    background-image: url(/bitrix/templates/grinada/img/video_close.svg);
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 10px;
+    right: 35px; }
+.panorama-page .video .btn-mute {
+    background-image: url(/bitrix/templates/grinada/img/video_unmute.svg);
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: none; }
 
 @media screen and (max-width: 1024px) {
     .panorama-page .big-figure {
         display: none; }
     .panorama-page h5 {
         display: none; }
-    .panorama-page .photos__slider {
-        padding-bottom: 50px; }
+    /*.panorama-page .photos__slider {*/
+        /*padding-bottom: 50px; }*/
     .panorama-page .photos__slider .slide {
         height: 470px;
-        margin-bottom: 100px; }
-    .panorama-page .photos__slider .slide__txt {
-        color: #000;
-        bottom: 0; }
+        /*margin-bottom: 100px;*/
+    }
+    .panorama-page .panorama-over {
+        height: 670px; }
+    /*.panorama-page .photos__slider .slide__txt {*/
+        /*color: #000;*/
+        /*bottom: 0; }*/
     .panorama-page .photos__slider .slide__txt .h5 {
         font-size: 20px;
         color: #000; }
-    .panorama-page .photos__slider .owl-dots {
-        bottom: 0; }
+    /*.panorama-page .photos__slider .owl-dots {*/
+        /*bottom: 0; }*/
     .panorama-page .photos__slider .owl-dot {
         width: 14px;
         height: 14px;
-        background-color: #95d600;
-        opacity: 0.3;
+        /*background-color: #95d600;*/
+        /*opacity: 0.3;*/
         margin: 0 15px; }
     .panorama-page .photos__slider .owl-dot.active {
         opacity: 1; } }
@@ -92,6 +187,11 @@
     .panorama-page .photos__slider .slide {
         height: 280px; }
     .panorama-page .photos__slider .slide .h1 {
-        font-size: 34px; } }
+        font-size: 34px; }
+    .panorama-page .gallery__switch .switch__tab.active::before, .panorama-page .gallery__switch .switch__tab:hover::before {
+        width: 140px;
+        height: 140px;
+        border: 45px solid #00acc8; }
+}
 
 /*------END PANORAMA-----------*/

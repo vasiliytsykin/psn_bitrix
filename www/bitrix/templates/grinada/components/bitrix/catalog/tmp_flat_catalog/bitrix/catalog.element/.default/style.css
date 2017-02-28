@@ -81,17 +81,17 @@
 	width: 100%;
 	padding-bottom: 57.695%; }
 .flat-page #general-plan a::before {
-	background-image: url(/img/flat/genplan-icon.svg); }
+	background-image: url(/bitrix/templates/grinada/img/flat/genplan-icon.svg); }
 .flat-page #floor-plan .plan__img {
 	width: 69.235%;
 	padding-bottom: 26.925%; }
 .flat-page #floor-plan a::before {
-	background-image: url(/img/flat/floor-icon.svg); }
+	background-image: url(/bitrix/templates/grinada/img/flat/floor-icon.svg); }
 .flat-page #section-plan .plan__img {
 	width: 46.155%;
 	padding-bottom: 38.465%; }
 .flat-page #section-plan a::before {
-	background-image: url(/img/flat/section-icon.svg); }
+	background-image: url(/bitrix/templates/grinada/img/flat/section-icon.svg); }
 .flat-page .flat-plan {
 	text-align: center;
 	-ms-flex-preferred-size: 740px;
@@ -166,9 +166,9 @@
 	width: 40px;
 	height: 40px; }
 .flat-page .fluid-block .links .btn-pdf::before {
-	background-image: url(/img/flat/download-icon.svg); }
+	background-image: url(/bitrix/templates/grinada/img/flat/download-icon.svg); }
 .flat-page .fluid-block .links .btn-email::before {
-	background-image: url(/img/flat/email-icon.svg); }
+	background-image: url(/bitrix/templates/grinada/img/flat/email-icon.svg); }
 .flat-page .fluid-block .notice {
 	font-size: 12px;
 	line-height: 17px;
@@ -202,7 +202,7 @@
 	margin-left: 10px;
 	width: 18px;
 	height: 10px;
-	background-image: url(/img/flat/arrow_down.svg); }
+	background-image: url(/bitrix/templates/grinada/img/flat/arrow_down.svg); }
 .flat-page .slide-block__header .star {
 	color: #999999; }
 .flat-page .slide-block__content {
@@ -217,7 +217,7 @@
 .flat-page .slide-block.open .slide-block__header {
 	border-bottom: none; }
 .flat-page .slide-block.open .slide-block__header .h4::after {
-	background-image: url(/img/flat/arrow_up.svg); }
+	background-image: url(/bitrix/templates/grinada/img/flat/arrow_up.svg); }
 .flat-page .mortgage-calc {
 	text-align: left;
 	width: 100%; }
@@ -248,11 +248,13 @@
 	display: inline-block;
 	width: 25px;
 	height: 50px;
-	background: url(/img/flat/brush.svg) no-repeat center; }
+	background: url(/bitrix/templates/grinada/img/flat/brush.svg) no-repeat center; }
 .flat-page .extra-info .compass {
 	width: 80px;
 	height: 80px;
-	background: url(/img/flat/compass.svg) no-repeat center; }
+	background: no-repeat center;
+	-webkit-background-size: contain;
+	background-size: contain;}
 .flat-page .extra-info .notice {
 	position: relative;
 	width: 260px;
@@ -272,7 +274,7 @@
 	right: 15px;
 	width: 20px;
 	height: 20px;
-	background: url(/img/flat/close_small.svg); }
+	background: url(/bitrix/templates/grinada/img/flat/close_small.svg); }
 
 .flat-popup.mfp-bg {
 	z-index: 10000; }
@@ -301,7 +303,7 @@
 	font-size: 0;
 	width: 40px;
 	height: 40px;
-	background-image: url(/img/flat/close.svg);
+	background-image: url(/bitrix/templates/grinada/img/flat/close.svg);
 	position: absolute;
 	top: 20px;
 	right: 20px;

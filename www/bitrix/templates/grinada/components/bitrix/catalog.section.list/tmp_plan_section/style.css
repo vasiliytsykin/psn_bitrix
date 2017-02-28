@@ -31,6 +31,8 @@
 .master-plan--filter .main-plan__sidebar .sidebar__section:hover::before {
     width: 90px;
     height: 90px; }
+.master-plan--filter .svg-area .house {
+    opacity: 0; }
 
 @media screen and (max-width: 1024px) {
     .master-plan--filter .main-plan__sidebar {

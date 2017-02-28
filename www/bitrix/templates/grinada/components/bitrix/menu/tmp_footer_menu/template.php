@@ -35,8 +35,8 @@
                     <li class="top-level"><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
                     <li class="sub-level">Москва, Феодосийская ул., вл. 1/9</li>
                     <li class="phone">
-                        <span class="code">+7 (495) </span>
-                        <span class="number">800 41 48</span>
+<!--                        <span class="code"></span>-->
+                        <span class="number">+7 (495) 800 41 48</span>
                     </li>
                     <li><a href="#" class="btn-default btn-green feedback-open call">Заказать звонок</a></li>
                 </ul>

@@ -48,6 +48,22 @@ function getIcons($arResult){
 
 }
 
+function getSectionPictures($building, $section, $numOnFloor){
+
+    $pictures = array();
+    $arFilter = array("IBLOCK_CODE" => 'sections', "PROPERTY_BuildingNumber" => $building, "PROPERTY_SectionNumber" => $section, "PROPERTY_NumberOnFloor" => $numOnFloor);
+    $arSelect = array("ID", "IBLOCK_ID", "DETAIL_PICTURE", "PROPERTY_svg_icon");
+    $rsSection = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+    if($result = $rsSection->GetNext())
+    {
+        $pictures['icon'] = CFile::GetPath($result['PROPERTY_SVG_ICON_VALUE']);
+        $pictures['popup'] =  CFile::GetPath($result['DETAIL_PICTURE']);
+    }
+
+    return $pictures;
+
+}
+
 $properties = $arResult['DISPLAY_PROPERTIES'];
 $roomCount = $properties['Rooms']['VALUE'];
 $building = $properties['BuildingNumber']['VALUE'];
@@ -59,6 +75,9 @@ $square = $properties['SpaceDesign']['VALUE'];
 $furnish = $properties['ApartmentFurnish']['VALUE'];
 $statusCode = $properties['StatusCode']['VALUE'];
 $typeForSite = $properties['TypeForSite']['VALUE'];
+$price = $properties['Price']['VALUE'];
+$compass = $arResult['PROPERTIES']['compass']['VALUE'];
+$compassActual = !empty($compass) ? CFile::GetPath($compass) : '/bitrix/templates/grinada/img/flat/compass.svg';
 $peopleOnline = $arParams["PEOPLE_ONLINE"];
 $ending = getDeclension($peopleOnline);
 
@@ -104,8 +123,8 @@ function getAreas($arProp){
 }
 
 $areas = getAreas($arPlan['prop']);
-
 $icons = getIcons($arResult);
+$sectionPictures = getSectionPictures($building, $section, $numberOnFloor);
 
 ?>
 
@@ -125,10 +144,10 @@ $icons = getIcons($arResult);
                 </div>
                 <div class="plan" id="section-plan">
                     <a href="#section-popup" class="open-popup">План секции</a>
-                    <div class="plan__img" style="background-image: url(/img/flat/section-plan.svg);"></div>
+                    <div class="plan__img" style="background-image: url(<?=$sectionPictures['icon']?>);"></div>
                     <div id="section-popup" class="popup mfp-hide">
                         <h2>План секции</h2>
-                        <div class="popup__img" style="background-image: url(/img/flat/section-popup.jpg);"></div>
+                        <div class="popup__img" style="background-image: url(<?=$sectionPictures['popup']?>);"></div>
                     </div>
                 </div>
             </div>
@@ -142,7 +161,7 @@ $icons = getIcons($arResult);
                     <div class="finish__icon"></div>
                     <div class="finish__txt">Квартира с&nbsp;готовым ремонтом</div>
                 </div><?}?>
-                <div class="compass"></div>
+                <div class="compass" style="background-image: url(<?=$compassActual?>);"></div>
                 <div class="notice box-shadow">
                     В данный момент
                     эту&nbsp;квартиру смотр<?=$ending[1]?>
@@ -270,7 +289,7 @@ $icons = getIcons($arResult);
             <a href="#" class="btn-back visible-sm-inline-block visible-xs-inline-block">Вернуться назад</a>
             <h2 class="dark-green"><?=$roomCount?>-комнатная</h2>
             <h4 class="dark-green">евростандарт <?=$furnish?></h4>
-            <div class="price orange"><span class="price__value">12 460 000</span> <span class="ruble">a</span></div>
+            <div class="price orange"><span class="price__value"><?=$price?></span> <span class="ruble">a</span></div>
             <div class="param-list param-list--main">
                 <div class="param">
                     <div class="param__name">Корпус</div>

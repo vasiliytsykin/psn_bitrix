@@ -219,7 +219,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                     <div class="main-offer__content">
                         <?
 
-                        $arFilter = array('!PROPERTY_main_offer' => false);
+                        $arFilter = array("ACTIVE" => "Y", "SECTION_GLOBAL_ACTIVE" => "Y");
 
                         $APPLICATION->IncludeComponent(
                             "bitrix:news.list",
