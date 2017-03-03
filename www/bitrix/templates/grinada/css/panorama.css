@@ -218,7 +218,10 @@
     }
     .panorama-page .photos__slider .owl-dot.active {
         /*opacity: 1; */
-    } }
+    }
+    .panorama-page .map-handle{
+        bottom: 95px;
+    }}
 
 @media screen and (max-width: 736px) {
     .panorama-page .photos {
@@ -235,6 +238,8 @@
         width: 140px;
         height: 140px;
         border: 45px solid #00acc8; }
+    .panorama-page .developer-logo, .panorama-page .panorama__txt {
+        display: none; }
 }
 
 /*------END PANORAMA-----------*/
