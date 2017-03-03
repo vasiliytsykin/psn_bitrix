@@ -288,6 +288,55 @@ p {
 .big-slider .owl-dot.active {
     background-color: white; }
 
+.big-slider-mfp{
+    z-index: 10000;
+}
+.big-slider-mfp .mfp-container,
+.big-slider-mfp .mfp-content,
+.big-slider-mfp .big-slider,
+.big-slider-mfp .owl-stage-outer,
+.big-slider-mfp .owl-stage,
+.big-slider-mfp .owl-item,
+.big-slider-mfp .slide {
+    height: 100%;
+}
+.big-slider-mfp .slide {
+    background: no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.big-slider-mfp .mfp-container{
+    padding: 6px;
+}
+.big-slider-mfp .big-slider .owl-dots{
+    bottom: 30px;
+}
+.big-slider-mfp .video{
+    display: none;
+}
+.big-slider-mfp .slide__txt{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 70px;
+    text-align: center;
+    color: #fff;
+}
+.big-slider-mfp .h1{
+    padding-bottom: 10px;
+    font-family: bw_surco, sans-serif;
+    line-height: 1;
+}
+.big-slider-mfp .mfp-close{
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    top: 20px;
+    right: 20px;
+    opacity: 1;
+    background: url(/bitrix/templates/grinada/img/svg-library/close-white.svg) no-repeat center;
+}
+
 .big-figure {
     position: absolute;
     background-repeat: no-repeat;
@@ -377,7 +426,7 @@ p {
 .content.main {
     padding-top: 100px; }
 
-.show-more {
+.show-more, .show-more--main{
     text-align: center; }
 
 .contacts {
@@ -737,7 +786,8 @@ p {
 .header__extra-links .psn {
     font-size: 11px; }
 .header__extra-links .online-camera {
-    font-size: 12px; }
+    font-size: 12px;
+    display: none; }
 .header__extra-links .online-camera::after {
     content: '';
     display: inline-block;
@@ -784,6 +834,7 @@ p {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0 20px; }
+
 .header__nav .top-level a {
     font-size: 15px;
     color: #000;
@@ -1877,3 +1928,23 @@ p {
         padding-bottom: 60px; } }
 
 /*-----END ACTION DETAIL COMMON---------*/
+
+/*---------TEMPORARY--------*/
+
+.header__nav .top-level:nth-child(3){
+    display: none;
+}
+.header__nav .top-menu {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.global-menu .top-menu .top-level:nth-child(3){
+    display: none;
+}
+
+.footer__menu ul:nth-child(3){
+    visibility: hidden;
+}
+
+/*-----END TEMPORARY--------*/

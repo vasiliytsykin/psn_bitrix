@@ -26,6 +26,7 @@ foreach ($arResult['SECTIONS'] as $section){
 foreach ($sections as $id => $section){
 
 	$jsonId = 's'.$id;
+	$inSale = CIBlockSection::GetSectionElementsCount($id, array("CNT_ACTIVE" => "Y"));
 
 	if($section['DEPTH_LEVEL'] - 1 == $arResult['SECTION']['DEPTH_LEVEL']){
 
@@ -80,6 +81,7 @@ foreach ($sections as $id => $section){
 	$houses[$jsonId]['coord'] = array();
 	$houses[$jsonId]['type'] = 'polyline';
 	$houses[$jsonId]['typeo'] = 'section';
+	$houses[$jsonId]['property']['in_sale'] = $inSale;
 }
 
 $flatTypes = array(0,0,0,0,0);
@@ -189,21 +191,33 @@ while ($flat = $rsFlats->GetNext()){
 		</div>
 		<div class="main-plan__sidebar">
 			<div class="h4">Форматы квартир</div>
-			<a href="#" class="sidebar__section">
-				<div class="h4">Студии <sup><?=$flatTypes[0]?></sup></div>
-			</a>
-			<a href="#" class="sidebar__section">
-				<div class="h4">1-комнатные <sup><?=$flatTypes[1]?></sup></div>
-			</a>
-			<a href="#" class="sidebar__section">
-				<div class="h4">2-комнатные <sup><?=$flatTypes[2]?></sup></div>
-			</a>
-			<a href="#" class="sidebar__section">
-				<div class="h4">3-комнатные <sup><?=$flatTypes[3]?></sup></div>
-			</a>
-			<a href="#" class="sidebar__section">
-				<div class="h4">4-комнатные <sup><?=$flatTypes[4]?></sup></div>
-			</a>
+			<?foreach ($flatTypes as $rooms => $count){?>
+
+				<a href="/catalog/flats/?Rooms=<?=$rooms?>-<?=$rooms?>" class="sidebar__section">
+					<?if($rooms > 0){?>
+						<div class="h4"><?=$rooms?>-комнатные <sup><?=$count?></sup></div>
+					<?}
+					else{?>
+						<div class="h4">Студии <sup><?=$count?></sup></div>
+					<?}?>
+				</a>
+
+			<?}?>
+<!--			<a href="#" class="sidebar__section">-->
+<!--				<div class="h4">Студии <sup>--><?//=$flatTypes[0]?><!--</sup></div>-->
+<!--			</a>-->
+<!--			<a href="#" class="sidebar__section">-->
+<!--				<div class="h4">1-комнатные <sup>--><?//=$flatTypes[1]?><!--</sup></div>-->
+<!--			</a>-->
+<!--			<a href="#" class="sidebar__section">-->
+<!--				<div class="h4">2-комнатные <sup>--><?//=$flatTypes[2]?><!--</sup></div>-->
+<!--			</a>-->
+<!--			<a href="#" class="sidebar__section">-->
+<!--				<div class="h4">3-комнатные <sup>--><?//=$flatTypes[3]?><!--</sup></div>-->
+<!--			</a>-->
+<!--			<a href="#" class="sidebar__section">-->
+<!--				<div class="h4">4-комнатные <sup>--><?//=$flatTypes[4]?><!--</sup></div>-->
+<!--			</a>-->
 		</div>
 	</div>
 	<div class="wrapper-main">

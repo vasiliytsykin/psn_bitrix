@@ -212,11 +212,43 @@ $(function () {
 
     }());
 
-
     $('a.disabled').on('click', function () {
         return false;
     });
 
+
+    (function () {
+
+        if($(window).width() <= 736){
+
+            var $slide = $('.big-slider .slide');
+
+            $slide.on('click', function () {
+
+                console.log('click');
+
+                var $self = $(this),
+                    $bigSlider = $self.closest('.big-slider');
+
+                $.magnificPopup.open({
+                    items: {
+                        src: $bigSlider,
+                        type: 'inline'
+                    },
+                    mainClass: 'big-slider-mfp',
+                    callbacks: {
+                        close: function () {
+
+                            $bigSlider.removeClass('mfp-hide');
+
+                        }
+                    }
+                });
+
+            });
+        }
+
+    }());
 
     /*------------INDEX---------------*/
 
@@ -306,7 +338,23 @@ $(function () {
             target:"pano",
             html5:"prefer",
             basepath: "/pano/",
-            passQueryParameters:true
+            passQueryParameters:true,
+            onready: function (krpano) {
+
+                var $mapBtn = $('.map-handle'),
+                    open = 'open',
+                    closed = 'closed';
+
+                $mapBtn.on('click', function () {
+
+                    var $self = $(this);
+                    if($self.hasClass(closed))
+                        krpano.call("show_map()");
+                    else
+                        krpano.call("hide_map()");
+                    $self.toggleClass(closed);
+                });
+            }
         });
     }
 

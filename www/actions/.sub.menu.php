@@ -2,15 +2,15 @@
 $aMenuLinks = Array(
 	Array(
 		"Акции", 
-		"/actions/", 
-		Array(), 
+		"/actions/",
+		Array(),
 		Array(), 
 		"" 
 	),
 	Array(
 		"Ипотека", 
-		"/actions/mortgage/", 
-		Array(), 
+		"/actions/mortgage/",
+		Array(),
 		Array(), 
 		"" 
 	)

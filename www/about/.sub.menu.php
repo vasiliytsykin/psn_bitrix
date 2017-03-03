@@ -28,13 +28,13 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
-		"Документация проекта", 
-		"/about/docs/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
+//	Array(
+//		"Документация проекта",
+//		"/about/docs/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 	Array(
 		"О застройщике", 
 		"/about/developer/", 
@@ -49,13 +49,13 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
-		"Дневник стройки", 
-		"/about/log/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
+//	Array(
+//		"Дневник стройки",
+//		"/about/log/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 	Array(
 		"История района", 
 		"/about/history/", 

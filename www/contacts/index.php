@@ -68,7 +68,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
                         <div class="h4">офис продаж</div>
                         <p>г. Москва,  ул. Феодосийская, дом 1, корпус 10</p>
                         <div class="phone dark-green">+7 495 800 41 48</div>
-                        <div class="email dark-green">sales@jk-grinada.ru</div>
+                        <div class="email dark-green" style="display: none;">sales@jk-grinada.ru</div>
                     </div>
                     <div class="main-info__txt-block">
                         <div class="h4">режим работы</div>
@@ -123,7 +123,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
             </div>
             </div>
         </div>
-        <div class="wrapper-main">
+        <div class="wrapper-main" style="visibility: hidden;">
             <div class="main-info bottom">
                 <div class="main-info__content">
                     <div class="main-info__txt-block">
@@ -137,7 +137,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
                 </div>
             </div>
         </div>
-        <div class="wrapper-inner">
+        <div class="wrapper-inner" style="display: none;">
             <div class="contacts">
                 <h3>По любым вопросам звоните нам,<br class="hidden-xs">
                     мы расскажем обо всём, что&nbsp;вас&nbsp;интересует

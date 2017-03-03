@@ -2,6 +2,7 @@
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     die();
 ?>
+</div>
 <footer class="footer">
     <div class="wrapper-outer">
         <? $APPLICATION->IncludeComponent(
@@ -20,7 +21,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 "USE_EXT" => "N"
             )
         ); ?>
-        <div class="footer__socials">
+        <div class="footer__socials" style="visibility: hidden;">
             <div class="footer__social footer__socials--fb">
             </div>
             <div class="footer__social footer__socials--vk">
@@ -33,7 +34,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
         <div class="footer__info">
             <a href="http://www.psngroup.ru" target="_blank" class="footer__copyright">© Девелопер проекта: ГРУППА ПСН
                 2017 <span class="dev-logo"></span></a>
-            <a href="/about/docs/" class="footer__pdf">Проектная декларация ООО&nbsp;«Феодосийская»&nbsp;[&nbsp;PDF.&nbsp;3&nbsp;мб&nbsp;]</a>
+            <a href="#" class="footer__pdf" style="visibility: hidden;">Проектная декларация ООО&nbsp;«Феодосийская»&nbsp;[&nbsp;PDF.&nbsp;3&nbsp;мб&nbsp;]</a>
             <a href="#policy-popup" class="footer__policy">Политика конфиденциальности</a>
             <div class="mfp-hide" id="policy-popup">
                 <div class="policy-popup-txt">
@@ -343,71 +344,71 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     </div>
     <div class="footer-pattern">
     </div>
-    <div class="actions-modal">
-        <div class="actions-modal__tip">Акции</div>
-        <div class="actions-modal__content">
-            <? $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "tmp_actions_modal",
-                Array(
-                    "ACTIVE_DATE_FORMAT" => "d.m.y G:i",
-                    "ADD_SECTIONS_CHAIN" => "Y",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "N",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
-                    "DISPLAY_BOTTOM_PAGER" => "Y",
-                    "DISPLAY_DATE" => "Y",
-                    "DISPLAY_NAME" => "Y",
-                    "DISPLAY_PICTURE" => "Y",
-                    "DISPLAY_PREVIEW_TEXT" => "Y",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => array("DATE_ACTIVE_TO", ""),
-                    "FILTER_NAME" => "",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "8",
-                    "IBLOCK_TYPE" => "-",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
-                    "INCLUDE_SUBSECTIONS" => "Y",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => ".default",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => array("TOP_LINE", "BOTTOM_LINE", ""),
-                    "SET_BROWSER_TITLE" => "Y",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "Y",
-                    "SET_META_KEYWORDS" => "Y",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "Y",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC"
-                )
-            ); ?>
-        </div>
-        <div class="actions-modal__controls">
-            <div class="arrows"></div>
-            <div class="btn-close"></div>
-        </div>
-    </div>
+<!--    <div class="actions-modal">-->
+<!--        <div class="actions-modal__tip">Акции</div>-->
+<!--        <div class="actions-modal__content">-->
+<!--            --><?// $APPLICATION->IncludeComponent(
+//                "bitrix:news.list",
+//                "tmp_actions_modal",
+//                Array(
+//                    "ACTIVE_DATE_FORMAT" => "d.m.y G:i",
+//                    "ADD_SECTIONS_CHAIN" => "Y",
+//                    "AJAX_MODE" => "N",
+//                    "AJAX_OPTION_ADDITIONAL" => "",
+//                    "AJAX_OPTION_HISTORY" => "N",
+//                    "AJAX_OPTION_JUMP" => "N",
+//                    "AJAX_OPTION_STYLE" => "Y",
+//                    "CACHE_FILTER" => "N",
+//                    "CACHE_GROUPS" => "Y",
+//                    "CACHE_TIME" => "36000000",
+//                    "CACHE_TYPE" => "A",
+//                    "CHECK_DATES" => "Y",
+//                    "DETAIL_URL" => "",
+//                    "DISPLAY_BOTTOM_PAGER" => "Y",
+//                    "DISPLAY_DATE" => "Y",
+//                    "DISPLAY_NAME" => "Y",
+//                    "DISPLAY_PICTURE" => "Y",
+//                    "DISPLAY_PREVIEW_TEXT" => "Y",
+//                    "DISPLAY_TOP_PAGER" => "N",
+//                    "FIELD_CODE" => array("DATE_ACTIVE_TO", ""),
+//                    "FILTER_NAME" => "",
+//                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+//                    "IBLOCK_ID" => "8",
+//                    "IBLOCK_TYPE" => "-",
+//                    "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+//                    "INCLUDE_SUBSECTIONS" => "Y",
+//                    "MESSAGE_404" => "",
+//                    "NEWS_COUNT" => "20",
+//                    "PAGER_BASE_LINK_ENABLE" => "N",
+//                    "PAGER_DESC_NUMBERING" => "N",
+//                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+//                    "PAGER_SHOW_ALL" => "N",
+//                    "PAGER_SHOW_ALWAYS" => "N",
+//                    "PAGER_TEMPLATE" => ".default",
+//                    "PAGER_TITLE" => "Новости",
+//                    "PARENT_SECTION" => "",
+//                    "PARENT_SECTION_CODE" => "",
+//                    "PREVIEW_TRUNCATE_LEN" => "",
+//                    "PROPERTY_CODE" => array("TOP_LINE", "BOTTOM_LINE", ""),
+//                    "SET_BROWSER_TITLE" => "Y",
+//                    "SET_LAST_MODIFIED" => "N",
+//                    "SET_META_DESCRIPTION" => "Y",
+//                    "SET_META_KEYWORDS" => "Y",
+//                    "SET_STATUS_404" => "N",
+//                    "SET_TITLE" => "Y",
+//                    "SHOW_404" => "N",
+//                    "SORT_BY1" => "ACTIVE_FROM",
+//                    "SORT_BY2" => "SORT",
+//                    "SORT_ORDER1" => "DESC",
+//                    "SORT_ORDER2" => "ASC"
+//                )
+//            ); ?>
+<!--        </div>-->
+<!--        <div class="actions-modal__controls">-->
+<!--            <div class="arrows"></div>-->
+<!--            <div class="btn-close"></div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="feedback-modal mfp-hide" id="feedback-modal">
         <div class="tab call form-container active">
             <div class="h2">

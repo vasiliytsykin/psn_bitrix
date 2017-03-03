@@ -26,7 +26,7 @@ foreach($arResult["ITEMS"] as $arItem){?>
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 	?>
 
-	<div class="main-slider-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>" style="background-image: url(<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>);">
+	<div class="main-slider-item slide" id="<?=$this->GetEditAreaId($arItem['ID']);?>" style="background-image: url(<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>);">
 		<? if($n==0){
 
 			$firstIMG = $arItem["PREVIEW_PICTURE"]["SRC"];

@@ -70,7 +70,8 @@
 .master-plan .main-plan__map-over .camera {
     max-width: 75px;
     left: 40px;
-    bottom: 25px; }
+    bottom: 25px;
+    display: none; }
 .master-plan .main-plan__map-over .camera .icon {
     width: 35px;
     height: 35px;

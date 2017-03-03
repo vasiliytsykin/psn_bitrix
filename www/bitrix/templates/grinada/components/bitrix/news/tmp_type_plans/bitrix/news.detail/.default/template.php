@@ -24,7 +24,7 @@ $this->setFrameMode(true);
 				<input type="hidden" id="type-for-site" value="<?=$arResult['DISPLAY_PROPERTIES']['name_type']['VALUE']?>">
 				<a href="../" class="link--dashed btn-back hidden-sm hidden-xs"><span>Вернуться назад</span></a>
 				<div class="planoplan-over">
-					<div class="h5 dark-green">Предложение по возможной отделке&nbsp;квартиры:</div>
+<!--					<div class="h5 dark-green">Предложение по возможной отделке&nbsp;квартиры:</div>-->
 					<div class="planoplan" style="background-image: url(<?=$arResult['DISPLAY_PROPERTIES']['svg']['FILE_VALUE']['SRC']?>);"></div>
 				</div>
 				<?include $_SERVER['DOCUMENT_ROOT'].'/bitrix/templates/grinada/php/filter-results-table.php';?>

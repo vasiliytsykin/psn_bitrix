@@ -14,7 +14,7 @@ $this->setFrameMode(true);
 
 global $arFilter;
 $arSections = array();
-$rsSection = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array("IBLOCK_ID" => $arParams["IBLOCK_ID"]), false);
+$rsSection = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ACTIVE" => "Y"), false);
 while($arSection = $rsSection->GetNext()) {
 	$arSections[$arSection['ID']] = $arSection;
 }?>
@@ -25,22 +25,24 @@ while($arSection = $rsSection->GetNext()) {
 	<div class="big-figure wave-right"></div>
 	<h1 class="dark-green">Новости</h1>
 	<div class="gallery">
-		<div class="gallery__switch-over">
-			<div class="gallery__switch">
-				<? foreach($arSections as $arSection){
-					$active = $arSection['ID'] == 2 ? 'active': '';
-					?>
-					<div class="switch__tab tab-<?=$arSection['ID']?> <?=$active?>" data-tab="tab-<?=$arSection['ID']?>">
-						<span class="hidden-sm hidden-xs"><?=$arSection['NAME'];?></span>
-						<span class="visible-sm-inline visible-xs-inline"><?=$arSection['NAME'];?></span>
-					</div>
-				<?}?>
+		<?if(count($arSections) > 1){?>
+			<div class="gallery__switch-over">
+				<div class="gallery__switch">
+					<? foreach($arSections as $arSection){
+						$active = $arSection['CODE'] == 'company-news' ? 'active': '';
+						?>
+						<div class="switch__tab tab-<?=$arSection['ID']?> <?=$active?>" data-tab="tab-<?=$arSection['ID']?>">
+							<span class="hidden-sm hidden-xs"><?=$arSection['NAME'];?></span>
+							<span class="visible-sm-inline visible-xs-inline"><?=$arSection['NAME'];?></span>
+						</div>
+					<?}?>
+				</div>
 			</div>
-		</div>
+		<?}?>
 		<div class="wrapper-main">
 			<div class="wrapper-inner">
 				<?foreach($arSections as $arSection){
-					$active = $arSection['ID'] == 2 ? 'active': '';
+					$active = $arSection['CODE'] == 'company-news' ? 'active': '';
 					$arFilter = array('SECTION_ID' => $arSection['ID']);?>
 					<div class="gallery__tab tab-<?=$arSection['ID']?> <?=$active?>" data-tab="<?=$arSection['ID']?>">
 						<div class="news-list result-items">

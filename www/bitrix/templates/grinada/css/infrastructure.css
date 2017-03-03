@@ -34,6 +34,9 @@
     transform: translateY(0);
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease; }
+.infra-page .infra-nav .wrapper-outer {
+    position: relative;
+}
 .infra-page .infra-nav a {
     font-size: 18px;
     color: #b2b2b2; }

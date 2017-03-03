@@ -27,7 +27,7 @@ $this->setFrameMode(true);
 			$imgUrl = $arItem['PREVIEW_PICTURE']['SRC'];
 
 		?>
-		<div class="gallery__slide" style="background-image: url(<?=$imgUrl?>);">
+		<div class="gallery__slide slide" style="background-image: url(<?=$imgUrl?>);">
 			<div class="gallery__slide__txt">
 				<div class="h1"><?=$header?></div>
 				<h5><?=$subHeader?></h5>

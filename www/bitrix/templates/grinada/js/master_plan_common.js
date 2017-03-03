@@ -85,14 +85,17 @@ $(document).ready(function () {
 
         var $polylines = $masterPlan.find('polyline'),
             $houses = $masterPlan.find('polyline.house'),
-            $sections = $masterPlan.find('polyline.section');
+            $sections = $masterPlan.find('polyline.section'),
+            $bubles = $masterPlan.find('.bubble');
 
         $polylines.on('click', function () {
 
             var jsonId = $(this).data('json-id'),
+                inSale = map_ob.config[jsonId]['property']['in_sale'],
                 url = map_ob.config[jsonId]['property']['url'];
 
-            location.href = url;
+            if(inSale > 0)
+                location.href = url;
 
         });
 
@@ -131,10 +134,38 @@ $(document).ready(function () {
                 sectionId = $section.attr('id'),
                 $label = $('.bubble[for="#'+ sectionId +'"]'),
                 hover = 'hover';
-            $section.removeClass(hover);
-            $label.removeClass(hover);
+
+            setTimeout(function () {
+
+                $section.removeClass(hover);
+                $label.removeClass(hover);
+
+            },50);
+
 
         });
+
+        // $bubles.on('mouseenter', function () {
+        //
+        //     var $bubble = $(this),
+        //         sectionId = $bubble.attr('for'),
+        //         $section = $(sectionId),
+        //         hover = 'hover';
+        //
+        //     console.log(sectionId);
+        //
+        //     $section.addClass(hover);
+        //
+        // });
+        //     .on('mouseleave', function () {
+        //
+        //     var $bubble = $(this),
+        //         sectionId = $bubble.attr('for'),
+        //         $section = $('sectionId'),
+        //         hover = 'hover';
+        //     $section.removeClass(hover);
+        //
+        // });
 
     }
 

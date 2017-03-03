@@ -139,7 +139,28 @@ $(function () {
         mainClass: 'flat-popup'
 
     });
-    
+
+    $('.flat-page .flat-plan').on('click', function () {
+
+        var $self = $(this);
+
+        $.magnificPopup.open({
+            items: {
+                src: $self,
+                type: 'inline'
+            },
+            mainClass: 'flat-plan-mfp',
+            callbacks: {
+                close: function () {
+
+                    $self.removeClass('mfp-hide');
+
+                }
+            }
+        });
+
+    });
+
     var $notice = $('.flat-page .extra-info .notice'),
         $btnClose = $notice.find('.btn-close'),
         show = 'show';

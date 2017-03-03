@@ -203,19 +203,21 @@ foreach($arInfra as $codeGroup =>$infraGroup){
                 var Markers= <?=json_encode($arMarkers);?>;
             </script>
             <div class="map" id="infra-map"></div>
-            <div class="infra-nav wrapper-outer">
-                <div class="infra-nav__handle"><div class="arrow"></div></div>
-                <div class="infra-nav-wrapper">
-                    <? foreach($arInfra as $codeGroup =>$infraGroup){?>
-                        <div class="infra-group <?=$codeGroup?> ">
-                            <div class="infra-group__title"><a href="#<?=$codeGroup?>"><?=$infraGroup['name']?></a></div>
-                            <? foreach($infraGroup['subsection'] as $codeSection => $arSection){?>
-                                <div class="<?=$codeSection?> infra-subsection-title">
-                                    <a href="#<?=$codeSection?>"><span class="icon"></span><?=$arSection['name']?></a>
-                                </div>
-                            <?}?>
-                        </div>
-                    <?}?>
+            <div class="infra-nav">
+                <div class="wrapper-outer">
+                    <div class="infra-nav__handle"><div class="arrow"></div></div>
+                    <div class="infra-nav-wrapper">
+                        <? foreach($arInfra as $codeGroup =>$infraGroup){?>
+                            <div class="infra-group <?=$codeGroup?> ">
+                                <div class="infra-group__title"><a href="#<?=$codeGroup?>"><?=$infraGroup['name']?></a></div>
+                                <? foreach($infraGroup['subsection'] as $codeSection => $arSection){?>
+                                    <div class="<?=$codeSection?> infra-subsection-title">
+                                        <a href="#<?=$codeSection?>"><span class="icon"></span><?=$arSection['name']?></a>
+                                    </div>
+                                <?}?>
+                            </div>
+                        <?}?>
+                    </div>
                 </div>
             </div>
         </div>

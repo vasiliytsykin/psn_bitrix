@@ -15,6 +15,9 @@
 .plan-filter-page .trees {
     left: 150px;
     bottom: 200px; }
+.plan-filter-page .block-main {
+    max-width: 1600px;
+    margin: 0 auto; }
 .plan-filter-page h1 {
     text-align: center;
     padding-bottom: 10px; }
@@ -256,7 +259,9 @@
     .plan-filter-page .filter__results .item__desc .h4::after {
         display: none; }
     .plan-filter-page .filter__results .item__desc .plan-type {
-        display: block; } }
+        display: block; }
+    .plan-filter-page .show-more {
+        padding-top: 50px; } }
 
 @media screen and (max-width: 736px) {
     .plan-filter-page .pattern {

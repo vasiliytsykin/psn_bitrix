@@ -25,12 +25,16 @@ foreach ($sections as $id => $section){
 	$jsonId = 's'.$id;
 
 	if($section['DEPTH_LEVEL'] - 1 == $arResult['SECTION']['DEPTH_LEVEL']){
+
+		$inSale = CIBlockSection::GetSectionElementsCount($id, array("CNT_ACTIVE" => "Y"));
+
 		$houses[$jsonId] = array(
 			'property' => array(
 				'house_number' => $section['UF_HOUSE_NUMBER'],
 				'house_type' => $section['UF_HOUSE_TYPE'],
 				'url' => $section['SECTION_PAGE_URL'],
-				'class' => 'house'
+				'class' => 'house',
+				'in_sale' => $inSale
 			)
 
 		);

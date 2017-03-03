@@ -64,62 +64,77 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                 <div class="green-bar">
                     <div class="green-bar__content">
                         <div class="green-bar__pattern pattern static yellow anim-pattern" data-pattern="adv-bird"></div>
-                        <?$APPLICATION->IncludeComponent(
-                            "bitrix:news.list",
-                            "tmp_actions_main",
-                            Array(
-                                "ACTIVE_DATE_FORMAT" => "d.m.y G:i",
-                                "ADD_SECTIONS_CHAIN" => "Y",
-                                "AJAX_MODE" => "N",
-                                "AJAX_OPTION_ADDITIONAL" => "",
-                                "AJAX_OPTION_HISTORY" => "N",
-                                "AJAX_OPTION_JUMP" => "N",
-                                "AJAX_OPTION_STYLE" => "Y",
-                                "CACHE_FILTER" => "N",
-                                "CACHE_GROUPS" => "Y",
-                                "CACHE_TIME" => "36000000",
-                                "CACHE_TYPE" => "A",
-                                "CHECK_DATES" => "Y",
-                                "DETAIL_URL" => "",
-                                "DISPLAY_BOTTOM_PAGER" => "Y",
-                                "DISPLAY_DATE" => "Y",
-                                "DISPLAY_NAME" => "Y",
-                                "DISPLAY_PICTURE" => "Y",
-                                "DISPLAY_PREVIEW_TEXT" => "Y",
-                                "DISPLAY_TOP_PAGER" => "N",
-                                "FIELD_CODE" => array("DATE_ACTIVE_TO",""),
-                                "FILTER_NAME" => "",
-                                "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                                "IBLOCK_ID" => "8",
-                                "IBLOCK_TYPE" => "-",
-                                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
-                                "INCLUDE_SUBSECTIONS" => "Y",
-                                "MESSAGE_404" => "",
-                                "NEWS_COUNT" => "3",
-                                "PAGER_BASE_LINK_ENABLE" => "N",
-                                "PAGER_DESC_NUMBERING" => "N",
-                                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                                "PAGER_SHOW_ALL" => "N",
-                                "PAGER_SHOW_ALWAYS" => "N",
-                                "PAGER_TEMPLATE" => ".default",
-                                "PAGER_TITLE" => "Новости",
-                                "PARENT_SECTION" => "",
-                                "PARENT_SECTION_CODE" => "",
-                                "PREVIEW_TRUNCATE_LEN" => "",
-                                "PROPERTY_CODE" => array("TOP_LINE","BOTTOM_LINE",""),
-                                "SET_BROWSER_TITLE" => "Y",
-                                "SET_LAST_MODIFIED" => "N",
-                                "SET_META_DESCRIPTION" => "Y",
-                                "SET_META_KEYWORDS" => "Y",
-                                "SET_STATUS_404" => "N",
-                                "SET_TITLE" => "Y",
-                                "SHOW_404" => "N",
-                                "SORT_BY1" => "ACTIVE_FROM",
-                                "SORT_BY2" => "SORT",
-                                "SORT_ORDER1" => "DESC",
-                                "SORT_ORDER2" => "ASC"
-                            )
-                        );?>
+                        <div class="action green-bar__action">
+                            <div class="action__main-line">ВЕРЕВОЧНЫЙ ПАРК</div>
+                            <div class="action__extra-line">для детей и взрослых</div>
+                        </div>
+                        <div class="green-bar__pattern pattern static yellow anim-pattern" data-pattern="adv-flower"></div>
+                        <div class="action green-bar__action">
+                            <div class="action__main-line">10 МИНУТ</div>
+                            <div class="action__extra-line">пешком до метро</div>
+                        </div>
+                        <div class="green-bar__pattern pattern static yellow anim-pattern" data-pattern="adv-wave"></div>
+                        <div class="action green-bar__action">
+                            <div class="action__main-line">ЛЕТНЯЯ ОРАНЖЕРЕЯ</div>
+                            <div class="action__extra-line">для будущего урожая</div>
+                        </div>
+                        <div class="green-bar__pattern pattern static yellow anim-pattern" data-pattern="adv-fish"></div>
+<!--                        --><?//$APPLICATION->IncludeComponent(
+//                            "bitrix:news.list",
+//                            "tmp_actions_main",
+//                            Array(
+//                                "ACTIVE_DATE_FORMAT" => "d.m.y G:i",
+//                                "ADD_SECTIONS_CHAIN" => "Y",
+//                                "AJAX_MODE" => "N",
+//                                "AJAX_OPTION_ADDITIONAL" => "",
+//                                "AJAX_OPTION_HISTORY" => "N",
+//                                "AJAX_OPTION_JUMP" => "N",
+//                                "AJAX_OPTION_STYLE" => "Y",
+//                                "CACHE_FILTER" => "N",
+//                                "CACHE_GROUPS" => "Y",
+//                                "CACHE_TIME" => "36000000",
+//                                "CACHE_TYPE" => "A",
+//                                "CHECK_DATES" => "Y",
+//                                "DETAIL_URL" => "",
+//                                "DISPLAY_BOTTOM_PAGER" => "Y",
+//                                "DISPLAY_DATE" => "Y",
+//                                "DISPLAY_NAME" => "Y",
+//                                "DISPLAY_PICTURE" => "Y",
+//                                "DISPLAY_PREVIEW_TEXT" => "Y",
+//                                "DISPLAY_TOP_PAGER" => "N",
+//                                "FIELD_CODE" => array("DATE_ACTIVE_TO",""),
+//                                "FILTER_NAME" => "",
+//                                "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+//                                "IBLOCK_ID" => "8",
+//                                "IBLOCK_TYPE" => "-",
+//                                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+//                                "INCLUDE_SUBSECTIONS" => "Y",
+//                                "MESSAGE_404" => "",
+//                                "NEWS_COUNT" => "3",
+//                                "PAGER_BASE_LINK_ENABLE" => "N",
+//                                "PAGER_DESC_NUMBERING" => "N",
+//                                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+//                                "PAGER_SHOW_ALL" => "N",
+//                                "PAGER_SHOW_ALWAYS" => "N",
+//                                "PAGER_TEMPLATE" => ".default",
+//                                "PAGER_TITLE" => "Новости",
+//                                "PARENT_SECTION" => "",
+//                                "PARENT_SECTION_CODE" => "",
+//                                "PREVIEW_TRUNCATE_LEN" => "",
+//                                "PROPERTY_CODE" => array("TOP_LINE","BOTTOM_LINE",""),
+//                                "SET_BROWSER_TITLE" => "Y",
+//                                "SET_LAST_MODIFIED" => "N",
+//                                "SET_META_DESCRIPTION" => "Y",
+//                                "SET_META_KEYWORDS" => "Y",
+//                                "SET_STATUS_404" => "N",
+//                                "SET_TITLE" => "Y",
+//                                "SHOW_404" => "N",
+//                                "SORT_BY1" => "ACTIVE_FROM",
+//                                "SORT_BY2" => "SORT",
+//                                "SORT_ORDER1" => "DESC",
+//                                "SORT_ORDER2" => "ASC"
+//                            )
+//                        );?>
                     </div>
                 </div>
                 <div class="wrapper-inner">
@@ -210,7 +225,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/index.css');
                             </div>
                         </div>
                     </div>
-                    <div class="show-more">
+                    <div class="show-more--main">
                         <a href="/about/" class="btn-default btn-medium btn-green">Показать еще</a>
                     </div>
                 </div>

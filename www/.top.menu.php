@@ -3,38 +3,35 @@ $aMenuLinks = Array(
 	Array(
 		"О проекте", 
 		"/about/", 
-		Array(), 
-		Array("nested"=>"nested"), 
-		"" 
+		Array(),
+		""
 	),
 	Array(
-		"Выбрать квартиру", 
-		"/catalog",
-		Array(), 
-		Array("nested"=>"nested"), 
-		"" 
+		"Выбрать квартиру",
+		"/catalog/",
+		Array(),
+		""
 	),
 	Array(
-		"Условия покупки", 
-		"/actions/", 
-		Array(), 
-		Array("nested"=>"nested"), 
-		"" 
+		"Условия покупки",
+		"/actions/",
+		Array(),
+		""
 	),
 	Array(
-		"Новости", 
-		"/news/", 
-		Array(), 
-		Array(), 
-		"" 
+		"Новости",
+		"/news/",
+		Array(),
+		Array(),
+		""
 	),
 	Array(
-		"Офис продаж", 
-		"/contacts/", 
-		Array(), 
-		Array(), 
-		"" 
+		"Офис продаж",
+		"/contacts/",
+		Array(),
+		Array(),
+		""
 	),
-	
+
 );
 ?>

@@ -23,7 +23,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/plan-filter.css');
 	<div class="pattern bird light-green anim-pattern" data-pattern="bird"></div>
 	<div class="pattern trees light-green anim-pattern" data-pattern="trees"></div>
 	<div class="pattern bee light-green anim-pattern" data-pattern="bee"></div>
-	<div class="wrapper-main">
+	<div class="wrapper-main block-main">
 		<h1 class="dark-green">Выбор по типам планировок</h1>
 		<h5>Представлено более 100 вариантов различных планировок</h5>
 		<div class="filter-over">
@@ -50,7 +50,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/plan-filter.css');
 							<ul class="inputs inputs--special mono">
 								<li class="house-type">монолитные</li>
 								<li>
-									<input type="checkbox" id="building-number-2">
+									<input type="checkbox" id="building-number-2" disabled>
 									<label for="building-number-2">2</label>
 								</li>
 								<li>

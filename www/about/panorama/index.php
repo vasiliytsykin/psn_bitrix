@@ -19,6 +19,8 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/panorama.css');
             <div class="gallery__tab tab-1 active">
                 <div class="panorama-over">
                     <div class="developer-logo"></div>
+                    <div class="panorama__txt">очень зеленый район</div>
+                    <div class="map-handle"><div class="arrow"></div></div>
                     <div class="panorama" id="pano"></div>
                 </div>
             </div>
