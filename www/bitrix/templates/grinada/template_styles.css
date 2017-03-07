@@ -1544,11 +1544,19 @@ p {
     font-size: 18px;
     line-height: 1;
     height: 48px;
-    padding: 5px 0;
+    padding: 5px 0 5px 135px;
     border: none;
     border-bottom: 2px solid #eaeaea;
     outline: none;
     background-color: transparent; }
+.feedback-modal .feedback-form input[type="text"] + label {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    font-size: 15px;
+    line-height: 1;
+    color: #999999;
+}
 .feedback-modal .feedback-form input[type="text"]:focus {
     border-bottom-color: #95d600; }
 .feedback-modal .feedback-form input.invalid {
@@ -1615,6 +1623,51 @@ p {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between; }
+.feedback-modal input[type="checkbox"]{
+    display: none;
+}
+.feedback-modal .booking .feedback-form{
+    padding-bottom: 0;
+}
+.feedback-modal .booking .input-group:last-of-type {
+    text-align: center;
+    margin-bottom: 35px;
+}
+.feedback-modal .booking label[for="agreement"] {
+    line-height: 1;
+    font-size: 12px;
+    color: #999999;
+    padding-left: 30px;
+    display: inline-block;
+    position: relative;
+}
+.feedback-modal .booking label[for="agreement"]::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    width: 20px;
+    height: 20px;
+    background-image: url(/bitrix/templates/grinada/img/actions/select.svg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    cursor: pointer;
+}
+.feedback-modal .booking input[type="checkbox"]:checked + label::before {
+    background-position: -20px 0;
+}
+.feedback-modal .booking .terms {
+    font-size: 12px;
+    color: #999999;
+    cursor: pointer;
+    border-bottom: 1px dashed #999999;
+}
+.feedback-modal .booking .terms:hover {
+    border-color: transparent;
+}
 
 .popup-datepicker {
     z-index: 10001; }

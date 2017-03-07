@@ -424,7 +424,7 @@ $sectionPictures = getSectionPictures($building, $section, $numberOnFloor);
 <!--                </div>-->
                 <div class="buttons">
                     <a href="#" class="btn-default btn-medium btn-green feedback-open call">Заказать звонок</a>
-                    <a href="#" class="btn-default btn-medium btn-green">Оставить заявку</a>
+                    <a href="#" class="btn-default btn-medium btn-green feedback-open booking">Оставить заявку</a>
                 </div>
                 <div class="links">
                     <a href="/pdf/flat-<?=$arResult['ID']?>.pdf" target="_blank" class="btn-pdf">Сохранить<br>планировку</a>

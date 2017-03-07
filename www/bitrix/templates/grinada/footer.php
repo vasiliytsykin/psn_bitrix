@@ -35,7 +35,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             <a href="http://www.psngroup.ru" target="_blank" class="footer__copyright">© Девелопер проекта: ГРУППА ПСН
                 2017 <span class="dev-logo"></span></a>
             <a href="#" class="footer__pdf" style="visibility: hidden;">Проектная декларация ООО&nbsp;«Феодосийская»&nbsp;[&nbsp;PDF.&nbsp;3&nbsp;мб&nbsp;]</a>
-            <a href="#policy-popup" class="footer__policy">Политика конфиденциальности</a>
+            <a href="#policy-popup" class="footer__policy policy-open">Политика конфиденциальности</a>
             <div class="mfp-hide" id="policy-popup">
                 <div class="policy-popup-txt">
                     <h2>Политика конфиденциальности</h2>
@@ -419,10 +419,12 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             </div>
             <form class="feedback-form">
                 <div class="input-group">
-                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <input type="text" name="name" id="call-name" required>
+                    <label for="call-name">Ваше имя</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="phone" placeholder="Телефон" required>
+                    <input type="text" name="phone" id="call-phone" required>
+                    <label for="call-phone">Телефон</label>
                 </div>
                 <div class="notice">
                     Вы можете выбрать удобное время для звонка
@@ -441,7 +443,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                                 до <span class="caption__time"><span class="max">21</span>.00</span>
                             </div>
                         </div>
-                        <input type="text" id="time" class="range-slider" data-min="9" data-max="21" data-step="1">
+                        <input type="text" name="time" id="time" class="range-slider" data-min="9" data-max="21" data-step="1">
                     </div>
                 </div>
             </form>
@@ -456,15 +458,17 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             </div>
             <form class="feedback-form">
                 <div class="input-group">
-                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <input type="text" name="name" id="email-name" required>
+                    <label for="email-name">Ваше имя</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="email" placeholder="E-mail" required>
+                    <input type="text" name="email" id="email-email" required>
+                    <label for="email-email">E-mail</label>
                 </div>
                 <div class="notice">
                     Напишите сообщение и мы в ближайшее время с вами свяжемся
                 </div>
-                <textarea name="message" id="" cols="30" rows="4"></textarea>
+                <textarea name="comments" id="" cols="30" rows="4"></textarea>
             </form>
             <a href="#" class="btn-default btn-medium btn-green submit">Отправить сообщение</a>
         </div>
@@ -477,7 +481,32 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             </div>
             <form class="feedback-form">
                 <div class="input-group">
-                    <input type="text" name="email" placeholder="E-mail" required>
+                    <input type="text" name="email" id="layout-email" required>
+                    <label for="layout-email">E-mail</label>
+                </div>
+            </form>
+            <a href="#" class="btn-default btn-medium btn-green submit">Отправить</a>
+        </div>
+        <div class="tab booking form-container">
+            <div class="h2">
+                Заявка на бронь
+            </div>
+            <form class="feedback-form">
+                <div class="input-group">
+                    <input type="text" name="name" id="booking-name" required>
+                    <label for="booking-name">Ваше имя</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="phone" id="booking-phone" required>
+                    <label for="booking-phone">Телефон</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="comments" id="booking-id" value="5–11–517" readonly>
+                    <label for="booking-id">Номер брони</label>
+                </div>
+                <div class="input-group">
+                    <input type="checkbox" id="agreement">
+                    <label for="agreement">Согласен с</label> <span class="terms policy-open">политикой конфиденциальности</span>
                 </div>
             </form>
             <a href="#" class="btn-default btn-medium btn-green submit">Отправить</a>

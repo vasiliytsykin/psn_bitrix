@@ -181,11 +181,17 @@ $(function () {
 
 
     });
+    
 
-    $('.footer__policy').magnificPopup({
+    $('.policy-open').on('click', function () {
 
-        type: 'inline',
-        mainClass: 'policy-popup'
+        $.magnificPopup.open({
+            items: {
+                src: '#policy-popup',
+                type: 'inline'
+            },
+            mainClass: 'policy-popup'
+        });
 
     });
     
@@ -769,6 +775,7 @@ $(function () {
             email = 'email',
             call = 'call',
             layout = 'layout',
+            booking = 'booking',
             invalid = 'invalid';
 
         function isValidName(name) {
@@ -820,7 +827,7 @@ $(function () {
 
         $feedSwitchTab.on('click', function () {
 
-            $feedTabs.not('.layout').toggleClass(active);
+            $feedTabs.not('.layout, .booking').toggleClass(active);
             $feedSwitchTab.toggleClass(active);
 
         });
@@ -841,6 +848,10 @@ $(function () {
 
             if($self.hasClass(layout)){
                 $feedModal.find('.' + layout).addClass(active);
+                $feedSwitch.addClass(hidden);
+            }
+            if($self.hasClass(booking)){
+                $feedModal.find('.' + booking).addClass(active);
                 $feedSwitch.addClass(hidden);
             }
 
