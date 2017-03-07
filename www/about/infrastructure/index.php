@@ -246,17 +246,14 @@ foreach($arInfra as $codeGroup =>$infraGroup){
         </div>
         <div class="info-block">
             <div class="wrapper-inner">
-                <div class="info-block__txt">
-                    <h2>Район</h2>
-                    <h5>Северное Бутово</h5>
-                    <p>
-                        Живя рядом с лесом и наслаждаясь идеальной экологией,
-                        приятно осознавать, что все городские преимущества находятся в шаговой доступности.<br>
-                        Летняя оранжерея, веревочный парк для активных
-                        и любознательных маленьких жителей, уютное семейное кафе
-                        и сезонная ярмарка фермерских продуктов прямо на территории ЖК  – все это «Гринада».
-                    </p>
-                </div>
+                <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                        "AREA_FILE_SHOW" => "file",
+                        "AREA_FILE_SUFFIX" => "",
+                        "PATH" => '/bitrix/templates/grinada/include/infra_text.php',
+                        "AREA_FILE_RECURSIVE" => "Y",
+                        "EDIT_TEMPLATE" => "standard.php"
+                    )
+                );?>
             </div>
         </div>
         <div class="pattern big-pattern pattern-1 dark-green anim-pattern" data-pattern="pattern-1"></div>

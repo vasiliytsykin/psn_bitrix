@@ -1,0 +1,86 @@
+
+{
+
+	"HTMLFileName":"teapot_cup_6ill.html",
+	"expanded:images/5_pattern_blue_ok2.svg":"nil",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"expanded:images/6_pattern_blue_ok_2.svg":"nil",
+	"expanded:images/teapot_small.svg":"nil",
+	"usedBOM":"false",
+	"expanded:images/circle.svg":"nil",
+	"expanded:images/5_pattern_blue_ok_2.svg":"nil",
+	"symbol_stage":{
+		"dummyStageParentWidth":"530px",
+		"dummyStageParentHeight":"310px",
+		"element_${_6_pattern_blue_ok_2}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"locked":"false",
+			"animationEnabled":"false"},
+		"element_${_4_pattern_blue}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"locked":"false",
+			"animationEnabled":"false"},
+		"element_${cup}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"true",
+			"timelineColor":"0x50bd82"},
+		"defaultStageParentHeight":"310px",
+		"element_${teapot_small}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"true",
+			"timelineColor":"0x00bda4"},
+		"element_${Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${circle}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096",
+			"timelineTreeOpened":"true",
+			"animationEnabled":"true"},
+		"defaultStageParentWidth":"530px",
+		"element_${_5_pattern_blue_ok2}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"false",
+			"timelineColor":"0x2f73ad"},
+		"element_${_5_pattern_blue_ok_2}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"locked":"false",
+			"animationEnabled":"false"}},
+	"TransitionIdCounter":"52",
+	"CompZoomFactor":"100",
+	"viewStartY":"0",
+	"pixelsPerMs":"0.2",
+	"expanded:images/4_pattern_blue.svg":"nil",
+	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"stage-Default Timeline_mark_ms":"-1",
+	"nextElementColorIndex":"9",
+	"stage-Default Timeline_playhead_ms":"2500",
+	"StageZoomFactor":"200",
+	"expanded:images/5_pattern_blue_ok.svg":"nil",
+	"expanded:images/cup.svg":"nil"}

@@ -30,6 +30,13 @@ while($result = $rsSections->GetNext()){
 		);
 }
 
+$rootSection = array();
+$rsRootSection = CIBlockSection::GetList(array(), array("IBLOCK_ID" => $arParams["IBLOCK_ID"],"DEPTH_LEVEL" => 1), false, array("ID", "IBLOCK_ID", "UF_SHOW_SALE_PRICE"));
+if($result = $rsRootSection->GetNext())
+	$rootSection = $result;
+
+$showSalePrice = $rootSection["UF_SHOW_SALE_PRICE"] == 1 ? true : false;
+
 ?>
 
 <?foreach($arResult["ITEMS"] as $arItem){?>
@@ -46,6 +53,8 @@ while($result = $rsSections->GetNext()){
 	$floor = $properties['Floor']['VALUE'];
 	$square = $properties['SpaceDesign']['VALUE'];
 	$furnish = $properties['ApartmentFurnish']['VALUE'] != false ? 'Да' : 'Нет';
+	$price = $properties['Price']['VALUE'];
+	$salePrice = $properties['SalePrice']['VALUE'];
 	$arFloor = $sections[$arItem['IBLOCK_SECTION_ID']];
 	$arSection = $sections[$arFloor['parent']];
 	$sectionIcon = $arSection['img'];
@@ -54,7 +63,7 @@ while($result = $rsSections->GetNext()){
 	$houseType = $arHouse['houseType'] == 'panel' ? 'Панельный' : 'Монолитный';
 	?>
 	<a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="item">
-		<div class="h3 dark-green visible-sm visible-xs"><?=$roomCount?>-комнатная евроформат</div>
+		<div class="h3 dark-green visible-sm visible-xs"><?=$roomCount?>-комнатная</div>
 		<div class="general-params">
 			<div class="param">
 				<div class="param__name">Корпус</div>
@@ -88,16 +97,18 @@ while($result = $rsSections->GetNext()){
 		<div class="prices">
 			<div class="param">
 				<div class="param__name">Цена, <span class="ruble">a</span></div>
-				<div class="param__value">12 300 450</div>
+				<div class="param__value"><?=$price?></div>
 			</div>
-			<div class="param">
-				<div class="param__name">По акции, <span class="ruble">a</span></div>
-				<div class="param__value">11 300 450</div>
-			</div>
-			<div class="param">
-				<div class="param__name">Выгода, <span class="ruble">a</span></div>
-				<div class="param__value">1 000 000</div>
-			</div>
+			<?if($showSalePrice == true){?>
+				<div class="param">
+					<div class="param__name">По акции, <span class="ruble">a</span></div>
+					<div class="param__value"><?=(!empty($salePrice) ? $salePrice : '')?></div>
+				</div>
+				<div class="param">
+					<div class="param__name">Выгода, <span class="ruble">a</span></div>
+					<div class="param__value"><?=(!empty($salePrice) ? $price - $salePrice : '')?></div>
+				</div>
+			<?}?>
 		</div>
 		<div class="tooltip box-shadow">
 			<h4>корпус <?=$building?></h4>

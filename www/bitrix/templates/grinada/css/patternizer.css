@@ -1,0 +1,51 @@
+.edgeLoad-EDGE-9057157 { visibility:hidden;}
+.EDGE-9057157{  margin-left:76px; margin-top:-4px;}
+.EDGE-2423512{  margin: 96px 0 0 39px;  }
+.EDGE-2423513{  margin: 26px 0 0 59px;  }
+.EDGE-2423513_6{  margin: -13px 0 0 308px;  }
+
+.pattern.light-green .stroke {
+    stroke: #95d600;
+}
+.pattern.dark-green .stroke {
+    stroke: #00acc8;
+}
+.pattern .stroke {
+    fill: none;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}
+.list-animate-edge{
+    position:relative;
+    left:0;
+    right:0;
+    width:100%;
+    height:100%;
+}
+.item-animate-edge{
+    position:absolute;
+    left:0;
+    right:0;
+}
+.elements-animate-edge{
+    position:relative;
+    width:550px;
+    height:320px;
+}
+
+.pattern.light-green .fill{
+    fill:#95D600;
+}
+.pattern.dark-green .fill {
+    fill: #00acc8; }
+
+
+
+
+
+
+
+
+

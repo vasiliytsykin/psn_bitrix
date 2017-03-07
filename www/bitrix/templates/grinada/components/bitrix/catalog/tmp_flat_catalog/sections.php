@@ -39,8 +39,18 @@ foreach ($rangeProperties as $name => $props){
 $buildings = isset($_GET['BuildingNumber']) ? explode(',', $_GET['BuildingNumber']) : null;
 $furnish = isset($_GET['ApartmentFurnish']) ? $_GET['ApartmentFurnish'] : null;
 
+$rootSection = array();
+$rsRootSection = CIBlockSection::GetList(array(), array("IBLOCK_ID" => $arParams["IBLOCK_ID"],"DEPTH_LEVEL" => 1), false, array("ID", "IBLOCK_ID", "UF_SHOW_SALE_PRICE"));
+if($result = $rsRootSection->GetNext())
+	$rootSection = $result;
+
+$showSalePrice = $rootSection["UF_SHOW_SALE_PRICE"] == 1 ? true : false;
 
 ?>
+
+<!--<pre>-->
+<!--	--><?//print_r($rootSection)?>
+<!--</pre>-->
 
 
 <div class="param-filter-page">

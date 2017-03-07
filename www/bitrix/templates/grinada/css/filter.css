@@ -131,6 +131,8 @@
     display: flex;
     -ms-flex-pack: distribute;
     justify-content: space-around; }
+.filter__results--table.no-sale .general-params {
+    width: 85%; }
 .filter__results--table .general-params .param:nth-last-child(2), .filter__results--table .general-params .param__name:nth-last-child(2) {
     width: 25%; }
 .filter__results--table .general-params .param:nth-last-child(1), .filter__results--table .general-params .param__name:nth-last-child(1) {
@@ -142,14 +144,20 @@
     display: flex;
     -ms-flex-pack: distribute;
     justify-content: space-around; }
+.filter__results--table.no-sale .prices {
+    width: 15%; }
 .filter__results--table .prices .param {
     width: 30%; }
+.filter__results--table.no-sale .prices .param {
+    width: 100%; }
 .filter__results--table .prices .param:nth-child(1) .param__value, .filter__results--table .prices .param:nth-child(2) .param__value {
     color: #f38b00; }
 .filter__results--table .prices .param:nth-child(3) .param__value {
     color: #00acc8; }
 .filter__results--table .prices .param__name {
     width: 30%; }
+.filter__results--table.no-sale .prices .param__name {
+    width: 100%; }
 .filter__results--table .param {
     width: 15%; }
 .filter__results--table .tooltip {
@@ -199,7 +207,7 @@
         padding-bottom: 50px; }
     .filter__results--table .results-list {
         text-align: left; }
-    .filter__results--table .general-params {
+    .filter__results--table .general-params, .filter__results--table.no-sale .general-params {
         display: block;
         width: 50%; }
     .filter__results--table .general-params .param__value {
@@ -219,8 +227,9 @@
         display: block !important;
         width: auto !important; }
     .filter__results--table .prices {
-        display: block;
-        width: auto; }
+        display: block; }
+    .filter__results--table.no-sale .prices {
+        width: 30%; }
     .filter__results--table .prices .param {
         display: block; }
     .filter__results--table .tooltip {
@@ -232,7 +241,9 @@
     .filter__results--table .item .h3 {
         max-width: 300px;
         margin: 0 auto; }
-    .filter__results--table .general-params {
-        width: 60%; } }
+    .filter__results--table .general-params, .filter__results--table.no-sale .general-params {
+        width: 60%; }
+    .filter__results--table .prices, .filter__results--table.no-sale .prices {
+        width: auto; } }
 
 /*-------END FILTER RESULT-----------*/

@@ -19,7 +19,7 @@ $arSections = array();
 
 if(CModule::IncludeModule('iblock')){
 
-	$rsSection = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array("IBLOCK_ID" => $arParams["IBLOCK_ID"]), false, Array("UF_*"));
+	$rsSection = CIBlockSection::GetList(Array("left_margin"=>"asc"), Array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ACTIVE" => "Y", "GLOBAL_ACTIVE" => "Y"), false, Array("UF_*"));
 	while($arSection = $rsSection->GetNext()) {
 
 		$depthLevel = $arSection["DEPTH_LEVEL"];
@@ -33,22 +33,33 @@ if(CModule::IncludeModule('iblock')){
 			$arSections[$parentSectionId]["SUB_SECTIONS"][$sectionId] = $arSection;
 		}
 
+//		$arSections[$sectionId] = $arSection;
+
 	}
 
 }
 
+$linesCount = count($arSections);
+
 ?>
 
+<!--<pre>-->
+<!--	--><?//print_r($arSections)?>
+<!--</pre>-->
+
+
 <div class="gallery">
-	<div class="gallery__switch-over">
-		<div class="gallery__switch">
-			<? foreach($arSections as $arSection){
-				$active = $arSection['CODE'] == 'line_1' ? 'active': '';
-				?>
-				<div class="switch__tab tab-<?=$arSection['ID']?> <?=$active?>" data-tab="tab-<?=$arSection['ID']?>"></div>
-			<?}?>
+	<?if($linesCount > 1){?>
+		<div class="gallery__switch-over">
+			<div class="gallery__switch" style="max-width: <?=(280*$linesCount)?>px;">
+				<? foreach($arSections as $arSection){
+					$active = $arSection['CODE'] == 'line_1' ? 'active': '';
+					?>
+					<div class="switch__tab tab-<?=$arSection['ID']?> <?=$active?>" data-tab="tab-<?=$arSection['ID']?>" style="width: <?=round(100/$linesCount, 4)?>%;"><?=$arSection["NAME"]?></div>
+				<?}?>
+			</div>
 		</div>
-	</div>
+	<?}?>
 	<div class="wrapper-main">
 		<div class="wrapper-outer">
 			<div class="gallery__tabs">
@@ -56,7 +67,7 @@ if(CModule::IncludeModule('iblock')){
 				<? foreach($arSections as $arSection){
 					$active = $arSection['CODE'] == 'line_1' ? 'active': '';
 					?>
-					<div class="gallery__tab <?=$arSection['ID']?> <?=$active?>">
+					<div class="gallery__tab tab-<?=$arSection['ID']?> <?=$active?>">
 						<?foreach ($arSection["SUB_SECTIONS"] as $subSection){
 
 							$imgUrl = CFile::GetPath($subSection["PICTURE"]);
@@ -156,12 +167,6 @@ if(CModule::IncludeModule('iblock')){
 									);?>
 								</div>
 							</div>
-
-							
-<!--							<pre>-->
-<!--								--><?//print_r($subSection)?>
-<!--							</pre>-->
-							
 						<?}?>
 					</div>
 				<?}?>

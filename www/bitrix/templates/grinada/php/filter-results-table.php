@@ -1,4 +1,4 @@
-<div class="filter__results filter__results--table">
+<div class="filter__results filter__results--table <?=($showSalePrice == false ? 'no-sale' : '')?>">
     <div class="results-list">
         <div class="results-list__header">
             <div class="general-params">
@@ -12,8 +12,10 @@
             </div>
             <div class="prices">
                 <div class="param__name">Цена, <span class="ruble">a</span></div>
-                <div class="param__name">По акции, <span class="ruble">a</span></div>
-                <div class="param__name">Выгода, <span class="ruble">a</span></div>
+                <?if($showSalePrice == true){?>
+                    <div class="param__name">По акции, <span class="ruble">a</span></div>
+                    <div class="param__name">Выгода, <span class="ruble">a</span></div>
+                <?}?>
             </div>
         </div>
         <div class="results-list__body result-items"></div>

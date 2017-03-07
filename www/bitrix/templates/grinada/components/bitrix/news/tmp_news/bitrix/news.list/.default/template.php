@@ -28,7 +28,7 @@ $navNum = $arResult["NAV_RESULT"]->NavNum;
 		$img = $arItem['PREVIEW_PICTURE'];
 		$imgUrl = is_array($img) ? $img['SRC'] : '/bitrix/templates/grinada/img/news/news_stab.jpg' ;
 	?>
-	<a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="info-block">
+	<a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="info-block" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 		<div class="info-block__img-over">
 			<div class="info-block__date-over">
 				<div class="info-block__date">

@@ -14,12 +14,14 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/partners.css');
 	</div>
 	<div class="wrapper-main">
 		<div class="info-block info-block--main">
-			<div class="info-block__txt">
-				<h2>Только профессионалы</h2>
-				<p>
-					 Мы собрали отличную команду, чтобы сделать этот проект особенным. Европейских архитекторов, которые с большим вниманием относятся к окружающей среде, строительные компании, что построили колоссальное количество объектов и уже проверенны годами. И пригласили лучшие риэлторские агентства и банки, которые точно знают, как сделать финансовые условия и ипотечные программы максимально выгодными для наших будущих жильцов.
-				</p>
-			</div>
+			<?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+					"AREA_FILE_SHOW" => "file",
+					"AREA_FILE_SUFFIX" => "",
+					"PATH" => '/bitrix/templates/grinada/include/partners_text.php',
+					"AREA_FILE_RECURSIVE" => "Y",
+					"EDIT_TEMPLATE" => "standard.php"
+				)
+			);?>
 			<div class="pattern big-pattern pattern-5 dark-green anim-pattern" data-pattern="pattern-5">
 			</div>
 		</div>

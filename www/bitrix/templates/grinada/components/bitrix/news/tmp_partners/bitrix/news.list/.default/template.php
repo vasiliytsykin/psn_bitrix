@@ -19,7 +19,7 @@ $this->setFrameMode(true);
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 	?>
 
-	<div class="slide-block sub">
+	<div class="slide-block sub" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 		<div class="slide-block__header">
 			<div class="trigger"><span class="name h2"><?=$arItem['NAME']?></span></div>
 		</div>

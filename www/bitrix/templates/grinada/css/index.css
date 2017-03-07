@@ -9,6 +9,9 @@
     position: absolute;
     left: 0;
     top: 0; }
+.main-page .main-slider video {
+    width: 100%;
+    display: block; }
 .main-page .main-slider .video .btn-video, .main-page .main-slider .video .btn-stop, .main-page .main-slider .video .btn-mute {
     cursor: pointer; }
 .main-page .main-slider .video.play .video-wrapper {

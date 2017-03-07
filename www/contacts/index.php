@@ -63,21 +63,14 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
         <div class="main-info">
             <div class="big-figure circle"></div>
             <div class="wrapper-inner">
-                <div class="main-info__content">
-                    <div class="main-info__txt-block">
-                        <div class="h4">офис продаж</div>
-                        <p>г. Москва,  ул. Феодосийская, дом 1, корпус 10</p>
-                        <div class="phone dark-green">+7 495 800 41 48</div>
-                        <div class="email dark-green" style="display: none;">sales@jk-grinada.ru</div>
-                    </div>
-                    <div class="main-info__txt-block">
-                        <div class="h4">режим работы</div>
-                        <p>
-                            <span class="gray">ежедневно</span><br>
-                            с 09:00 до 21:00<br>
-                        </p>
-                    </div>
-                </div>
+                <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                        "AREA_FILE_SHOW" => "file",
+                        "AREA_FILE_SUFFIX" => "",
+                        "PATH" => '/bitrix/templates/grinada/include/contacts_text.php',
+                        "AREA_FILE_RECURSIVE" => "Y",
+                        "EDIT_TEMPLATE" => "standard.php"
+                    )
+                );?>
             </div>
         </div>
         <div class="map-wrapper">

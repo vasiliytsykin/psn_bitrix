@@ -30,7 +30,7 @@
 	        url="plugins/gyro.js"
 	        enabled="true"
 	        camroll="true"
-	        friction="0.0"
+	        friction="0.5"
 	        touch_mode="full"
 	        sensor_mode="1"
 	        autocalibration="true"
@@ -39,6 +39,18 @@
 	        onenable=""
 	        ondisable=""
 	        />
+
+	<!--<plugin name="gyro" devices="html5" keep="true"-->
+			<!--url="plugins/gyro2.js"-->
+			<!--enabled="false"-->
+			<!--camroll="true"-->
+			<!--friction="auto"-->
+			<!--touch_mode="full"-->
+			<!--sensor_mode="1"-->
+			<!--softstart="0.5"-->
+			<!--autocalibration="true"-->
+			<!--onavailable="set(enabled, true)"-->
+	<!--/>-->
 
 	<!-- set optional skin logo url
 	<plugin name="company" keep="true" url="img/logo.png" scale="1" align="righttop" x="50" y="50" onclick="openurl('',_blank);" />
