@@ -1,14 +1,15 @@
 <?
 
-$data = array(
-        "Name" => "Иван",
-        "Phone" => "89127673457483",
-        "Email" => "иван@ghjg.ru",
-        "Comments" => "",
-        "ArticleId" => "543",
-        "WebSiteId" => "1",
-        "LeadSourceId" => "3"
-);
+//$data = array(
+//        "Name" => "Иван",
+//        "Phone" => "89127673457483",
+//        "Email" => "иван@ghjg.ru",
+//        "Comments" => "",
+//        "ArticleId" => "543",
+//        "WebSiteId" => "1",
+//        "LeadSourceId" => "3"
+//);
+$data = $_REQUEST['lead'];
 $data_str = json_encode($data);
 $ch = curl_init('http://91.228.121.2:4043/api/LeadRequests');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");

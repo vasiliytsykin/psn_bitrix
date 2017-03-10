@@ -81,6 +81,10 @@ $compassActual = !empty($compass) ? CFile::GetPath($compass) : '/bitrix/template
 $peopleOnline = $arParams["PEOPLE_ONLINE"];
 $ending = getDeclension($peopleOnline);
 
+$_SESSION['building'] = $building;
+$_SESSION['section'] = $section;
+$_SESSION['flatNumber'] = $flatNumber;
+
 $arPlan = array();
 
 $arSelect = Array(

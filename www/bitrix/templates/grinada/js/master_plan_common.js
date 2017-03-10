@@ -63,7 +63,7 @@ function putLabels(map_ob) {
 
 }
 
-$(document).ready(function () {
+$(function () {
 
     var $masterPlan = $('.master-plan');
     

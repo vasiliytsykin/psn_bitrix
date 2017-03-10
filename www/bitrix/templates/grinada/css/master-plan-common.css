@@ -187,8 +187,6 @@
     width: 44px;
     height: 65px;
     background: url(/bitrix/templates/grinada/img/main-plan/pin-blue.png) no-repeat center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -203,12 +201,12 @@
 .master-plan .main-plan__map .bubble.panel {
     background-image: url(/bitrix/templates/grinada/img/main-plan/pin-green.png); }
 .master-plan .main-plan__map .bubble.hover{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .master-plan .main-plan__map .bubble.finish {
-    background-image: url(/bitrix/templates/grinada/img/main-plan/pin-finish.png);
-    top: 290px;
-    left: 245px; }
+    background-image: url(/bitrix/templates/grinada/img/main-plan/pin-finish.png); }
 .master-plan .main-plan__map .bubble .tooltip {
     width: 90px;
     height: 90px;

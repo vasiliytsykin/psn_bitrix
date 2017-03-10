@@ -410,6 +410,14 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 <!--        </div>-->
 <!--    </div>-->
     <div class="feedback-modal mfp-hide" id="feedback-modal">
+        <?
+            $utmSource = isset($_COOKIE['utm_source']) ? $_COOKIE['utm_source'] : '';
+            $utmCampaign = isset($_COOKIE['utm_campaign']) ? $_COOKIE['utm_campaign'] : '';
+            $leadSource = !empty($utmSource) ? $utmSource.(!empty($utmCampaign) ? ', '.$utmCampaign : '') : '';
+
+        ?>
+        <input type="hidden" name="lead-source-id" id="utm-source" value="<?=$leadSource?>">
+        <input type="hidden" name="web-site-id" id="site-ip" value="<?=gethostbyname($_SERVER['SERVER_NAME'])?>">
         <div class="tab call form-container active">
             <div class="h2">
                 Закажите звонок
@@ -501,15 +509,19 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     <label for="booking-phone">Телефон</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="comments" id="booking-id" value="5–11–517" readonly>
+                    <input type="text" name="article-id" id="booking-id" value="<?=$_SESSION['building'].'-'.$_SESSION['section'].'-'.$_SESSION['flatNumber']?>" readonly>
                     <label for="booking-id">Номер брони</label>
                 </div>
                 <div class="input-group">
                     <input type="checkbox" id="agreement">
-                    <label for="agreement">Согласен с</label> <span class="terms policy-open">политикой конфиденциальности</span>
+                    <label for="agreement">Согласен с</label> <span class="terms open-policy">политикой конфиденциальности</span>
                 </div>
             </form>
             <a href="#" class="btn-default btn-medium btn-green submit">Отправить</a>
+        </div>
+        <div class="tab thanks">
+            <div class="h2">Спасибо!</div>
+            <div class="h5">Ваша заявка отправлена.</div>
         </div>
         <div class="switch">
             <div class="switch__tab call active">

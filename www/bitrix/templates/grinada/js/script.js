@@ -181,7 +181,6 @@ $(function () {
 
 
     });
-    
 
     $('.policy-open').on('click', function () {
 
@@ -785,6 +784,13 @@ $(function () {
 
         }
 
+        function isValidPhone(phone) {
+
+            var phoneRegEx = new RegExp("^\\+\\d{1}\\(\\d{3}\\)-\\d{3}-\\d{2}-\\d{2}$");
+            return phoneRegEx.test(phone);
+
+        }
+
         function isValidEmail(email) {
 
             var emailRegEx = new RegExp("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$");
@@ -800,6 +806,14 @@ $(function () {
             else $input.removeClass(invalid);
 
         }
+
+        var validators = {
+
+            name: isValidName,
+            phone: isValidPhone,
+            email: isValidEmail
+
+        };
 
         $nameInput.on('blur keyup change', function () {
 
@@ -827,7 +841,7 @@ $(function () {
 
         $feedSwitchTab.on('click', function () {
 
-            $feedTabs.not('.layout, .booking').toggleClass(active);
+            $feedTabs.not('.layout, .booking, .thanks').toggleClass(active);
             $feedSwitchTab.toggleClass(active);
 
         });
@@ -860,21 +874,125 @@ $(function () {
                     src: '#feedback-modal',
                     type: 'inline'
                 },
-                mainClass: 'feedback-mfp'
+                mainClass: 'feedback-mfp',
+                closeOnBgClick: false
             });
 
             return false;
 
         });
 
-        $('a.submit').on('click', function () {
+        $('.feedback-modal .open-policy').on('click', function () {
 
-            var $this = $(this),
-                $form = $this.closest('.form-container').find('form');
-            $form.submit();
+            var $policy = $('#policy-popup'),
+                $feedbackModal = $('.feedback-modal'),
+                $feedbackMfp = $('.feedback-mfp .mfp-content');
 
+            $feedbackMfp.append($policy);
+            $policy.removeClass('mfp-hide');
+            $feedbackModal.addClass('hidden');
+            $policy.append('<div class="feedback-policy-close"></div>');
+
+
+            $('.feedback-policy-close').on('click', function () {
+
+                $feedbackModal.removeClass('hidden');
+                $policy.addClass('mfp-hide');
+                $('.feedback-policy-close').remove();
+                $('.footer__info').append($policy);
+
+            });
+
+            return false;
 
         });
+        
+        $('.feedback-modal .tab:not(.layout) .submit').on('click', function () {
+
+            var $this = $(this),
+                $tab = $this.closest('.tab'),
+                $agreement = $tab.find('#agreement'),
+                $form = $this.closest('.form-container').find('form'),
+                data = gatherData($form);
+
+            if(!data) return false;
+            if($tab.hasClass('booking') && !$agreement.prop('checked')) return false;
+
+            var request = {};
+            request['lead'] = data;
+
+            console.log(request);
+            
+            sendFeedback(request);
+
+        });
+        
+
+        function gatherData($form) {
+
+            var credentials = ['name', 'email', 'phone'],
+                comments = [],
+                data = {},
+                isValidData = true;
+
+            $form.find('input, textarea').each(function (ind, input) {
+
+                var $input = $(input);
+
+                if($input.attr('type') != 'checkbox'){
+                    
+                    var inputName = $input.attr('name'),
+                        inputValue = $input.val(),
+                        isRequired = $input.attr('required');
+
+                    if(isRequired && !inputValue) {
+                        isValidData = false;
+                        return false;
+                    }
+
+                    if(credentials.indexOf(inputName) != -1)
+                    {
+                        var validateFn = validators[inputName];
+
+                        if(validateFn(inputValue))
+                            data[inputName.toCamelCase()] = inputValue;
+                        else{
+                            isValidData = false;
+                            return false;
+                        }
+                    }
+                    else if(inputName == 'article-id')
+                        data[inputName.toCamelCase()] = inputValue;
+                    else
+                        comments.push(inputValue)
+                }
+            });
+
+            data['Comments'] = comments.join(' ');
+            data['LeadSourceId'] = $('#utm-source').val();
+            data['WebSiteId'] = $('#site-ip').val();
+
+            return isValidData ? data : false;
+
+        }
+        
+        function sendFeedback(data) {
+
+            $.ajax({
+                url: '/crm_test.php/',
+                data: data,
+                type: "POST",
+                success: function(response){
+
+                    $feedTabs.removeClass(active);
+                    $feedModal.find('.thanks').addClass(active);
+                    if(!$feedSwitch.hasClass(hidden)) $feedSwitch.addClass(hidden);
+
+                    console.log(JSON.parse(response));
+                }
+            });
+            
+        }
 
         (function setupCalendar() {
 
@@ -907,6 +1025,7 @@ $(function () {
 
                 hide_on_select: true,
                 class_name: 'popup-datepicker',
+                format: 'd.m.Y',
                 locale: 'ru'
 
             });

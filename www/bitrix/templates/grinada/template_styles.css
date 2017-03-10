@@ -1669,6 +1669,16 @@ p {
     border-color: transparent;
 }
 
+.feedback-policy-close {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    background: url(/bitrix/templates/grinada/img/video_close.svg) no-repeat center;
+}
+
 .popup-datepicker {
     z-index: 10001; }
 .popup-datepicker.pickmeup {

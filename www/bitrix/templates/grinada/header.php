@@ -5,6 +5,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 include __DIR__.'/php/init.php';
 
+
 foreach($arCSS as $CSS){
 	$APPLICATION->SetAdditionalCSS($CSS);
 }
@@ -12,6 +13,33 @@ foreach($asrScripts as $JS){
 	$APPLICATION->AddHeadScript($JS);
 }
 
+function getHost($url){
+
+	$urlParts = parse_url($url);
+	return $urlParts['host'];
+}
+
+function setUTM(){
+
+	$currentUtmSource = (isset($_COOKIE['utm_source']) ? $_COOKIE['utm_source'] : '');
+	if($currentUtmSource !== '') return;
+
+	$newUtmSource = '';
+
+	if(isset($_GET['utm_source']))
+		$newUtmSource = $_GET['utm_source'];
+	else if(isset($_SERVER['HTTP_REFERER']))
+		$newUtmSource = getHost($_SERVER['HTTP_REFERER']);
+
+	if($newUtmSource !== '')
+		setcookie('utm_source', $newUtmSource, time()+86400);
+
+	if(isset($_GET['utm_campaign']))
+		setcookie('utm_campaign', $_GET['utm_campaign'], time()+86400);
+
+}
+
+setUTM();
 
 ?>
 <!DOCTYPE html>
@@ -132,7 +160,7 @@ foreach($asrScripts as $JS){
 			</div>
 		</div>
 		<?
-			$currentPage = str_replace(array('/', '.php'), '', $_SERVER['REQUEST_URI']);
-			$isMain = $currentPage == '' ? 'main' : '';
+			$currentPage = pathinfo($_SERVER['REQUEST_URI'], PATHINFO_DIRNAME);
+			$isMain = $currentPage == '/' ? 'main' : '';
 		?>
 		<div class="content <?=$isMain?>">
