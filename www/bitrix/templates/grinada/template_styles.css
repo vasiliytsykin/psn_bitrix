@@ -1679,6 +1679,10 @@ p {
     background: url(/bitrix/templates/grinada/img/video_close.svg) no-repeat center;
 }
 
+.feedback-modal .thanks .h5{
+    padding-bottom: 15px;
+}
+
 .popup-datepicker {
     z-index: 10001; }
 .popup-datepicker.pickmeup {

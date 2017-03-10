@@ -29,7 +29,14 @@ function engageRangeSlider(element) {
 
         var $this = $(this),
             from = $this.data('from'),
-            to = $this.data('to');
+            to = $this.data('to'),
+            id = $this.attr('id');
+
+        if(id == 'rooms')
+        {
+            from = from !== 0 ? from : 'ст.';
+            to = to !== 0 ? to : 'ст.';
+        }
 
         var $inputGroup = $this.closest('.input-group');
         var $min = $inputGroup.find('.min');
