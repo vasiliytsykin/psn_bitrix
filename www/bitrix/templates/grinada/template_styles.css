@@ -1035,10 +1035,12 @@ p {
         -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
     .header__logo {
-        height: 70px;
+        /*height: 70px;*/
+        height: 50px;
         width: 100%;
-        margin: 0 0 0 -10px;
-        background-image: url(/bitrix/templates/grinada/img/logo-mobile.png); }
+        margin: 10px 0 10px -10px;
+        /*background-image: url(/bitrix/templates/grinada/img/logo-mobile.png);*/
+    }
     .header__contact {
         height: 70px;
         -webkit-box-pack: center;

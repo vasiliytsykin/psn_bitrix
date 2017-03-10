@@ -160,7 +160,7 @@ setUTM();
 			</div>
 		</div>
 		<?
-			$currentPage = pathinfo($_SERVER['REQUEST_URI'], PATHINFO_DIRNAME);
+			$currentPage = $APPLICATION->GetCurDir();;
 			$isMain = $currentPage == '/' ? 'main' : '';
 		?>
 		<div class="content <?=$isMain?>">

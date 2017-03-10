@@ -26,19 +26,19 @@
 	               controlbar_offset=""
 	               />
 
-	<plugin name="gyro" devices="html5" keep="true"
-	        url="plugins/gyro.js"
-	        enabled="true"
-	        camroll="true"
-	        friction="0.5"
-	        touch_mode="full"
-	        sensor_mode="1"
-	        autocalibration="true"
-	        onavailable=""
-	        onunavailable=""
-	        onenable=""
-	        ondisable=""
-	        />
+	<!--<plugin name="gyro" devices="html5" keep="true"-->
+	        <!--url="plugins/gyro.js"-->
+	        <!--enabled="true"-->
+	        <!--camroll="true"-->
+	        <!--friction="0.5"-->
+	        <!--touch_mode="full"-->
+	        <!--sensor_mode="1"-->
+	        <!--autocalibration="true"-->
+	        <!--onavailable=""-->
+	        <!--onunavailable=""-->
+	        <!--onenable=""-->
+	        <!--ondisable=""-->
+	        <!--/>-->
 
 	<!--<plugin name="gyro" devices="html5" keep="true"-->
 			<!--url="plugins/gyro2.js"-->
