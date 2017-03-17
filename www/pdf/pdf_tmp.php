@@ -10,6 +10,7 @@ $arSelect = array(
     "ID",
     "IBLOCK_ID",
     "NAME",
+    "IBLOCK_SECTION_ID",
     'PROPERTY_*'
 );
 $rsFlat = CIBlockElement::GetList(array(), array('IBLOCK_CODE' => 'flats', 'ACTIVE' => 'Y', 'ID' => $flatId), false, false, $arSelect);
@@ -26,6 +27,7 @@ $section = $properties['SectionNumber']['VALUE'];
 $flatNumber = $properties['BeforeBtiNumber']['VALUE'];
 $numberOnFloor = $properties['NumberOnFloor']['VALUE'];
 $floor = $properties['Floor']['VALUE'];
+$price = $properties['Price']['VALUE'];
 $square = $properties['SpaceDesign']['VALUE'];
 $furnish = $properties['ApartmentFurnish']['VALUE'];
 $statusCode = $properties['StatusCode']['VALUE'];
@@ -74,9 +76,58 @@ function getAreas($arProp){
 
 }
 
+function getIcons($arResult){
+
+    $arSelect = array('ID', 'IBLOCK_ID', 'IBLOCK_SECTION_ID', 'DETAIL_PICTURE', 'UF_ICON');
+    $arFilter = array('IBLOCK_ID' => $arResult['IBLOCK_ID'],'ID' => $arResult['IBLOCK_SECTION_ID']);
+
+    $floor = array();
+    $rsFloor = CIBlockSection::GetList(array(), $arFilter, false, $arSelect);
+    if($result = $rsFloor->GetNext())
+        $floor = $result;
+
+    $arFilter['ID'] = $floor['IBLOCK_SECTION_ID'];
+
+    $icons = array();
+    $section = array();
+    $rsSection = CIBlockSection::GetList(array(), $arFilter, false, $arSelect);
+    if($result = $rsSection->GetNext())
+        $section = $result;
+
+
+    $house = array();
+    $arFilter['ID'] = $section['IBLOCK_SECTION_ID'];
+    $rsHouse = CIBlockSection::GetList(array(), $arFilter, false, $arSelect);
+    if($result = $rsHouse->GetNext())
+        $house = $result;
+
+    $icons['section_icon'] = CFile::GetPath($section['UF_ICON']);
+    $icons['house_icon'] = CFile::GetPath($house['UF_ICON']);
+
+    return $icons;
+
+}
+
+function getSectionPictures($building, $section, $numOnFloor){
+
+    $pictures = array();
+    $arFilter = array("IBLOCK_CODE" => 'sections', "PROPERTY_BuildingNumber" => $building, "PROPERTY_SectionNumber" => $section, "PROPERTY_NumberOnFloor" => $numOnFloor);
+    $arSelect = array("ID", "IBLOCK_ID", "DETAIL_PICTURE", "PROPERTY_svg_icon");
+    $rsSection = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+    if($result = $rsSection->GetNext())
+    {
+        $pictures['icon'] = CFile::GetPath($result['PROPERTY_SVG_ICON_VALUE']);
+        $pictures['popup'] =  CFile::GetPath($result['DETAIL_PICTURE']);
+    }
+
+    return $pictures;
+
+}
+
 
 $areas = getAreas($arPlan['prop']);
-
+$icons = getIcons($flat);
+$sectionPictures = getSectionPictures($building, $section, $numberOnFloor);
 
 ?>
 
@@ -84,6 +135,9 @@ $areas = getAreas($arPlan['prop']);
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/pdf/fonts/bwsurco/bwsurco.css">
+    <link rel="stylesheet" href="/pdf/fonts/geometria/geometria.css">
+    <link rel="stylesheet" href="/pdf/fonts/ALSRublRegular/ALSRublRegular.css">
     <link rel="stylesheet" href="/pdf/flat-pdf.css">
     <style>
         @page {
@@ -94,31 +148,55 @@ $areas = getAreas($arPlan['prop']);
 </head>
 <body>
 <div class="flat-page--pdf">
-    <div class="header"></div>
+    <div class="big-figure circle"></div>
+    <div class="header">
+        <div class="header__block">
+            <div class="header__logo"></div>
+            <div class="header__link">гринада.рф</div>
+        </div>
+        <div class="header__block">
+            <div class="contact-block">
+                <div class="h4">офис продаж</div>
+                <p>г. Москва,<br>ул. Феодосийская, дом 1, корпус 10</p>
+            </div>
+            <div class="contact-block">
+                <div class="phone"><?=(isset($_GET['phone']) ? $_GET['phone'] : '+7 495 800 41 48')?></div>
+                <div class="email">sales@jk-grinada.ru</div>
+            </div>
+        </div>
+        <div class="header__block">
+            <div class="h4">режим работы</div>
+            <p>
+                ежедневно<br>
+                с 09:00 до 21:00<br>
+            </p>
+        </div>
+    </div>
     <div class="flat-page__content">
         <div class="plans">
             <div class="general-plans">
                 <div class="plan" id="general-plan">
                     <a href="#">Генплан</a>
-                    <div class="plan__img" style="background-image: url(/img/flat/genplan-map.svg);"></div>
+                    <div class="plan__img" style="background-image: url(<?=$icons['house_icon']?>);"></div>
                 </div>
                 <div class="plan" id="floor-plan">
                     <a href="#">План этажа</a>
-                    <div class="plan__img" style="background-image: url(/img/flat/floor-plan.svg);"></div>
+                    <div class="plan__img" style="background-image: url(<?=$icons['section_icon']?>);"></div>
                 </div>
                 <div class="plan" id="section-plan">
                     <a href="#">План секции</a>
-                    <div class="plan__img" style="background-image: url(/img/flat/section-plan.svg);"></div>
+                    <div class="plan__img" style="background-image: url(<?=$sectionPictures['icon']?>);"></div>
                 </div>
             </div>
             <div class="flat-plan">
-                <div class="plan__img" style="background-image: url(<?=CFile::GetPath($arPlan["PREVIEW_PICTURE"])?>);"></div>
+                <div class="h3 dark-green">Тип <?=$arPlan['prop']['name_type']['VALUE']?></div>
+                <div class="plan__img" style="background-image: url(<?=CFile::GetPath($arPlan['prop']['svg']['VALUE'])?>);"></div>
             </div>
         </div>
         <div class="flat-params">
             <h2 class="dark-green"><?=$roomCount?>-комнатная</h2>
             <h4 class="dark-green">евростандарт <?=$furnish?></h4>
-            <div class="price orange"><span class="price__value">12 460 000</span> <span class="ruble">a</span></div>
+            <div class="price orange"><span class="price__value"><?=$price?></span> <span class="ruble">a</span></div>
             <div class="param-list param-list--main">
                 <div class="param">
                     <div class="param__name">Корпус</div>

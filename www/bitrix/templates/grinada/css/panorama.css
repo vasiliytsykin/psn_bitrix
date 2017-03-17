@@ -14,9 +14,12 @@
 .panorama-page h1, .panorama-page .h1, .panorama-page h5 {
     text-align: center; }
 .panorama-page h1 {
-    padding-bottom: 10px; }
+    display: none; }
 .panorama-page h5 {
     color: #595959; }
+.panorama-page .tab-header{
+    padding-bottom: 50px;
+}
 .panorama-page .photos {
     padding: 100px 0; }
 .panorama-page .photos .h1 {
@@ -48,14 +51,16 @@
     position: absolute;
     width: 220px;
     height: 83px;
-    background: url(/bitrix/templates/grinada/img/logo_white.svg) no-repeat center;
+    background: url(/bitrix/templates/grinada/img/logo_green.svg) no-repeat center;
     background-size: contain;
     top: 35px;
     left: 40px;
     z-index: 1; }
 .panorama-page .panorama__txt{
-    font-size: 20px;
-    color: #fff;
+    font-size: 30px;
+    line-height: 1.2;
+    text-align: right;
+    color: #95d600;
     text-transform: uppercase;
     font-weight: 500;
     font-family: bw_surco, sans-serif;
@@ -65,7 +70,7 @@
     z-index: 1;
 }
 .panorama-page .gallery{
-    margin: 50px 0 90px;
+    margin: 0 0 90px;
 }
 .panorama-page .gallery__switch{
     max-width: 1110px;

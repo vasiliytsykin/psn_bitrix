@@ -193,6 +193,14 @@ $(function () {
         });
 
     });
+
+    $('.btn-back').on('click', function () {
+
+        window.history.back();
+
+        return false;
+
+    });
     
     (function () {
 
@@ -219,6 +227,29 @@ $(function () {
 
     $('a.disabled').on('click', function () {
         return false;
+    });
+
+    $('.btn-pdf').on('click', function () {
+
+        var $self = $(this),
+            href = $self.attr('href'),
+            phones = Comagic.getPhones();
+        //     phones = [
+        //         {
+        //             id: '#comagic_phone', // идентификатор элемента
+        //             img: null || 'path/to/img', // адрес картинки (если используется подмена картинкой)
+        //             text: null || '+7(495)999-99-99', // отформатированный номер
+        //             raw: '74959999999' // номер без форматирования
+        //         }
+        // ];
+
+
+
+        if(phones && phones.length)
+            href = href + '&phone=' + encodeURIComponent(phones[0].text);
+
+        $self.attr('href', href);
+
     });
 
 
@@ -769,13 +800,21 @@ $(function () {
             $phoneInput = $feedModal.find('input[name="phone"]'),
             $nameInput = $feedModal.find('input[name="name"]'),
             $emailInput = $feedModal.find('input[name="email"]'),
+            $checkboxes = $feedModal.find('input[type="checkbox"]'),
             active = 'active',
             hidden = 'hidden',
             email = 'email',
             call = 'call',
             layout = 'layout',
             booking = 'booking',
-            invalid = 'invalid';
+            invalid = 'invalid',
+            loading = 'loading',
+            callThanks = 'call-thanks';
+
+        var $flatIdInput = $('#flat-id');
+
+        if($flatIdInput.length)
+            $('#booking-id').val($flatIdInput.val());
 
         function isValidName(name) {
 
@@ -835,13 +874,28 @@ $(function () {
 
         });
 
-
         $phoneInput.inputmask("+7(999)-999-99-99");
+
+        $phoneInput.on('blur keyup change', function () {
+
+            var $this = $(this);
+            validate($this, isValidPhone);
+
+        });
+
+        $checkboxes.on('change', function () {
+
+            var $this = $(this);
+            if($this.prop('checked')) $this.removeClass(invalid);
+
+
+        });
+
         engageRangeSlider($('#time'));
 
         $feedSwitchTab.on('click', function () {
 
-            $feedTabs.not('.layout, .booking, .thanks').toggleClass(active);
+            $feedTabs.not('.layout, .booking, .thanks, .error').toggleClass(active);
             $feedSwitchTab.toggleClass(active);
 
         });
@@ -916,14 +970,17 @@ $(function () {
                 data = gatherData($form);
 
             if(!data) return false;
-            if($tab.hasClass('booking') && !$agreement.prop('checked')) return false;
+            if($tab.hasClass('booking') && !$agreement.prop('checked')) {
+                $agreement.addClass(invalid);
+                return false;
+            }
 
             var request = {};
             request['lead'] = data;
 
             console.log(request);
             
-            sendFeedback(request);
+            sendFeedback(request, $tab);
 
         });
         
@@ -946,6 +1003,7 @@ $(function () {
                         isRequired = $input.attr('required');
 
                     if(isRequired && !inputValue) {
+                        $input.addClass(invalid);
                         isValidData = false;
                         return false;
                     }
@@ -976,22 +1034,44 @@ $(function () {
 
         }
         
-        function sendFeedback(data) {
+        function sendFeedback(data, $tab) {
 
             $.ajax({
                 url: '/crm_test.php/',
                 data: data,
                 type: "POST",
+                beforeSend: function () {
+
+                    $feedModal.addClass(loading)
+
+                },
                 success: function(response){
 
-                    $feedTabs.removeClass(active);
-                    $feedModal.find('.thanks').addClass(active);
-                    if(!$feedSwitch.hasClass(hidden)) $feedSwitch.addClass(hidden);
-
+                    showRequestResult('thanks', $tab);
                     console.log(JSON.parse(response));
+                },
+                error: function () {
+
+                    showRequestResult('error');
                 }
             });
             
+        }
+
+
+        function showRequestResult(resultTabName, $requestTab) {
+
+            $feedTabs.removeClass(active);
+            $feedTabs.removeClass(callThanks);
+            var $resultTab = $feedModal.find('.' + resultTabName);
+
+            if($requestTab && $requestTab.hasClass('call'))
+                $resultTab.addClass(callThanks);
+
+            $resultTab.addClass(active);
+            if(!$feedSwitch.hasClass(hidden)) $feedSwitch.addClass(hidden);
+            $feedModal.removeClass(loading);
+
         }
 
         (function setupCalendar() {
@@ -1007,7 +1087,7 @@ $(function () {
                 mm = today.getMonth() + 1,
                 mmFormated = mm > 9 ? mm : '0' + mm,
                 yy = today.getFullYear(),
-                todayStr = ddFormated + '-' + mmFormated + '-' + yy;
+                todayStr = ddFormated + '.' + mmFormated + '.' + yy;
 
 
             $calInput.val(todayStr);

@@ -81,10 +81,6 @@ $compassActual = !empty($compass) ? CFile::GetPath($compass) : '/bitrix/template
 $peopleOnline = $arParams["PEOPLE_ONLINE"];
 $ending = getDeclension($peopleOnline);
 
-$_SESSION['building'] = $building;
-$_SESSION['section'] = $section;
-$_SESSION['flatNumber'] = $flatNumber;
-
 $arPlan = array();
 
 $arSelect = Array(
@@ -136,7 +132,7 @@ $sectionPictures = getSectionPictures($building, $section, $numberOnFloor);
     <div class="big-figure circle"></div>
     <div class="flat-page__content">
         <div class="plans">
-            <a href="#" class="btn-back hidden-sm hidden-xs">Вернуться назад</a>
+            <a href="#" class="btn-back link--dashed hidden-sm hidden-xs"><span>Вернуться назад</span></a>
             <div class="general-plans">
                 <div class="plan" id="general-plan">
                     <a href="/catalog/flats/zhk-grinada/">Генплан</a>
@@ -281,16 +277,16 @@ $sectionPictures = getSectionPictures($building, $section, $numberOnFloor);
 <!--                </div>-->
                 <div class="buttons">
                     <a href="#" class="btn-default btn-medium btn-green feedback-open call">Заказать звонок</a>
-                    <a href="#" class="btn-default btn-medium btn-green">Оставить заявку</a>
+                    <a href="#" class="btn-default btn-medium btn-green feedback-open booking">Оставить заявку</a>
                 </div>
                 <div class="links">
-                    <a href="#" class="btn-pdf">Сохранить<br>планировку</a>
-                    <a href="#" class="btn-email">Отправить<br>по e-mail</a>
+                    <a href="/pdf/?flat=<?=$arResult['ID']?>" target="_blank" class="btn-pdf">Сохранить<br>планировку</a>
+                    <a href="#" class="btn-email feedback-open layout">Отправить<br>по e-mail</a>
                 </div>
             </div>
         </div>
         <div class="flat-params">
-            <a href="#" class="btn-back visible-sm-inline-block visible-xs-inline-block">Вернуться назад</a>
+            <a href="#" class="btn-back link--dashed visible-sm-inline-block visible-xs-inline-block"><span>Вернуться назад</span></a>
             <h2 class="dark-green"><?=$roomCount?>-комнатная</h2>
 <!--            <h4 class="dark-green">евростандарт --><?//=$furnish?><!--</h4>-->
             <div class="price orange"><span class="price__value"><?=$price?></span> <span class="ruble">a</span></div>
@@ -429,9 +425,10 @@ $sectionPictures = getSectionPictures($building, $section, $numberOnFloor);
                 <div class="buttons">
                     <a href="#" class="btn-default btn-medium btn-green feedback-open call">Заказать звонок</a>
                     <a href="#" class="btn-default btn-medium btn-green feedback-open booking">Оставить заявку</a>
+                    <input type="hidden" id="flat-id" value="<?=$building.'-'.$section.'-'.$flatNumber?>" >
                 </div>
                 <div class="links">
-                    <a href="/pdf/flat-<?=$arResult['ID']?>.pdf" target="_blank" class="btn-pdf">Сохранить<br>планировку</a>
+                    <a href="/pdf/?flat=<?=$arResult['ID']?>" target="_blank" class="btn-pdf">Сохранить<br>планировку</a>
                     <a href="#" class="btn-email feedback-open layout">Отправить<br>по e-mail</a>
                 </div>
             </div>

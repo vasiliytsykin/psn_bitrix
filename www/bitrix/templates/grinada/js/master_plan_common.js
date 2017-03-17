@@ -1,20 +1,61 @@
+function getOffsetRect(elem) {
+
+    var box = elem.getBoundingClientRect();
+    var body = document.body;
+    var docElem = document.documentElement;
+    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+    var clientTop = docElem.clientTop || body.clientTop || 0;
+    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
+    return {
+        top: Math.round(top),
+        left: Math.round(left),
+        width: box.width,
+        height: box.height
+    }
+}
+
+
+
+// function adjustLabels(map_o) {
+//
+//     var $labels = $('.house-marker, .bubble');
+//
+//     map_o.$map.find($labels).each(function (ind, el) {
+//
+//         var $el = $(el),
+//             $poly = $($el.attr('for')),
+//             pos = {
+//                 left: $poly.offset().left - map_o.$map.offset().left,
+//                 top: $poly.offset().top - map_o.$map.offset().top,
+//                 width: $poly[0].getBoundingClientRect().width,
+//                 height: $poly[0].getBoundingClientRect().height
+//             };
+//
+//         $el.css({
+//             left: pos.left + pos.width / 2,
+//             top: pos.top + pos.height / 2
+//         });
+//     });
+// }
+
+
 function adjustLabels(map_o) {
 
     var $labels = $('.house-marker, .bubble');
 
     map_o.$map.find($labels).each(function (ind, el) {
 
-        var $el = $(el), $poly = $($el.attr('for')),
-            pos = {
-                left: $poly.offset().left - map_o.$map.offset().left,
-                top: $poly.offset().top - map_o.$map.offset().top,
-                width: $poly[0].getBoundingClientRect().width,
-                height: $poly[0].getBoundingClientRect().height
-            };
+        var $el = $(el),
+            $poly = $($el.attr('for')),
+            polyBox = getOffsetRect($poly[0]),
+            mapBox = getOffsetRect(map_o.$map[0]);
 
         $el.css({
-            left: pos.left + pos.width / 2,
-            top: pos.top + pos.height / 2
+            left: polyBox.left - mapBox.left + polyBox.width / 2,
+            top: polyBox.top - mapBox.top + polyBox.height / 2
         });
     });
 }

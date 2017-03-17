@@ -476,7 +476,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <div class="notice">
                     Напишите сообщение и мы в ближайшее время с вами свяжемся
                 </div>
-                <textarea name="comments" id="" cols="30" rows="4"></textarea>
+                <textarea name="comments" id="" cols="30" rows="4" required></textarea>
             </form>
             <a href="#" class="btn-default btn-medium btn-green submit">Отправить сообщение</a>
         </div>
@@ -509,19 +509,33 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     <label for="booking-phone">Телефон</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="article-id" id="booking-id" value="<?=$_SESSION['building'].'-'.$_SESSION['section'].'-'.$_SESSION['flatNumber']?>" readonly>
+                    <input type="text" name="article-id" id="booking-id" readonly>
                     <label for="booking-id">Номер брони</label>
                 </div>
                 <div class="input-group">
                     <input type="checkbox" id="agreement">
-                    <label for="agreement">Согласен с</label> <span class="terms open-policy">политикой конфиденциальности</span>
+                    <div class="label">
+                        <label for="agreement">Согласен с</label> <span class="terms open-policy">политикой конфиденциальности</span>
+                    </div>
                 </div>
             </form>
             <a href="#" class="btn-default btn-medium btn-green submit">Отправить</a>
         </div>
         <div class="tab thanks">
             <div class="h2">Спасибо!</div>
-            <div class="h5">Ваша заявка отправлена.</div>
+            <div class="h5 call-text">Ваша заявка отправлена, мы свяжемся с&nbsp;Вами в&nbsp;ближайшее время.</div>
+            <div class="h5 regular-text">Ваша заявка отправлена.</div>
+        </div>
+        <div class="tab error">
+            <div class="h2">Ошибка!</div>
+            <div class="h5">Приносим извинения, но что-то пошло не так.<br>Пожалуйста, попробуйте еще раз.</div>
+        </div>
+        <div class="loader">
+            <div class="loader__content">
+                <div class="loader__img"></div>
+                <div class="h2">Отправка заявки</div>
+                <p>Пожалуйста, подождите</p>
+            </div>
         </div>
         <div class="switch">
             <div class="switch__tab call active">

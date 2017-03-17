@@ -92,7 +92,7 @@ $furnish = $arResult['ITEMS'][0]['DISPLAY_PROPERTIES']['ApartmentFurnish']['VALU
 	<div class="pattern big-pattern pattern-3 dark-green anim-pattern" data-pattern="pattern-3"></div>
 	<div class="wrapper-main">
 		<div class="wrapper-outer">
-			<a href="#" class="link--dashed"><span>Вернуться назад</span></a>
+			<a href="#" class="btn-back link--dashed"><span>Вернуться назад</span></a>
 			<div class="content-wrapper">
 				<div class="section-plan-wrapper">
 					<div class="bird"></div>
@@ -146,12 +146,12 @@ $furnish = $arResult['ITEMS'][0]['DISPLAY_PROPERTIES']['ApartmentFurnish']['VALU
 													</div>
 													<div class="param price">
 														<div class="name">Стоимость</div>
-														<div class="value">12 560 000 <span class="ruble">a</span></div>
+														<div class="value"><?=$flatProps['Price']['VALUE']?> <span class="ruble">a</span></div>
 													</div>
-													<div class="param price">
-														<div class="name">По акции</div>
-														<div class="value">11 560 000 <span class="ruble">a</span></div>
-													</div>
+<!--													<div class="param price">-->
+<!--														<div class="name">По акции</div>-->
+<!--														<div class="value">--><?//=$flatProps['SalePrice']['VALUE']?><!-- <span class="ruble">a</span></div>-->
+<!--													</div>-->
 												</div>
 												<div class="flat-info__img" style="background-image: url(<?=$plans[$flatProps['TypeForSite']['VALUE']]['IMG']?>);"></div>
 												<div class="flat-info__compass"></div>

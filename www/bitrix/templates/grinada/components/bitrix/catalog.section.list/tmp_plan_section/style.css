@@ -43,9 +43,10 @@
     display: block;
 }
 .master-plan--filter .map-area svg {
-    z-index: 1; }
+    /*z-index: 1; */
+}
 .master-plan-filter .main-plan__map .bubble{
-    z-index: 1;
+    /*z-index: 1;*/
 }
 @media screen and (max-width: 1024px) {
     .master-plan--filter .main-plan__sidebar {

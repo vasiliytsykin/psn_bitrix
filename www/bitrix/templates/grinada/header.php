@@ -126,8 +126,8 @@ setUTM();
 						Феодосийская ул., вл. 1/9
 					</div>
 					<div class="phone dark-green">
-						<span class="code">+7 (495) </span>
-						<span class="number">800 41 48</span>
+<!--						<span class="code">+7 (495) </span>-->
+						<span class="number">+7 (495) 800 41 48</span>
 					</div>
 					<a href="#" class="btn-default btn-medium btn-green feedback-open call">Заказать звонок</a>
 					<div class="socials">

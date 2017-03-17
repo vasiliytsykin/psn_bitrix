@@ -33,7 +33,7 @@
             else if($arItem["DEPTH_LEVEL"] == 1 && $arItem["LINK"] == '/contacts/'){?>
                 <ul>
                     <li class="top-level"><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
-                    <li class="sub-level">Москва, Феодосийская ул., вл. 1/9</li>
+                    <li class="sub-level">Москва, ул. Феодосийская, дом 1, корпус 9</li>
                     <li class="phone">
 <!--                        <span class="code"></span>-->
                         <span class="number">+7 (495) 800 41 48</span>

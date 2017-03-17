@@ -135,7 +135,7 @@ $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/contacts.css', true);
                 <h3>По любым вопросам звоните нам,<br class="hidden-xs">
                     мы расскажем обо всём, что&nbsp;вас&nbsp;интересует
                 </h3>
-                <div class="phone">+7 495  800 41 48</div>
+                <div class="phone dark-green"><span class="number">+7 495  800 41 48</span></div>
                 <a href="#" class="btn-default btn-medium btn-green feedback-open call">Заказать звонок</a>
             </div>
             <div class="scroll-top "><a href="#">вернуться наверх</a></div>

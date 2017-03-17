@@ -1635,10 +1635,19 @@ p {
     text-align: center;
     margin-bottom: 35px;
 }
+.feedback-modal #agreement + .label{
+    color: #999999;
+}
+.feedback-modal #agreement.invalid + .label{
+    color: #f03c18;
+}
+.feedback-modal #agreement.invalid + .label .terms{
+    border-color: #f03c18;
+}
+
 .feedback-modal .booking label[for="agreement"] {
     line-height: 1;
     font-size: 12px;
-    color: #999999;
     padding-left: 30px;
     display: inline-block;
     position: relative;
@@ -1658,12 +1667,11 @@ p {
     background-size: cover;
     cursor: pointer;
 }
-.feedback-modal .booking input[type="checkbox"]:checked + label::before {
+.feedback-modal .booking input[type="checkbox"]:checked + .label label::before {
     background-position: -20px 0;
 }
 .feedback-modal .booking .terms {
     font-size: 12px;
-    color: #999999;
     cursor: pointer;
     border-bottom: 1px dashed #999999;
 }
@@ -1684,6 +1692,63 @@ p {
 .feedback-modal .thanks .h5{
     padding-bottom: 15px;
 }
+
+.feedback-modal .thanks .call-text{
+    display: none;
+}
+
+.feedback-modal .thanks.call-thanks .call-text{
+    display: block;
+}
+.feedback-modal .thanks.call-thanks .regular-text{
+    display: none;
+}
+
+.feedback-modal.loading .loader {
+    display: block;
+    z-index: 10000;
+}
+
+.feedback-modal .loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    display: none;
+}
+
+.feedback-modal .loader p {
+    margin: 15px 0 0;
+}
+
+.feedback-modal .loader__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.feedback-modal .loader__img {
+    width: 100px;
+    height: 100px;
+    background: url(/bitrix/templates/grinada/img/preloader.svg) no-repeat center;
+    margin: 35px auto;
+    -webkit-animation:spin 2.5s linear infinite;
+    -moz-animation:spin 2.5s linear infinite;
+    animation:spin 2.5s linear infinite;
+}
+
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 .popup-datepicker {
     z-index: 10001; }
@@ -1994,7 +2059,11 @@ p {
     .action-detail__nav--big .control {
         max-width: none; }
     .action-detail__nav--big .next {
-        padding-bottom: 60px; } }
+        padding-bottom: 60px; }
+    @-ms-viewport {
+        width: 480px;
+    }
+}
 
 /*-----END ACTION DETAIL COMMON---------*/
 
